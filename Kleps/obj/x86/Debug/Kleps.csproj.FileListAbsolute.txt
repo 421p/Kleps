@@ -1,0 +1,15 @@
+D:\Dev\sharp\Kleps\Kleps\bin\x86\Debug\Kleps.exe.config
+D:\Dev\sharp\Kleps\Kleps\bin\x86\Debug\Kleps.exe
+D:\Dev\sharp\Kleps\Kleps\bin\x86\Debug\Kleps.pdb
+D:\Dev\sharp\Kleps\Kleps\bin\x86\Debug\CefSharp.Core.dll
+D:\Dev\sharp\Kleps\Kleps\bin\x86\Debug\CefSharp.dll
+D:\Dev\sharp\Kleps\Kleps\bin\x86\Debug\CefSharp.WinForms.dll
+D:\Dev\sharp\Kleps\Kleps\bin\x86\Debug\CefSharp.WinForms.xml
+D:\Dev\sharp\Kleps\Kleps\bin\x86\Debug\CefSharp.xml
+D:\Dev\sharp\Kleps\Kleps\bin\x86\Debug\CefSharp.Core.xml
+D:\Dev\sharp\Kleps\Kleps\obj\x86\Debug\Kleps.csprojResolveAssemblyReference.cache
+D:\Dev\sharp\Kleps\Kleps\obj\x86\Debug\Kleps.Properties.Resources.resources
+D:\Dev\sharp\Kleps\Kleps\obj\x86\Debug\Kleps.csproj.GenerateResource.Cache
+D:\Dev\sharp\Kleps\Kleps\obj\x86\Debug\Kleps.exe
+D:\Dev\sharp\Kleps\Kleps\obj\x86\Debug\Kleps.pdb
+D:\Dev\sharp\Kleps\Kleps\obj\x86\Debug\Kleps.Frontend.MainForm.resources
