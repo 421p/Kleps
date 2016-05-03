@@ -9,7 +9,14 @@ namespace Kleps.Frontend
         public MainForm()
         {
             InitializeComponent();
+            
 
+        }
+
+        private void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e) {
+            Console.WriteLine("End");
+            this.Opacity = 100;
+            
         }
 
         private void OnClosing(object sender, FormClosingEventArgs e)
@@ -19,7 +26,11 @@ namespace Kleps.Frontend
 
         private void OnLoadChromeBox(object sender, EventArgs e)
         {
-           ChromeBox.InitBrowser();
+            
+            Console.WriteLine("START");
+            ChromeBox.InitBrowser();
+            ChromeBox.Browser.FrameLoadEnd += Browser_FrameLoadEnd;
+            
         }
     }
 }

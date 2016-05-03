@@ -7,3 +7,4 @@
         alert(backend.hws.getHelloWorld());
     });
 });
+
