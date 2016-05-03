@@ -7,6 +7,8 @@ namespace Kleps.Frontend
 {
     public partial class ChromeBox : UserControl
     {
+        public ChromiumWebBrowser Browser { get; private set; }
+
         public ChromeBox()
         {
             InitializeComponent();
@@ -20,11 +22,11 @@ namespace Kleps.Frontend
                 System.Reflection.Assembly.GetExecutingAssembly().Location
                 ) + @"\html5\html\main.html").Replace('\\', '/');
 
-            var myBrowser = new ChromiumWebBrowser(path);
+            Browser = new ChromiumWebBrowser(path);
 
-            myBrowser.RegisterJsObject("backend", new Backend());
+            Browser.RegisterJsObject("backend", new Backend());
 
-            this.Controls.Add(myBrowser);
+            this.Controls.Add(Browser);
         }
     }
 }
