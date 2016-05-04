@@ -8,7 +8,7 @@ namespace Kleps.Engine {
     public class Backend {
         
         public HelloWorldSayer hws { get; }
-        public Game.Game game { get; }
+        protected Game.Game game { get; }
 
         public Backend() {
             hws = new HelloWorldSayer();

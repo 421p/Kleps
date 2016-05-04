@@ -21,7 +21,7 @@ namespace Kleps.Engine.Game
             return new Teacher
             {
                 id = Guid.NewGuid().ToString("N"),
-                name = Guid.NewGuid().ToString("N"),
+                name = "Vova Klepach",
                 game = game,
                 health = 500
             };
