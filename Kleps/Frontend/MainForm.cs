@@ -24,17 +24,14 @@ namespace Kleps.Frontend
 
         private void OnClosing(object sender, FormClosingEventArgs e)
         {
-            //Cef.Shutdown();
+            this.Hide();
+            Cef.Shutdown();
         }
 
         private void OnLoadChromeBox(object sender, EventArgs e)
         {
             ChromeBox.InitBrowser();
             ChromeBox.Browser.FrameLoadEnd += Browser_FrameLoadEnd;
-            
-        }
-
-        private void load(object sender, EventArgs e) {
             
         }
     }
