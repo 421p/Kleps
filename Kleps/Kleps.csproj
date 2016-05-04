@@ -89,6 +89,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Backend.cs" />
+    <Compile Include="Engine\Events\EventFactory.cs" />
+    <Compile Include="Engine\Events\GameEvent.cs" />
+    <Compile Include="Engine\Game\Entities\Student.cs" />
+    <Compile Include="Engine\Game\Entities\Teacher.cs" />
+    <Compile Include="Engine\Game\Game.cs" />
+    <Compile Include="Engine\Game\Entities\GameEntity.cs" />
+    <Compile Include="Engine\Game\GameFactory.cs" />
     <Compile Include="Engine\HelloWoldSayer\HelloWorldSayer.cs" />
     <Compile Include="Frontend\ChromeBox.cs">
       <SubType>UserControl</SubType>
