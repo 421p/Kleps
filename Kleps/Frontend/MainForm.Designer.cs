@@ -51,6 +51,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
+            this.Load += new System.EventHandler(this.load);
             this.ResumeLayout(false);
 
         }

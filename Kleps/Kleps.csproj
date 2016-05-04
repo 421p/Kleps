@@ -96,6 +96,12 @@
     <Compile Include="Frontend\ChromeBox.Designer.cs">
       <DependentUpon>ChromeBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frontend\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frontend\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frontend\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Frontend\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frontend\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +124,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include=".gitignore" />
     <None Include="packages.config" />
@@ -135,6 +145,11 @@
     <Content Include="html5\css\main.css" />
     <Content Include="html5\html\main.html" />
     <Content Include="html5\js\main.js" />
+    <None Include="Resources\Loader2.gif" />
+    <None Include="Resources\Loader1.gif" />
+    <None Include="Resources\Loader.gif" />
+    <None Include="Resources\Loader.bmp" />
+    <None Include="Resources\DZ_WinForms_myPaint.jpg" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
