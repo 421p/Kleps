@@ -93,10 +93,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Backend.cs" />
-    <Compile Include="Engine\Events\EventFactory.cs" />
-    <Compile Include="Engine\Events\EventSpawner.cs" />
+    <Compile Include="Engine\Events\Spawner\EventSpawner.cs" />
     <Compile Include="Engine\Events\GameEvent.cs" />
     <Compile Include="Engine\Events\GameEventData.cs" />
+    <Compile Include="Engine\Events\Spawner\SpawnEventArgs.cs" />
     <Compile Include="Engine\Game\Entities\Student.cs" />
     <Compile Include="Engine\Game\Entities\Teacher.cs" />
     <Compile Include="Engine\Game\Game.cs" />
