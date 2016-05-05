@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ChromeBox = new ChromeBox();
+            this.ChromeBox = new Kleps.Frontend.ChromeBox();
             this.SuspendLayout();
             // 
             // ChromeBox
@@ -46,6 +46,7 @@
             this.ClientSize = new System.Drawing.Size(816, 384);
             this.Controls.Add(this.ChromeBox);
             this.Name = "MainForm";
+            this.Opacity = 0D;
             this.Text = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
             this.ResumeLayout(false);
