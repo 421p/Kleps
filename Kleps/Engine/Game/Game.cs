@@ -15,20 +15,30 @@ namespace Kleps.Engine.Game
         public List<Student> students { get; set; }
         public List<GameEvent> events { get; set; }
         public EventSpawner spawner { get; set; }
+        public EventHandler OnGameOver { get; set; }
 
         public Game():this(null, null){}
 
         public Game(Teacher teacher, List<Student> students ) {
             this.teacher = teacher;
             this.students = students;
+            this.events = new List<GameEvent>();
             spawner = new EventSpawner(this);
         }
 
         public void Run() {
             this.spawner.OnSpawn += (s, e) => {
-                Console.WriteLine("Event spawned.");
+                this.events.Add(e.Event);
             };
             this.spawner.SpawnOn();
+        }
+
+        public void Over() {
+            this.spawner.SpawnOff();
+            this.events.ToArray().ToList().ForEach(e => e.timer.Dispose());
+            this.events.Clear();
+
+            OnGameOver?.Invoke(this, new EventArgs());
         }
     }
 }

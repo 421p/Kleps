@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Kleps.Engine;
 using Kleps.Engine.Events;
 using YamlDotNet.Serialization;
@@ -31,9 +31,18 @@ namespace GameEventSandbox
 
             game.Run();
 
-            while (true) {
-                Console.ReadLine();
-            }
+            var tt = new Timer(state => {
+                Console.WriteLine("Klepach's hp: " + game.teacher.health);
+                Console.WriteLine("Event List");
+                game.events.ToArray().ToList().ForEach(ev => Console.WriteLine("Time left: " + ev.lifeTime));
+            }, null, 0, 1000);
+
+            game.OnGameOver += (s, e) => {
+                tt.Dispose();
+                Console.WriteLine("Ti proigral.");
+            };
+
+            Console.ReadLine();
         }
     }
 }

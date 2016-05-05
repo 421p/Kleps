@@ -19,7 +19,12 @@ namespace Kleps.Engine.Events.Spawner
         }
 
         protected GameEvent GenerateEvent() {
-            return new GameEvent();
+            var ev = new GameEvent();
+            ev.OnTimerEnds += (s, e) => {
+                _game.events.Remove(ev);
+                _game.teacher.health -= 10;
+            };
+            return ev;
         }
 
         protected void SpawnCallback(object state) {

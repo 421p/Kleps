@@ -9,6 +9,7 @@ namespace Kleps.Engine.Events
 {
     public class GameEventData
     {
+        public int id { get; set; }
         public string text { get; set; }
         public List<string> answers { get; set; }
 

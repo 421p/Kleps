@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using Kleps.Engine.Game.Entities;
@@ -23,9 +24,12 @@ namespace Kleps.Engine.Game
                 id = Guid.NewGuid().ToString("N"),
                 name = "Vova Klepach",
                 game = game,
-                health = 500
+                health = 100,
+                OnDeath = (s, e) => {
+                    game.Over();
+                }
             };
-    }
+        }
 
         public static IEnumerable<Student> CreateStudents(Game game) {
             for (int i = 0; i < 15; i++)

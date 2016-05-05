@@ -8,5 +8,6 @@ namespace Kleps.Engine.Game.Entities
 {
     public class Teacher : GameEntity
     {
+
     }
 }

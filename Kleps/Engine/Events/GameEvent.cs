@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Kleps.Engine.Game.Entities;
 
 namespace Kleps.Engine.Events
@@ -18,19 +18,23 @@ namespace Kleps.Engine.Events
         public int lifeTime { get; private set; }
 
         public GameEvent() {
-            this.timer = new Timer();
-            timer.Interval = 1000;
-            lifeTime = 30;
+            lifeTime = 10;
+            CountStart();
+        }
 
-            timer.Tick += (s, e) => {
+        public void CountStart() {
+            this.timer = new Timer(state => {
+
                 lifeTime--;
-
                 if (lifeTime != 0) return;
 
-                timer.Stop();
                 OnTimerEnds(this, new EventArgs());
-            };
+                CountStop();
+            }, null, 0, 1000);
+        }
 
+        public void CountStop() {
+            this.timer.Dispose();
         }
     }
 }
