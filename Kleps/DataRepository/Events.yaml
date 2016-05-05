@@ -1,0 +1,9 @@
+﻿-
+    text: "Alias for exit in php"
+    answers: ['kill', 'quit', 'die', 'escape']
+    right_answer: 'die'
+
+-
+    text: "Как распарсить csv в с#?"
+    answers: ['хз', 'хз', 'да', 'нет']
+    right_answer: 'нет'

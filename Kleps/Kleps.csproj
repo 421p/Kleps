@@ -86,11 +86,17 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="YamlDotNet, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.3.8.0\lib\net35\YamlDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Backend.cs" />
     <Compile Include="Engine\Events\EventFactory.cs" />
+    <Compile Include="Engine\Events\EventSpawner.cs" />
     <Compile Include="Engine\Events\GameEvent.cs" />
+    <Compile Include="Engine\Events\GameEventData.cs" />
     <Compile Include="Engine\Game\Entities\Student.cs" />
     <Compile Include="Engine\Game\Entities\Teacher.cs" />
     <Compile Include="Engine\Game\Game.cs" />
@@ -134,6 +140,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include=".gitignore" />
+    <None Include="DataRepository\Events.yaml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -186,7 +193,8 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(SolutionDir)\Kleps\html5" "$(TargetDir)\html5" /s /i /y</PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(SolutionDir)\Kleps\html5" "$(TargetDir)\html5" /s /i /y
+XCOPY "$(SolutionDir)\Kleps\DataRepository" "$(TargetDir)\DataRepository" /s /i /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
