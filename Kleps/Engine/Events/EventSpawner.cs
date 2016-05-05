@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Kleps.Engine.Events
 {
-    class EventFactory
-    {
+    class EventSpawner {
+        private Game.Game _game;
+
+        public EventSpawner(Game.Game game) {
+            _game = game;
+        }
+
 
     }
 }

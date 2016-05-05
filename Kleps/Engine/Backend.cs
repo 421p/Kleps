@@ -22,5 +22,9 @@ namespace Kleps.Engine {
         public void alert(string data) {
             MessageBox.Show(data);
         }
+
+        public Game.Game getGame() {
+            return game;
+        }
     }
 }

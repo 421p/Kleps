@@ -13,7 +13,8 @@ namespace GameEventSandbox
             var backend = new Backend();
             backend.log("kek?");
 
-            Console.WriteLine(backend.game.teacher.health);
+            Console.WriteLine(backend.getGame().teacher.name);
+            Console.WriteLine(backend.getGame().teacher.health);
         }
     }
 }
