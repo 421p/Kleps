@@ -18,7 +18,7 @@ namespace Kleps.Frontend
         }
 
         private void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e) {
-            this.Opacity = 100;
+            this.BeginInvoke(new Action(()=>this.Opacity = 100));
             Loader.Dispose();
         }
 
