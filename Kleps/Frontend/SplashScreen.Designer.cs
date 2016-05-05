@@ -1,4 +1,5 @@
-﻿namespace Kleps.Frontend {
+﻿using System;
+namespace Kleps.Frontend {
     partial class SplashScreen {
         /// <summary>
         /// Required designer variable.
@@ -13,7 +14,7 @@
             if (disposing && (components != null)) {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            base.BeginInvoke(new Action(()=> base.Dispose(disposing)));
         }
 
         #region Windows Form Designer generated code
