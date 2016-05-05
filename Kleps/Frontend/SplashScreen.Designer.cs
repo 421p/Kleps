@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Kleps.Frontend {
     partial class SplashScreen {
         /// <summary>
@@ -15,8 +14,7 @@ namespace Kleps.Frontend {
             if (disposing && (components != null)) {
                 components.Dispose();
             }
-
-            base.BeginInvoke(new Action(() => base.Dispose(disposing)));
+            base.BeginInvoke(new Action(()=> base.Dispose(disposing)));
         }
 
         #region Windows Form Designer generated code
@@ -32,9 +30,9 @@ namespace Kleps.Frontend {
             // 
             // LoaderBox
             // 
-            this.LoaderBox.Location = new System.Drawing.Point(0, 0);
+            this.LoaderBox.Location = new System.Drawing.Point(12, 12);
             this.LoaderBox.Name = "LoaderBox";
-            this.LoaderBox.Size = new System.Drawing.Size(684, 468);
+            this.LoaderBox.Size = new System.Drawing.Size(260, 237);
             this.LoaderBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.LoaderBox.TabIndex = 0;
             this.LoaderBox.TabStop = false;
@@ -43,14 +41,11 @@ namespace Kleps.Frontend {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(876, 534);
+            this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.LoaderBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SplashScreen";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Loader";
+            this.Text = "SplashScreen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.LoaderBox)).EndInit();
             this.ResumeLayout(false);
