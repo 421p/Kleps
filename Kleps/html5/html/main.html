@@ -1,26 +1,27 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title></title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-    <script src="../js/main.js"></script>
+    <title>Teacher VS Zombies</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
 </head>
 <body>
 
 <div class="container">
-    <textarea></textarea>
-
-    <p>
-        <button class="btn btn-default">Html Button</button>
-    </p>
-
-    <p>
-        <button class="hw btn btn-info">Hello World!</button>
-    </p>
+    <div class="col-md-offset-3 col-md-6 sel-container">
+        <select id="menu" multiple size="4">
+            <option value="start">Start Game</option>
+            <option value="options">Options</option>
+            <option value="credits">Credits</option>
+            <option value="exit">Exit</option>
+        </select>
+    </div>
+    <div id="audio">Music: ON</div>
 </div>
 
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/main.js"></script>
 </body>
 </html>

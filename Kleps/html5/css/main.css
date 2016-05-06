@@ -1,0 +1,37 @@
+body{
+    background: #000 url('../img/bg.png');
+    background-size: cover;
+}
+
+.sel-container{
+    display: flex;
+    height: 100vh;
+    align-items: center
+}
+
+div select{
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.34);
+    border: none;
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    display: flex;
+    margin: 0 auto;
+    outline: none;
+}
+#audio{
+    position: absolute;
+    color: #EC7D1C;
+    font-weight: 600;
+    font-size: 1.3em;
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
+    background: rgba(100, 1, 1, 0.78);
+}

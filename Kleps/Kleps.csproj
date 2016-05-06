@@ -115,6 +115,8 @@
     <Compile Include="Frontend\ChromeBox.Designer.cs">
       <DependentUpon>ChromeBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frontend\Controller\FrontendHelper.cs" />
+    <Compile Include="Frontend\Controller\Sound.cs" />
     <Compile Include="Frontend\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +129,12 @@
     <Compile Include="Frontend\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frontend\UserControls\CloseButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Frontend\UserControls\CloseButton.Designer.cs">
+      <DependentUpon>CloseButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Frontend\MainForm.resx">
@@ -135,24 +143,33 @@
     <EmbeddedResource Include="Frontend\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frontend\UserControls\CloseButton.resx">
+      <DependentUpon>CloseButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include=".gitignore" />
     <None Include="DataRepository\Config.yaml" />
     <None Include="DataRepository\Events.yaml" />
-    <None Include="packages.config" />
+    <None Include="html5\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="html5\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="html5\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="html5\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -163,12 +180,36 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataRepository\Sound\Click.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataRepository\Sound\DevilsDance.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="html5\css\bootstrap.min.css" />
     <Content Include="html5\css\main.css" />
+    <Content Include="html5\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="html5\html\main.html" />
+    <Content Include="html5\img\bg.png" />
+    <Content Include="html5\js\bootstrap.min.js" />
+    <Content Include="html5\js\jquery.min.js" />
     <Content Include="html5\js\main.js" />
+    <None Include="Resources\close-hover.png" />
+    <None Include="Resources\close-down.png" />
+    <None Include="Resources\close.png" />
     <None Include="Resources\Loader.gif" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
@@ -181,6 +222,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\cef.redist.x64.3.2526.1362\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2526.1362\build\cef.redist.x64.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

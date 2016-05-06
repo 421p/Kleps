@@ -8,6 +8,7 @@ using Kleps.Engine.Events;
 using Kleps.Engine.Game;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using Kleps.Frontend.Controller;
 
 namespace Kleps.Frontend
 {
