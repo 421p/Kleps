@@ -9,23 +9,27 @@ namespace Kleps.Frontend
     public partial class MainForm : Form
     {
         SplashScreen Loader;
-        public int ScreenWidth = SystemInformation.VirtualScreen.Width-400;
-        public int ScreenHeight = SystemInformation.VirtualScreen.Height-400;
+        FrontendHelper FEH;
+        public int ScreenWidth = SystemInformation.VirtualScreen.Width;
+        public int ScreenHeight = SystemInformation.VirtualScreen.Height;
+
         public MainForm() {
             this.Size = new Size(ScreenWidth, ScreenHeight);
-            //this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
 
+
+            FEH = FrontendHelper.Instance;
             Loader = new SplashScreen();
             Loader.Show();
-            new Sound();
             
         }
 
         private void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e) {
             this.BeginInvoke(new Action(() => {
                 this.Opacity = 1;
-                }));
+            }));
+
             Loader.Dispose();
         }
 

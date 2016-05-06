@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WMPLib;
+﻿using WMPLib;
 
 namespace Kleps.Frontend.Controller {
     class Sound {
+        public WindowsMediaPlayer Player { get; private set; }
         public Sound() {
-            //System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-            //player.SoundLocation = "html5/sound/DevilsDance.mp3";
-            //player.Play();
+            Player = new WMPLib.WindowsMediaPlayer();
+            Player.settings.playCount = 10;
+            Player.settings.autoStart = false;
+            Player.URL = "html5/sound/DevilsDance.mp3";
+        }
+        public void Start() {
+            Player.controls.play();
+        }
+        public void Mute() {
+            Player.settings.mute = !Player.settings.mute;
+        }
 
-            WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
-
-            wplayer.URL = "html5/sound/DevilsDance.mp3";
-            wplayer.controls.play();
+        public void Volume(int value) {
+            Player.settings.volume = value;
         }
     }
 }
