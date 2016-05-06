@@ -56,6 +56,8 @@
                                 break;
                         }
                         break;
+                    case "credits":
+                        Credits();
 
                 }
 
@@ -88,5 +90,22 @@
         '<option value="volume">Volume: MEDIUM</option>' +
         '<option value="back">Back</option>');
         }
+
+    function Credits(){
+        Menu.hide();
+        var Credit = false;
+        $("#credits").show();
+        $(document).on("keypress click", function(){
+            if(Credit){
+                $("#credits").hide();
+                Menu.show();
+                $(document).off("keypress click");
+                Menu.focus();
+            }
+            Credit = true;
+
+        })
+
+    }
 });
 
