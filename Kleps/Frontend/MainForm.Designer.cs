@@ -39,6 +39,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Location = new System.Drawing.Point(764, 1);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(50, 50);
@@ -47,6 +48,7 @@
             // 
             // ChromeBox
             // 
+            this.ChromeBox.BackColor = System.Drawing.Color.Transparent;
             this.ChromeBox.Location = new System.Drawing.Point(12, 12);
             this.ChromeBox.Name = "ChromeBox";
             this.ChromeBox.Size = new System.Drawing.Size(604, 360);

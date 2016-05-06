@@ -21,7 +21,10 @@ namespace Kleps.Frontend
         }
 
         private void Browser_FrameLoadEnd(object sender, FrameLoadEndEventArgs e) {
-            this.BeginInvoke(new Action(() => this.Opacity = 1));
+            this.BeginInvoke(new Action(() => {
+                this.Opacity = 1;
+               
+                } ));
             Loader.Dispose();
         }
 
@@ -32,9 +35,8 @@ namespace Kleps.Frontend
 
         private void OnLoadChromeBox(object sender, EventArgs e) {
             ChromeBox.InitBrowser();
-            var marginTop = btnClose.Size.Height;
-            ChromeBox.Size = new Size(ScreenWidth - ScreenWidth / 10, ScreenHeight- marginTop);
-            ChromeBox.Location = new Point((ScreenWidth / 10) / 2, marginTop);
+            ChromeBox.Size = new Size(ScreenWidth, ScreenHeight);
+            ChromeBox.Location = new Point(0,0);
             ChromeBox.Browser.FrameLoadEnd += Browser_FrameLoadEnd;
 
         }
@@ -42,5 +44,6 @@ namespace Kleps.Frontend
         private void Exit(object sender, EventArgs e) {
             this.Close();
         }
+
     }
 }
