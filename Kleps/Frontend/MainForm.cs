@@ -48,7 +48,7 @@ namespace Kleps.Frontend
         }
 
         private void Exit(object sender, EventArgs e) {
-            this.Close();
+            FEH.Select("exit");
         }
 
     }

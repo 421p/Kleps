@@ -54,7 +54,7 @@ namespace Kleps.Engine
         #region Sound
         public void musicStart() {
             FEH.MusicStart();
-            FEH.Music.Volume(50);
+            FEH.Music.Volume(10);
         }
         public void musicMute() {
             FEH.Music.Mute();
