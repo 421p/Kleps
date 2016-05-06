@@ -51,21 +51,29 @@ namespace Kleps.Engine
 
         #region Frontend
 
+        #region Sound
         public void musicStart() {
             FEH.MusicStart();
-            FEH.MusicVolume(50);
+            FEH.Music.Volume(50);
         }
         public void musicMute() {
-            FEH.MusicMute();
+            FEH.Music.Mute();
         }
         public void musicVolume(int val) {
-            Console.WriteLine(val);
-            FEH.MusicVolume(val);
+            FEH.Music.Volume(val);
+        }
+
+        public void musicClick() {
+            FEH.Music.StartClick();
         }
 
 
 
-        #endregion
+        #endregion Sound
+
+
+
+        #endregion Frontend
 
 
     }

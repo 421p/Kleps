@@ -20,6 +20,7 @@
 
     Music.start();
     Menu.on("keypress click", function(e){
+        backend.musicClick();
         switch(e.which){
             case 1:
             case 13:

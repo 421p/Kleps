@@ -20,19 +20,11 @@ namespace Kleps.Frontend.Controller {
             }
         }
 
-        private Sound Music;
+        public Sound Music;
 
         public void MusicStart() {
             Music = new Sound();
-            Music.Start();
-        }
-
-        public void MusicMute() {
-            Music.Mute();
-        }
-
-        public void MusicVolume(int val) {
-            Music.Volume(val);
+            Music.StartBackground();
         }
 
     }
