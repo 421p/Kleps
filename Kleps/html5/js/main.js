@@ -41,6 +41,21 @@
                         MusicChange();
                         break;
                     case "volume":
+                        switch(m.text()){
+                            case "Volume: MEDIUM":
+                                backend.musicVolume(100);
+                                m.text("Volume: HIGH");
+                                break;
+                            case "Volume: HIGH":
+                                backend.musicVolume(20);
+                                m.text("Volume: LOW");
+                                break;
+                            case "Volume: LOW":
+                                backend.musicVolume(50);
+                                m.text("Volume: MEDIUM");
+                                break;
+                        }
+                        break;
 
                 }
 
@@ -70,7 +85,7 @@
     }
     function OptionsMenu() {
             Menu.html('<option value="music">' + (Music.flag ? "Music: ON" : "Music: OFF") + '</option>' +
-        '<option value="volume">Volume: Medium</option>' +
+        '<option value="volume">Volume: MEDIUM</option>' +
         '<option value="back">Back</option>');
         }
 });
