@@ -28,6 +28,10 @@ namespace Kleps.Engine.Game
             spawner = new EventSpawner(this);
         }
 
+        public GameEvent getEventById(string id) {
+            return events.FirstOrDefault(e => e.id == id);
+        }
+
         public void Run() {
             this.spawner.OnSpawn += (s, e) => {
                 this.events.Add(e.Event);

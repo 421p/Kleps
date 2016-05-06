@@ -10,6 +10,7 @@ namespace Kleps.Engine.Events
 {
     public class GameEvent
     {
+        public string id { get; private set; }
         public Student Owner { get; set; }
         public Timer timer { get; set; }
 
@@ -18,6 +19,7 @@ namespace Kleps.Engine.Events
         public int lifeTime { get; set; }
 
         public GameEvent() {
+            id = Guid.NewGuid().ToString("N");
             lifeTime = 30;
             CountStart();
         }
