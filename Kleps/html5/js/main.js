@@ -1,23 +1,27 @@
-﻿// $(document).ready(function() {
-//     $('button').click(function () {
-//         backend.log($('textarea').val());
-//     });
-//
-//     $('.hw').click(function() {
-//         alert(backend.hws.getHelloWorld());
-//     });
-// });
+﻿$(function(){
+    var Menu = $('#menu');
 
-$(function(){
-    $('select').change(function(){
-        console.log(123)
-    });
-    $('select').on('mouseenter', 'option', function(e) {
+    Menu.on('mouseenter', 'option', function(e) {
         $(this).css({'background':'red'});
     });
-    $('select').on('mouseleave', 'option', function(e) {
+    Menu.on('mouseleave', 'option', function(e) {
         $(this).css({'background':'none'});
     });
-    $("#menu").val($("#menu option:first").val()).focus();
+    Menu.val(Menu.find("option:first").val()).focus();
+    Menu.on("keypress click", function(e){
+        switch(e.which){
+            case 1:
+            case 13:
+            case 32:
+                frontendHelper.select(Menu.find("option:selected").val());
+                break;
+            default: return;
+        }
+    });
+    $("#audio").click(function(){
+        
+        if(BackgroundSong.muted) $(this).text("Music: OFF");
+        else $(this).text("Music: ON");
+    });
 });
 

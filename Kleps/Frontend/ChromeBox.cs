@@ -8,6 +8,7 @@ using Kleps.Engine.Events;
 using Kleps.Engine.Game;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using Kleps.Frontend.Controller;
 
 namespace Kleps.Frontend
 {
@@ -35,6 +36,7 @@ namespace Kleps.Frontend
 
 
             Browser.RegisterJsObject("backend", new Backend(config));
+            Browser.RegisterJsObject("frontendHelper", new FrontendHelper(), true);
 
             this.Controls.Add(Browser);
         }

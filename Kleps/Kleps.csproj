@@ -114,6 +114,8 @@
     <Compile Include="Frontend\ChromeBox.Designer.cs">
       <DependentUpon>ChromeBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frontend\Controller\FrontendHelper.cs" />
+    <Compile Include="Frontend\Controller\Sound.cs" />
     <Compile Include="Frontend\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,12 +185,24 @@
     <Content Include="html5\js\bootstrap.min.js" />
     <Content Include="html5\js\jquery.min.js" />
     <Content Include="html5\js\main.js" />
+    <Content Include="html5\sound\buttonSelected.mp3" />
+    <Content Include="html5\sound\DevilsDance.mp3" />
     <None Include="Resources\close-hover.png" />
     <None Include="Resources\close-down.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\Loader.gif" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
@@ -200,6 +214,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WMPLib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\cef.redist.x64.3.2526.1362\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2526.1362\build\cef.redist.x64.targets')" />

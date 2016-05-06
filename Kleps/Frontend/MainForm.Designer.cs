@@ -70,7 +70,6 @@
             this.Opacity = 0D;
             this.Text = "MainForm";
             this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
             this.ResumeLayout(false);
 

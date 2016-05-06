@@ -3,22 +3,6 @@ body{
     background-size: cover;
 }
 
-div nav {
-    display: flex;
-    height: 100vh;
-    margin: 0 auto;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-}
-
-div nav a {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color:white;
-    font-weight: 600;
-    font-size: 2em;
-}
-
 .sel-container{
     display: flex;
     height: 100vh;
@@ -36,4 +20,18 @@ div select{
     display: flex;
     margin: 0 auto;
     outline: none;
+}
+#audio{
+    position: absolute;
+    color: #EC7D1C;
+    font-weight: 600;
+    font-size: 1.3em;
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
+    background: rgba(100, 1, 1, 0.78);
 }
