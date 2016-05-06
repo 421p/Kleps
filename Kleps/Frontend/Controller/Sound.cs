@@ -5,8 +5,8 @@ namespace Kleps.Frontend.Controller {
         public WindowsMediaPlayer Background { get; private set; }
         public WindowsMediaPlayer Click { get; private set; }
         public Sound() {
-            Background = new WMPLib.WindowsMediaPlayer();
-            Click = new WMPLib.WindowsMediaPlayer();
+            Background = new WindowsMediaPlayer();
+            Click = new WindowsMediaPlayer();
 
             Background.settings.playCount = 10;
             Click.settings.playCount = 1;
