@@ -54,6 +54,24 @@ namespace GameEventSandbox
 
             game.OnGameOver += (s, e) => {
                 tt.Dispose();
+
+                Console.Clear();
+                Console.Write($"{game.teacher.name}'s hp: ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(game.teacher.health);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("\n");
+                Console.WriteLine("Event List\n");
+                game.events.ToArray().ToList().ForEach(ev => {
+                    Console.Write($"[{ev.lifeTime}s] ");
+                    Console.ForegroundColor = ev.Owner.name.Contains("Підгорняк")
+                        ? ConsoleColor.Yellow
+                        : ConsoleColor.Magenta;
+                    Console.Write($"{ev.Owner.name} ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("needs your help!\n");
+
+                });
                 Console.WriteLine("Ti proigral.");
             };
 
