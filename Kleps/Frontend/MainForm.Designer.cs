@@ -29,20 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.closeButton1 = new Kleps.Frontend.UserControls.CloseButton();
+            this.btnClose = new Kleps.Frontend.UserControls.CloseButton();
             this.ChromeBox = new Kleps.Frontend.ChromeBox();
             this.SuspendLayout();
             // 
-            // closeButton1
+            // btnClose
             // 
-            this.closeButton1.BackColor = System.Drawing.Color.Transparent;
-            this.closeButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closeButton1.BackgroundImage")));
-            this.closeButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.closeButton1.Location = new System.Drawing.Point(577, 12);
-            this.closeButton1.Name = "closeButton1";
-            this.closeButton1.Size = new System.Drawing.Size(227, 205);
-            this.closeButton1.TabIndex = 1;
-            this.closeButton1.Click += new System.EventHandler(this.Exit);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClose.Location = new System.Drawing.Point(764, 1);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(50, 50);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Click += new System.EventHandler(this.Exit);
             // 
             // ChromeBox
             // 
@@ -56,12 +57,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(816, 384);
-            this.Controls.Add(this.closeButton1);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.ChromeBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Opacity = 0D;
             this.Text = "MainForm";
+            this.TopMost = true;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
             this.ResumeLayout(false);
 
@@ -70,7 +77,7 @@
         #endregion
 
         private ChromeBox ChromeBox;
-        private UserControls.CloseButton closeButton1;
+        private UserControls.CloseButton btnClose;
     }
 }
 
