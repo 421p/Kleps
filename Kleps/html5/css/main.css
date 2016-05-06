@@ -2,3 +2,38 @@ body{
     background: #000 url('../img/bg.png');
     background-size: cover;
 }
+
+div nav {
+    display: flex;
+    height: 100vh;
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div nav a {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:white;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.sel-container{
+    display: flex;
+    height: 100vh;
+    align-items: center
+}
+
+div select{
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.34);
+    border: none;
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    display: flex;
+    margin: 0 auto;
+    outline: none;
+}
