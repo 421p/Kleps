@@ -16,7 +16,7 @@ namespace Kleps.Engine.Events.Spawner
 
         public EventSpawner(Game.Game game) {
             _game = game;
-            _interval = 500;
+            _interval = 2000;
             _chance = 40;
         }
 
