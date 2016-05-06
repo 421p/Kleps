@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+hello world <br/><br/>
+
+<button class="btn btn-default btn-start">Start Game</button>
+
+<output></output>
+
+<script>
+    $(document).ready(function() {
+        $('.btn-start').click(function () {
+
+            backend.startGame();
+
+            setInterval(function () {
+                var events = JSON.parse(backend.getGameEventsJson());
+                var teacher = JSON.parse(backend.getTeacherJson());
+
+                var html = teacher.name + "'s hp: " + teacher._health + "<br>";
+                for (var i in events) {
+                    html += '[' + events[i].lifeTime + '] ' + events[i].owner.name + "<br>" +
+                        events[i].question + "<br>";
+                }
+
+                $("output").html(html);
+            }, 100);
+        });
+    });
+</script>
+
+</body>
+</html>

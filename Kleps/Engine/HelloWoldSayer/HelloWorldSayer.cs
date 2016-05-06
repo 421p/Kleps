@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Kleps.Engine.HelloWoldSayer
 {
-    class HelloWorldSayer
-    {
+    public class HelloWorldSayer {
+        public Action onSomething { get; set; }
+
         public string getHelloWorld() {
             return "Hello World!";
         }
