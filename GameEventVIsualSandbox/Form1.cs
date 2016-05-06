@@ -40,13 +40,13 @@ namespace GameEventVIsualSandbox
 
             var backend = new Backend(config);
 
-            var game = backend.getGame();
+            var game = backend.game;
 
             game.OnGameOver += (sunder, args) => {
                 browser.EvaluateScriptAsync("alert('TI PROIGRAL.');");
             };
 
-            browser.RegisterJsObject("backend", backend);
+            browser.RegisterJsObject("backend", backend.Gate);
 
             browser.FrameLoadEnd += (asd, das) => browser.ShowDevTools();
 

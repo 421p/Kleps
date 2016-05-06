@@ -22,9 +22,8 @@ namespace GameEventSandbox
 
 
             var backend = new Backend(config);
-            backend.log("hello?");
 
-            var game = backend.getGame();
+            var game = backend.game;
 
             Console.WriteLine(game.teacher.name);
             Console.WriteLine(game.teacher.health);
