@@ -16,10 +16,12 @@ namespace Kleps.Engine.Game
         public List<GameEvent> events { get; set; }
         public EventSpawner spawner { get; set; }
         public EventHandler OnGameOver { get; set; }
+        public GameConfig Config { get; set; }
 
-        public Game():this(null, null){}
+        public Game(GameConfig cfg):this(cfg, null, null){}
 
-        public Game(Teacher teacher, List<Student> students ) {
+        public Game(GameConfig cfg, Teacher teacher, List<Student> students ) {
+            Config = cfg;
             this.teacher = teacher;
             this.students = students;
             this.events = new List<GameEvent>();

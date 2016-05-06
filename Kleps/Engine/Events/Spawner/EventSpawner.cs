@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 
 
 namespace Kleps.Engine.Events.Spawner
 {
     public class EventSpawner {
-        private Game.Game _game;
+        private readonly Game.Game _game;
         private Timer _timer;
         private readonly int _interval;
         private readonly int _chance;
@@ -14,15 +15,25 @@ namespace Kleps.Engine.Events.Spawner
 
         public EventSpawner(Game.Game game) {
             _game = game;
-            _interval = 1000;
+            _interval = 500;
             _chance = 40;
         }
 
         protected GameEvent GenerateEvent() {
-            var ev = new GameEvent();
+            
+            var student = _game.students[new Random().Next(0, _game.students.Count - 1)];
+            _game.students.Remove(student);
+
+            var ev = new GameEvent {
+                Owner = student,
+                lifeTime = student.name.Contains("Підгорняк") ? 3 : 10
+            };
+
+
             ev.OnTimerEnds += (s, e) => {
                 _game.events.Remove(ev);
-                _game.teacher.health -= 10;
+                _game.teacher.health -= student.name.Contains("Підгорняк") ? 200 : 20;
+                _game.students.Add(ev.Owner);
             };
             return ev;
         }

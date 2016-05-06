@@ -1,7 +1,13 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
 using Kleps.Engine;
+using Kleps.Engine.Events;
+using Kleps.Engine.Game;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace Kleps.Frontend
 {
@@ -24,7 +30,11 @@ namespace Kleps.Frontend
 
             Browser = new ChromiumWebBrowser(path);
 
-            Browser.RegisterJsObject("backend", new Backend());
+            var d = new Deserializer(namingConvention: new CamelCaseNamingConvention());
+            var config = d.Deserialize<GameConfig>(new StreamReader(new FileStream("DataRepository/Config.yaml", FileMode.Open)));
+
+
+            Browser.RegisterJsObject("backend", new Backend(config));
 
             this.Controls.Add(Browser);
         }

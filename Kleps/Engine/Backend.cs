@@ -10,9 +10,9 @@ namespace Kleps.Engine {
         public HelloWorldSayer hws { get; }
         protected Game.Game game { get; }
 
-        public Backend() {
+        public Backend(GameConfig cfg) {
             hws = new HelloWorldSayer();
-            game = GameFactory.CreateGame();
+            game = GameFactory.CreateGame(cfg);
         }
        
         public void log(string data) {

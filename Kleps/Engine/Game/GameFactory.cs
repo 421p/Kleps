@@ -11,8 +11,8 @@ namespace Kleps.Engine.Game
     class GameFactory
     {
 
-        public static Game CreateGame() {
-            var game = new Game();
+        public static Game CreateGame(GameConfig cfg) {
+            var game = new Game(cfg);
             game.teacher = CreateTeacher(game);
             game.students = CreateStudents(game).ToList();
             return game;
@@ -22,9 +22,9 @@ namespace Kleps.Engine.Game
             return new Teacher
             {
                 id = Guid.NewGuid().ToString("N"),
-                name = "Vova Klepach",
+                name = game.Config.Names.Teacher,
                 game = game,
-                health = 100,
+                health = 1000,
                 OnDeath = (s, e) => {
                     game.Over();
                 }
@@ -32,16 +32,21 @@ namespace Kleps.Engine.Game
         }
 
         public static IEnumerable<Student> CreateStudents(Game game) {
-            for (int i = 0; i < 15; i++)
+
+            var names = game.Config.Names.Students.OrderBy(x => Guid.NewGuid()).Take(14).ToArray();
+
+            for (int i = 0; i < 14; i++)
             {
-                yield return CreateStudent(game);
+                yield return CreateStudent(game, names[i]);
             }
+
+            yield return CreateStudent(game, "Дар'я Підгорняк");
         } 
 
-        public static Student CreateStudent(Game game) {
+        public static Student CreateStudent(Game game, string name) {
             return new Student {
                 id = Guid.NewGuid().ToString("N"),
-                name = Guid.NewGuid().ToString("N"),
+                name = name,
                 game = game,
                 health = 100
             };

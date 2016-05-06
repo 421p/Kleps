@@ -15,10 +15,10 @@ namespace Kleps.Engine.Events
 
         public EventHandler OnTimerEnds { get; set; }
 
-        public int lifeTime { get; private set; }
+        public int lifeTime { get; set; }
 
         public GameEvent() {
-            lifeTime = 10;
+            lifeTime = 30;
             CountStart();
         }
 

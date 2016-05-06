@@ -101,6 +101,7 @@
     <Compile Include="Engine\Game\Entities\Teacher.cs" />
     <Compile Include="Engine\Game\Game.cs" />
     <Compile Include="Engine\Game\Entities\GameEntity.cs" />
+    <Compile Include="Engine\Game\GameConfig.cs" />
     <Compile Include="Engine\Game\GameFactory.cs" />
     <Compile Include="Engine\HelloWoldSayer\HelloWorldSayer.cs" />
     <Compile Include="Frontend\ChromeBox.cs">
@@ -140,6 +141,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include=".gitignore" />
+    <None Include="DataRepository\Config.yaml" />
     <None Include="DataRepository\Events.yaml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
