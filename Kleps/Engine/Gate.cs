@@ -67,9 +67,15 @@ namespace Kleps.Engine
             FEH.Music.StartClick();
         }
 
-
-
         #endregion Sound
+
+        #region Menu
+        
+        public void menuAction(string val) {
+            FEH.Select(val);
+        }
+
+        #endregion Menu
 
 
 

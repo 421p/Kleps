@@ -20,6 +20,7 @@ namespace Kleps.Frontend
 
 
             FEH = FrontendHelper.Instance;
+            FEH.Window = this;
             Loader = new SplashScreen();
             Loader.Show();
             

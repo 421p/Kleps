@@ -1,5 +1,5 @@
 ﻿$(function(){
-        var Menu = $('#menu');
+    var Menu = $('#menu');
     Menu.on('mouseenter', 'option', function(e) {
         $(this).css({'background':'red'});
     });
@@ -25,7 +25,7 @@
             case 1:
             case 13:
             case 32:
-                backend.log(Menu.find("option:selected").val());
+                backend.menuAction(Menu.find("option:selected").val());
                 break;
             default: return;
         }
@@ -37,5 +37,15 @@
         else $(this).text("Music: ON");
         Music.flag = !Music.flag;
     });
+
+    //Options
+
+    function MainMenu(){
+        Menu.html('<option value="start">Start Game</option>\
+        <option value="options">Options</option>\
+        <option value="credits">Credits</option>\
+        <option value="exit">Exit</option>');
+    }
+
 });
 
