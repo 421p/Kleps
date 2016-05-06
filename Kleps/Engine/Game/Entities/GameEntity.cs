@@ -1,15 +1,20 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Kleps.Engine.Game.Entities
 {
     public class GameEntity
     {
+        [JsonIgnore]
         public Game game { get; set; }
+
         public string id { get; set; }
         public string name { get; set; }
 
-        private int _health;
-    
+
+        public int _health;
+
+        [JsonIgnore]
         public int health {
             get { return _health; }
             set {
@@ -23,6 +28,7 @@ namespace Kleps.Engine.Game.Entities
             }
         }
 
+        [JsonIgnore]
         public EventHandler OnDeath { get; set; }
     }
 }

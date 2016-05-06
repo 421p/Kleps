@@ -5,15 +5,24 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Kleps.Engine.Game.Entities;
+using Newtonsoft.Json;
 
 namespace Kleps.Engine.Events
 {
     public class GameEvent
     {
         public string id { get; private set; }
-        public Student Owner { get; set; }
+        public Student owner { get; set; }
+
+        [JsonIgnore]
         public Timer timer { get; set; }
 
+        public string type { get; set; }
+        public string rightAnswer { get; set; }
+        public string question { get; set; }
+        public List<string> answers { get; set; }
+
+        [JsonIgnore]
         public EventHandler OnTimerEnds { get; set; }
 
         public int lifeTime { get; set; }

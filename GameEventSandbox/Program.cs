@@ -29,7 +29,7 @@ namespace GameEventSandbox
             Console.WriteLine(game.teacher.name);
             Console.WriteLine(game.teacher.health);
 
-            game.Run();
+            game.run();
 
             var tt = new Timer(state => {
                 Console.Clear();
@@ -41,12 +41,14 @@ namespace GameEventSandbox
                 Console.WriteLine("Event List\n");
                 game.events.ToArray().ToList().ForEach(ev => {
                     Console.Write($"[{ev.lifeTime}s] ");
-                    Console.ForegroundColor = ev.Owner.name.Contains("Підгорняк")
+                    Console.ForegroundColor = ev.owner.name.Contains("Підгорняк")
                         ? ConsoleColor.Yellow
                         : ConsoleColor.Magenta;
-                    Console.Write($"{ev.Owner.name} ");
+                    Console.Write($"{ev.owner.name} ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("needs your help!\n");
+                    Console.WriteLine($"{ev.question}");
+                    ev.answers.ForEach(x => Console.WriteLine("   " + x));
 
                 });
             }, null, 0, 900);
@@ -64,10 +66,10 @@ namespace GameEventSandbox
                 Console.WriteLine("Event List\n");
                 game.events.ToArray().ToList().ForEach(ev => {
                     Console.Write($"[{ev.lifeTime}s] ");
-                    Console.ForegroundColor = ev.Owner.name.Contains("Підгорняк")
+                    Console.ForegroundColor = ev.owner.name.Contains("Підгорняк")
                         ? ConsoleColor.Yellow
                         : ConsoleColor.Magenta;
-                    Console.Write($"{ev.Owner.name} ");
+                    Console.Write($"{ev.owner.name} ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("needs your help!\n");
 

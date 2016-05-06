@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
@@ -24,16 +25,23 @@ namespace Kleps.Engine.Events.Spawner
             var student = _game.students[new Random().Next(0, _game.students.Count - 1)];
             _game.students.Remove(student);
 
-            var ev = new GameEvent {
-                Owner = student,
-                lifeTime = student.name.Contains("Підгорняк") ? 3 : 10
-            };
+            bool isPidgornyak = student.name.Contains("Підгорняк");
 
+            var ev = new GameEvent {
+                owner = student,
+                lifeTime = isPidgornyak ? 3 : 10,
+                type = "question",
+                rightAnswer = isPidgornyak? "die" : "reflection",
+                question = isPidgornyak ? "Alias for 'exit' in PHP." : "Механизм позволяющий получить доступ к приватным полям." ,
+                answers = isPidgornyak ? 
+                new List<string> {"quit", "leave", "escape", "die"} : 
+                new List<string> {"inflection", "reflection", "inheriting", "implementing"}
+            };
 
             ev.OnTimerEnds += (s, e) => {
                 _game.events.Remove(ev);
-                _game.teacher.health -= student.name.Contains("Підгорняк") ? 200 : 20;
-                _game.students.Add(ev.Owner);
+                _game.teacher.health -= isPidgornyak ? 200 : 20;
+                _game.students.Add(ev.owner);
             };
             return ev;
         }

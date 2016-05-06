@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Kleps.Engine.Game;
 using Kleps.Engine.HelloWoldSayer;
+using Newtonsoft.Json;
 
 namespace Kleps.Engine {
 
@@ -25,6 +26,28 @@ namespace Kleps.Engine {
 
         public Game.Game getGame() {
             return game;
+        }
+
+        public string getGameEventsJson()
+        {
+            return JsonConvert.SerializeObject(game.events);
+        }
+
+        public string getTeacherJson() {
+            return JsonConvert.SerializeObject(game.teacher);
+        }
+
+        public void stopEventCountingById(string id) {
+            game.getEventById(id).CountStop();
+        }
+
+        public void startEventCountingById(string id)
+        {
+            game.getEventById(id).CountStart();
+        }
+
+        public void startGame() {
+            game.run();
         }
     }
 }

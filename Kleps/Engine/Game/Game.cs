@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Kleps.Engine.Events;
 using Kleps.Engine.Events.Spawner;
 using Kleps.Engine.Game.Entities;
+using Newtonsoft.Json;
 
 namespace Kleps.Engine.Game
 {
@@ -32,7 +33,7 @@ namespace Kleps.Engine.Game
             return events.FirstOrDefault(e => e.id == id);
         }
 
-        public void Run() {
+        public void run() {
             this.spawner.OnSpawn += (s, e) => {
                 this.events.Add(e.Event);
             };
