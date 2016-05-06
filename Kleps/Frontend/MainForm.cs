@@ -29,5 +29,9 @@ namespace Kleps.Frontend
             ChromeBox.Browser.FrameLoadEnd += Browser_FrameLoadEnd;
 
         }
+
+        private void Exit(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }
