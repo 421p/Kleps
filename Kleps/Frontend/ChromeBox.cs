@@ -12,8 +12,8 @@ using Kleps.Frontend.Controller;
 
 namespace Kleps.Frontend
 {
-    public partial class ChromeBox : UserControl
-    {
+    public partial class ChromeBox : UserControl {
+        private Backend _backend;
         public ChromiumWebBrowser Browser { get; private set; }
 
         public ChromeBox()
@@ -34,9 +34,9 @@ namespace Kleps.Frontend
             var d = new Deserializer(namingConvention: new CamelCaseNamingConvention());
             var config = d.Deserialize<GameConfig>(new StreamReader(new FileStream("DataRepository/Config.yaml", FileMode.Open)));
 
+            this._backend = new Backend(config);
 
-            Browser.RegisterJsObject("backend", new Backend(config));
-            Browser.RegisterJsObject("frontendHelper", new FrontendHelper(), true);
+            Browser.RegisterJsObject("backend", _backend.Gate);
 
             this.Controls.Add(Browser);
         }
