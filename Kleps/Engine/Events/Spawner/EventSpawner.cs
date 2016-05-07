@@ -25,27 +25,27 @@ namespace Kleps.Engine.Events.Spawner
             var student = _game.students[new Random().Next(0, _game.students.Count - 1)];
             _game.students.Remove(student);
 
-            bool isPidgornyak = student.name.Contains("Підгорняк");
+            bool isEvil = student.name == _game.Config.Names.EvilStudent;
 
             var ev = new GameEvent {
                 owner = student,
-                lifeTime = isPidgornyak ? 3 : 10,
+                lifeTime = isEvil ? 3 : 10,
                 type = "question",
-                rightAnswer = isPidgornyak? "die" : "reflection",
-                question = isPidgornyak ? "Alias for 'exit' in PHP." : "Механизм позволяющий получить доступ к приватным полям." ,
-                answers = isPidgornyak ? 
+                rightAnswer = isEvil? "die" : "reflection",
+                question = isEvil ? "Alias for 'exit' in PHP." : "Механизм позволяющий получить доступ к приватным полям." ,
+                answers = isEvil ? 
                 new List<string> {"quit", "leave", "escape", "die"} : 
                 new List<string> {"inflection", "reflection", "inheriting", "implementing"}
             };
 
             ev.OnTimerEnds += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(isPidgornyak ? 200 : 20);
+                _game.teacher.DecreaseHealth(isEvil ? 200 : 20);
             };
 
             ev.OnRejected += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(isPidgornyak ? 200 : 20);
+                _game.teacher.DecreaseHealth(isEvil ? 200 : 20);
             };
 
             ev.OnAccepted += (s, e) => {

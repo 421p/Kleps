@@ -39,7 +39,7 @@ namespace Kleps.Engine.Game
                 yield return CreateStudent(game, names[i]);
             }
 
-            yield return CreateStudent(game, "Дар'я Підгорняк");
+            yield return CreateStudent(game, game.Config.Names.EvilStudent);
         } 
 
         public static Student CreateStudent(Game game, string name) {
