@@ -32,7 +32,6 @@ namespace Kleps.Frontend.Controller {
         }
 
         public void Volume(int value) {
-            
             Background.settings.volume = value;
         }
     }
