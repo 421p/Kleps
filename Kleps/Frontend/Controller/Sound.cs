@@ -1,20 +1,49 @@
-﻿using WMPLib;
+﻿using System.Timers;
+using WMPLib;
 
 namespace Kleps.Frontend.Controller {
     public class Sound {
         public WindowsMediaPlayer Background { get; private set; }
         public WindowsMediaPlayer Click { get; private set; }
+
+        public WindowsMediaPlayer Battle { get; private set; }
+        public WindowsMediaPlayer HistoryEng { get; private set; }
+        public WindowsMediaPlayer HistoryRus { get; private set; }
+
+        private WindowsMediaPlayer FadeOut;
+        private Timer Timer;
+        private WindowsMediaPlayer FadeIn;
+        private int Duration;
+        private int Ticks;
+
         public Sound() {
             Background = new WindowsMediaPlayer();
-            Click = new WindowsMediaPlayer();
-
             Background.settings.playCount = 10;
-            Click.settings.playCount = 1;
-
             Background.settings.autoStart = false;
-            Click.settings.autoStart = false;
-
             Background.URL = "DataRepository/Sound/DevilsDance.mp3";
+
+            Battle = new WindowsMediaPlayer();
+            Battle.settings.playCount = 1;
+            Battle.settings.autoStart = false;
+            Battle.URL = "DataRepository/Sound/bgmusic.mp3";
+            Battle.settings.volume = 50;
+
+            HistoryEng = new WindowsMediaPlayer();
+            HistoryEng.settings.playCount = 1;
+            HistoryEng.settings.autoStart = false;
+            HistoryEng.URL = "DataRepository/Sound/eng.mp3";
+            HistoryEng.settings.volume = 100;
+
+            HistoryRus = new WindowsMediaPlayer();
+            HistoryRus.settings.playCount = 1;
+            HistoryRus.settings.autoStart = false;
+            HistoryRus.URL = "DataRepository/Sound/rus.mp3";
+            HistoryRus.settings.volume = 90;
+
+
+            Click = new WindowsMediaPlayer();
+            Click.settings.playCount = 1;            
+            Click.settings.autoStart = false;
             Click.URL = "DataRepository/Sound/Click.mp3";
             Click.settings.volume = 100;
         }
@@ -33,6 +62,33 @@ namespace Kleps.Frontend.Controller {
 
         public void Volume(int value) {
             Background.settings.volume = value;
+        }
+
+        public void Fade(WindowsMediaPlayer Out, WindowsMediaPlayer In, int duration) {
+            this.FadeOut = Out;
+            this.FadeIn = In;
+            this.Duration = duration;
+            this.FadeIn.settings.volume = 0;
+            this.FadeIn.controls.play();
+            this.Timer = new Timer();
+            this.Ticks = 0;
+
+            this.Timer.Interval = this.Duration / 100;
+            this.Timer.Elapsed += FadeTick;
+            this.Timer.Enabled = true;
+
+            this.Timer.Start();
+        }
+
+        private void FadeTick(object sender, ElapsedEventArgs e) {
+            FadeIn.settings.volume += 100 / (this.Duration / 100);
+            FadeOut.settings.volume -= FadeOut.settings.volume / (this.Duration/100);
+            this.Ticks += this.Duration / 100;
+            if (this.Ticks >= this.Duration) {
+                this.FadeOut.controls.stop();
+                this.Timer.Stop();
+            }
+                
         }
     }
 }

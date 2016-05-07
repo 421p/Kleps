@@ -14,7 +14,13 @@ namespace Kleps.Frontend {
             if (disposing && (components != null)) {
                 components.Dispose();
             }
-            base.BeginInvoke(new Action(()=> base.Dispose(disposing)));
+            try {
+                base.Dispose(disposing);   
+            }catch(Exception e){
+                base.BeginInvoke(new Action(() => base.Dispose(disposing)));
+            }
+
+           
         }
 
         #region Windows Form Designer generated code

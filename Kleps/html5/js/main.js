@@ -1,4 +1,6 @@
-﻿$(function(){
+﻿$(function () {
+    var ROOT = window.location.href;
+    
     var Menu = $('#menu');
     MainMenu();
     Menu.on('mouseenter', 'option', function(e) {
@@ -7,7 +9,8 @@
     Menu.on('mouseleave', 'option', function(e) {
         $(this).css({'background':'none'});
     });
-    Menu.val(Menu.find("option:first").val()).focus();
+    Menu.val(Menu.find("option:first").val());
+    
 
     var Music = {
         mute: backend.musicMute,
@@ -20,7 +23,7 @@
     };
 
     Music.start();
-    Menu.on("keypress click", function(e){
+    Menu.on("keydown click", function (e) {
         backend.musicClick();
         var m = Menu.find("option:selected");
         switch(e.which){
@@ -28,7 +31,7 @@
             case 13:
             case 32:{
                 backend.menuAction(m.val());
-                switch(m.val()){
+                switch (m.val()) {
                     case "options":
                         OptionsMenu();
                         break;
@@ -71,8 +74,6 @@
 
     $("#audio").click(MusicChange);
 
-    //Options
-
     function MusicChange(){
         Music.mute();
         if(Music.flag) $("#audio").text("Music: OFF");
@@ -95,7 +96,7 @@
         Menu.hide();
         var Credit = false;
         $("#credits").show();
-        $(document).on("keypress click", function(){
+        $(document).on("keydown click", function () {
             if(Credit){
                 $("#credits").hide();
                 Menu.show();
