@@ -32,7 +32,7 @@ namespace Kleps.Frontend.Controller {
             HistoryEng.settings.playCount = 1;
             HistoryEng.settings.autoStart = false;
             HistoryEng.URL = "DataRepository/Sound/eng.mp3";
-            HistoryEng.settings.volume = 90;
+            HistoryEng.settings.volume = 100;
 
             HistoryRus = new WindowsMediaPlayer();
             HistoryRus.settings.playCount = 1;
@@ -84,10 +84,6 @@ namespace Kleps.Frontend.Controller {
             FadeIn.settings.volume += 100 / (this.Duration / 100);
             FadeOut.settings.volume -= FadeOut.settings.volume / (this.Duration/100);
             this.Ticks += this.Duration / 100;
-            System.Console.WriteLine("Ticks - {0}",this.Ticks);
-            System.Console.WriteLine("Duration - {0}", this.Duration);
-            System.Console.WriteLine("VolumeOUT - {0}", FadeOut.settings.volume);
-            System.Console.WriteLine("VolumeIN - {0}", FadeIn.settings.volume);
             if (this.Ticks >= this.Duration) {
                 this.FadeOut.controls.stop();
                 this.Timer.Stop();

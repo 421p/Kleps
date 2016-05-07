@@ -49,7 +49,7 @@ body{
     color: white;
 }
 
-output{
+#subtitle{
     position: fixed;
     bottom: 20px;
     left: 0;
@@ -58,3 +58,19 @@ output{
     font-size: 2em;
     color:white;
 }
+
+#translate{
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color:red;
+}
+
+#translate a {
+    color: red;
+    text-decoration: none;
+}
+

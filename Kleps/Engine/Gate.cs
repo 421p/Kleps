@@ -83,6 +83,19 @@ namespace Kleps.Engine
             FEH.Music.Fade(FEH.Music.Background, FEH.Music.Battle, 3000);
         }
 
+        public void historyEngSound() {
+            FEH.Music.HistoryEng.controls.play();
+        }
+
+        public void historyRusSound() {
+            this.historyRusSoundMute();
+            FEH.Music.HistoryRus.controls.play();
+        }
+        public bool historyRusSoundMute() {
+            FEH.Music.HistoryRus.settings.mute = !FEH.Music.HistoryRus.settings.mute;
+            return FEH.Music.HistoryRus.settings.mute;
+        }
+
         #endregion Game
 
 
