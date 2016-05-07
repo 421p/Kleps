@@ -1,0 +1,37 @@
+﻿body{
+    background: #000 url('../img/namebg.jpg');
+    background-size: cover;
+}
+.name-container{
+    display: flex;
+    height: 100vh;
+    justify-content:center;
+    flex-flow:column;
+}
+#name{  
+    width: 100%;
+    color: red;
+    font-weight: 600;
+    font-size: 2.3em;
+    border: none;
+    text-align: center;
+    outline: none;
+    background: rgba(164, 164, 164, 0.34);
+}
+
+#accept a{
+    display: block;
+    color: #fff;
+    font-weight: 600;
+    font-size: 2em;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.34);
+}
+#accept a:hover, #accept a:focus{
+   text-decoration:none;
+   background: red;
+}
+
+.hint{
+    color: white;
+}

@@ -23,7 +23,7 @@
     };
 
     Music.start();
-    Menu.on("keypress click", function(e){
+    Menu.on("keydown click", function (e) {
         backend.musicClick();
         var m = Menu.find("option:selected");
         switch(e.which){
@@ -96,7 +96,7 @@
         Menu.hide();
         var Credit = false;
         $("#credits").show();
-        $(document).on("keypress click", function(){
+        $(document).on("keydown click", function () {
             if(Credit){
                 $("#credits").hide();
                 Menu.show();
