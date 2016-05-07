@@ -32,13 +32,18 @@ namespace Kleps.Frontend.Controller {
                 case "start":
                     Browser.Load(("file:///" + System.IO.Path.GetDirectoryName(
                 System.Reflection.Assembly.GetExecutingAssembly().Location
-                ) + @"\html5\html\game.html").Replace('\\', '/'));
+                ) + @"\html5\html\history.html").Replace('\\', '/'));
                     break;
                 case "exit":
                     this.Window.BeginInvoke(new Action(() => this.Window.Close()));
                     this.Music.MuteAll();
                     break;
             }
+        }
+        public void LoadGame() {
+            Browser.Load(("file:///" + System.IO.Path.GetDirectoryName(
+                System.Reflection.Assembly.GetExecutingAssembly().Location
+                ) + @"\html5\html\game.html").Replace('\\', '/'));
         }
 
     }

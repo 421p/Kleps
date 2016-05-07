@@ -96,6 +96,12 @@ namespace Kleps.Engine
             return FEH.Music.HistoryRus.settings.mute;
         }
 
+        public void gameInit() {
+            FEH.Music.MuteAll();
+            FEH.LoadGame();
+
+        }
+
         #endregion Game
 
 
