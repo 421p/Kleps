@@ -25,6 +25,7 @@ namespace GameEventSandbox
             var backend = new Backend(config);
 
             var game = backend.game;
+            game.spawner.YamlPath = "../../../Kleps/DataRepository/Events.yaml";
 
             Console.WriteLine(game.teacher.name);
             Console.WriteLine(game.teacher.health);

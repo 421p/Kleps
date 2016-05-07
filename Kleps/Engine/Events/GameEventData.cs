@@ -17,7 +17,7 @@ namespace Kleps.Engine.Events
         public int id { get; set; }
         public string text { get; set; }
         public string type { get; set; }
-        public BindingList<string> answers { get; set; }
+        public List<string> answers { get; set; }
 
         [YamlAlias("right_answer")]
         public string rightAnswer { get; set; }
