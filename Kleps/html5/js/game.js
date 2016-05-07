@@ -27,7 +27,22 @@
     //end Enter Name
 
     //start Game
-
+    function startGame() {
+        $(".container").html('<div class="col-md-12 game-container"><output></output></div>');
+        $("body").css("background", "#000");
+        $("#history").fadeIn(1000);
+        setTimeout(function () {
+            setTimeout(function () {
+                bakend.startHistory();
+                $("output").html("Once upon a time, all students became a zombies...");
+            }, 1500);
+            $("#history").animate({
+                marginLeft: '-=650px'
+            }, 30000, function () {
+                $("#history").fadeOut(1000);
+            });
+        }, 500);
+    }
 
     //end Game
 })
