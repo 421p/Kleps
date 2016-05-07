@@ -11,7 +11,6 @@
                 break;
             case 1:
             case 13:
-            case 32:
                 if ($("#name").val().length < 1)
                     $("#name").css("border","1px solid red").focus();
                 else {

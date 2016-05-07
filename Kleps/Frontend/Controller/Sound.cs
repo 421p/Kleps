@@ -1,4 +1,5 @@
-﻿using System.Timers;
+﻿using System;
+using System.Timers;
 using WMPLib;
 
 namespace Kleps.Frontend.Controller {
@@ -81,8 +82,13 @@ namespace Kleps.Frontend.Controller {
         }
 
         private void FadeTick(object sender, ElapsedEventArgs e) {
-            FadeIn.settings.volume += 100 / (this.Duration / 100);
-            FadeOut.settings.volume -= FadeOut.settings.volume / (this.Duration/100);
+            try {
+                FadeIn.settings.volume += 100 / (this.Duration / 100);
+                FadeOut.settings.volume -= 100 / (this.Duration / 100);
+            }catch(Exception x) {
+                Console.WriteLine("OOPS");
+            }
+            
             this.Ticks += this.Duration / 100;
             if (this.Ticks >= this.Duration) {
                 this.FadeOut.controls.stop();
