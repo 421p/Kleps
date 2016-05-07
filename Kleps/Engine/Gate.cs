@@ -77,6 +77,13 @@ namespace Kleps.Engine
 
         #endregion Menu
 
+        #region Game
+
+        public void startHistory() {
+            FEH.Music.Fade(FEH.Music.Background, FEH.Music.Battle, 3000);
+        }
+
+        #endregion Game
 
 
         #endregion Frontend

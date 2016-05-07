@@ -180,10 +180,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataRepository\Sound\bgmusic.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DataRepository\Sound\Click.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DataRepository\Sound\DevilsDance.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataRepository\Sound\eng.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataRepository\Sound\rus.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="html5\css\bootstrap.min.css" />
@@ -191,6 +200,7 @@
     <Content Include="html5\css\main.css" />
     <Content Include="html5\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="html5\html\main.html" />
+    <Content Include="html5\img\history.jpg" />
     <Content Include="html5\img\namebg.jpg" />
     <Content Include="html5\img\bg.png" />
     <Content Include="html5\js\bootstrap.min.js" />

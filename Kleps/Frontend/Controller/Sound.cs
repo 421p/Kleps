@@ -1,4 +1,5 @@
-﻿using WMPLib;
+﻿using System.Timers;
+using WMPLib;
 
 namespace Kleps.Frontend.Controller {
     public class Sound {
@@ -8,6 +9,12 @@ namespace Kleps.Frontend.Controller {
         public WindowsMediaPlayer Battle { get; private set; }
         public WindowsMediaPlayer HistoryEng { get; private set; }
         public WindowsMediaPlayer HistoryRus { get; private set; }
+
+        private WindowsMediaPlayer FadeOut;
+        private Timer Timer;
+        private WindowsMediaPlayer FadeIn;
+        private int Duration;
+        private int Ticks;
 
         public Sound() {
             Background = new WindowsMediaPlayer();
@@ -55,6 +62,37 @@ namespace Kleps.Frontend.Controller {
 
         public void Volume(int value) {
             Background.settings.volume = value;
+        }
+
+        public void Fade(WindowsMediaPlayer Out, WindowsMediaPlayer In, int duration) {
+            this.FadeOut = Out;
+            this.FadeIn = In;
+            this.Duration = duration;
+            this.FadeIn.settings.volume = 0;
+            this.FadeIn.controls.play();
+            this.Timer = new Timer();
+            this.Ticks = 0;
+
+            this.Timer.Interval = this.Duration / 100;
+            this.Timer.Elapsed += FadeTick;
+            this.Timer.Enabled = true;
+
+            this.Timer.Start();
+        }
+
+        private void FadeTick(object sender, ElapsedEventArgs e) {
+            FadeIn.settings.volume += 100 / (this.Duration / 100);
+            FadeOut.settings.volume -= FadeOut.settings.volume / (this.Duration/100);
+            this.Ticks += this.Duration / 100;
+            System.Console.WriteLine("Ticks - {0}",this.Ticks);
+            System.Console.WriteLine("Duration - {0}", this.Duration);
+            System.Console.WriteLine("VolumeOUT - {0}", FadeOut.settings.volume);
+            System.Console.WriteLine("VolumeIN - {0}", FadeIn.settings.volume);
+            if (this.Ticks >= this.Duration) {
+                this.FadeOut.controls.stop();
+                this.Timer.Stop();
+            }
+                
         }
     }
 }

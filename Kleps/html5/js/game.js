@@ -33,7 +33,7 @@
         $("#history").fadeIn(1000);
         setTimeout(function () {
             setTimeout(function () {
-                bakend.startHistory();
+                backend.startHistory();
                 $("output").html("Once upon a time, all students became a zombies...");
             }, 1500);
             $("#history").animate({
