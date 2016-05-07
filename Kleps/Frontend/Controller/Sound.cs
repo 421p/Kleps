@@ -61,6 +61,14 @@ namespace Kleps.Frontend.Controller {
             Background.settings.mute = !Background.settings.mute;
         }
 
+        public void MuteAll() {
+            Background.settings.mute = true;
+            Click.settings.mute = true;
+            Battle.settings.mute = true;
+            HistoryEng.settings.mute = true;
+            HistoryRus.settings.mute = true;
+        }
+
         public void Volume(int value) {
             Background.settings.volume = value;
         }

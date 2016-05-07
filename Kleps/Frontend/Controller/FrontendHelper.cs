@@ -36,7 +36,7 @@ namespace Kleps.Frontend.Controller {
                     break;
                 case "exit":
                     this.Window.BeginInvoke(new Action(() => this.Window.Close()));
-                    this.Music.Mute();
+                    this.Music.MuteAll();
                     break;
             }
         }
