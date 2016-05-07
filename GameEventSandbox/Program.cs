@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Kleps.Engine;
 using Kleps.Engine.Events;
 using Kleps.Engine.Game;
+using Newtonsoft.Json;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -46,8 +47,6 @@ namespace GameEventSandbox
                     Console.Write($"{ev.owner.name} ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("needs your help!\n");
-                    Console.WriteLine($"{ev.question}");
-                    ev.answers.ForEach(x => Console.WriteLine("   " + x));
 
                 });
             }, null, 0, 900);
