@@ -192,6 +192,7 @@
     <Content Include="html5\html\main.html" />
     <Content Include="html5\img\bg.png" />
     <Content Include="html5\js\bootstrap.min.js" />
+    <Content Include="html5\html\game.html" />
     <Content Include="html5\js\jquery.min.js" />
     <Content Include="html5\js\main.js" />
     <None Include="Resources\close-hover.png" />

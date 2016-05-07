@@ -1,4 +1,6 @@
-﻿$(function(){
+﻿$(function () {
+    var ROOT = window.location.href;
+    
     var Menu = $('#menu');
     MainMenu();
     Menu.on('mouseenter', 'option', function(e) {
@@ -7,7 +9,8 @@
     Menu.on('mouseleave', 'option', function(e) {
         $(this).css({'background':'none'});
     });
-    Menu.val(Menu.find("option:first").val()).focus();
+    Menu.val(Menu.find("option:first").val());
+    
 
     var Music = {
         mute: backend.musicMute,
@@ -28,7 +31,7 @@
             case 13:
             case 32:{
                 backend.menuAction(m.val());
-                switch(m.val()){
+                switch (m.val()) {
                     case "options":
                         OptionsMenu();
                         break;
@@ -70,8 +73,6 @@
     });
 
     $("#audio").click(MusicChange);
-
-    //Options
 
     function MusicChange(){
         Music.mute();
