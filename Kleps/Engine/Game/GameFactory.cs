@@ -19,12 +19,11 @@ namespace Kleps.Engine.Game
         }
 
         public static Teacher CreateTeacher(Game game) {
-            return new Teacher
+            return new Teacher(1000)
             {
                 id = Guid.NewGuid().ToString("N"),
                 name = game.Config.Names.Teacher,
                 game = game,
-                health = 1000,
                 OnDeath = (s, e) => {
                     game.Over();
                 }
@@ -47,8 +46,7 @@ namespace Kleps.Engine.Game
             return new Student {
                 id = Guid.NewGuid().ToString("N"),
                 name = name,
-                game = game,
-                health = 100
+                game = game
             };
         }
     }

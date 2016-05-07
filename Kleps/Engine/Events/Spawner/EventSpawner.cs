@@ -39,10 +39,20 @@ namespace Kleps.Engine.Events.Spawner
             };
 
             ev.OnTimerEnds += (s, e) => {
-                _game.events.Remove(ev);
-                _game.teacher.health -= isPidgornyak ? 200 : 20;
-                _game.students.Add(ev.owner);
+                ev.Exterminate();
+                _game.teacher.DecreaseHealth(isPidgornyak ? 200 : 20);
             };
+
+            ev.OnRejected += (s, e) => {
+                ev.Exterminate();
+                _game.teacher.DecreaseHealth(isPidgornyak ? 200 : 20);
+            };
+
+            ev.OnAccepted += (s, e) => {
+                ev.Exterminate();
+                _game.teacher.IncreaseHealth(20);
+            };
+
             return ev;
         }
 
@@ -52,10 +62,16 @@ namespace Kleps.Engine.Events.Spawner
             }
         }
 
+        /// <summary>
+        /// Starting event spawning.
+        /// </summary>
         public void SpawnOn() {
             this._timer = new Timer(SpawnCallback, null, 0, _interval);
         }
 
+        /// <summary>
+        /// Stops event spawning.
+        /// </summary>
         public void SpawnOff() {
             this._timer.Dispose();
         }
