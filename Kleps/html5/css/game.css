@@ -70,6 +70,7 @@ body{
 }
 
 #translate a {
+    cursor:pointer;
     color: red;
     text-decoration: none;
 }

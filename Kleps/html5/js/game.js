@@ -9,11 +9,9 @@
             case 40:
                 $("#accept a").focus();
                 break;
-            case 1:
             case 13:
-            case 32:
                 if ($("#name").val().length < 1)
-                    $("#name").css("border","1px solid red").focus();
+                    $("#name").css("border", "1px solid red").focus();
                 else {
                     $(document).off("keydown click");
                     startGame();
@@ -22,6 +20,20 @@
             default:
                 $("#name").css("border", "none");
                 break;
+        }
+        if ($("#accept a").is(":focus")) {
+            switch (e.which) {
+                case 1:
+                case 13:
+                case 32:
+                    if ($("#name").val().length < 1)
+                        $("#name").css("border","1px solid red").focus();
+                    else {
+                        $(document).off("keydown click");
+                        startGame();
+                    }
+                    break;
+            }
         }
     });
     //end Enter Name
