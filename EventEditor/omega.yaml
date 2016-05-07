@@ -1,0 +1,10 @@
+-
+    type: "normal"
+    text: "Alias for exit in php"
+    answers: ['kill', 'quit', 'die', 'escape']
+    right_answer: 'die'
+- 
+    type:
+    text:
+    answers: []
+    right_answer:

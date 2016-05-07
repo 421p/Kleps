@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
+using Kleps.Engine.Game;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 
 namespace Kleps.Engine.Events.Spawner
@@ -11,6 +15,9 @@ namespace Kleps.Engine.Events.Spawner
         private Timer _timer;
         private readonly int _interval;
         private readonly int _chance;
+        private List<GameEventData> _eventDataset; 
+
+        public string YamlPath { get; set; }
 
         public EventHandler<SpawnEventArgs> OnSpawn { get; set; }
 
@@ -18,24 +25,37 @@ namespace Kleps.Engine.Events.Spawner
             _game = game;
             _interval = 2000;
             _chance = 40;
+            YamlPath = "DataRepository/Events.yaml";
         }
 
         protected GameEvent GenerateEvent() {
+
+            if (_eventDataset == null) {
+                _eventDataset = getEventData();
+            }
             
             var student = _game.students[new Random().Next(0, _game.students.Count - 1)];
             _game.students.Remove(student);
 
             bool isEvil = student.name == _game.Config.Names.EvilStudent;
 
+            var eventData = _eventDataset.OrderBy(x => Guid.NewGuid())
+                .FirstOrDefault(x => {
+                    if (isEvil) {
+                        return x.type == "evil";
+                    }
+                    else {
+                        return x.type == "normal";
+                    }
+                });
+
             var ev = new GameEvent {
                 owner = student,
                 lifeTime = isEvil ? 3 : 10,
                 type = "question",
-                rightAnswer = isEvil? "die" : "reflection",
-                question = isEvil ? "Alias for 'exit' in PHP." : "Механизм позволяющий получить доступ к приватным полям." ,
-                answers = isEvil ? 
-                new List<string> {"quit", "leave", "escape", "die"} : 
-                new List<string> {"inflection", "reflection", "inheriting", "implementing"}
+                rightAnswer = eventData.rightAnswer,
+                question = eventData.text,
+                answers = eventData.answers
             };
 
             ev.OnTimerEnds += (s, e) => {
@@ -76,5 +96,17 @@ namespace Kleps.Engine.Events.Spawner
             this._timer.Dispose();
         }
 
+        private List<GameEventData> getEventData()
+        {
+            return new Deserializer(namingConvention: new CamelCaseNamingConvention())
+                .Deserialize<List<GameEventData>>(
+                new StreamReader(
+                    new FileStream(
+                        YamlPath, 
+                        FileMode.Open
+                    )
+                )
+            );
+        }
     }
 }

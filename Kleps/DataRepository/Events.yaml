@@ -1,11 +1,59 @@
 ﻿-
-    id: 1
-    text: "Alias for exit in php"
+    type: evil
+    text: Alias for exit in php
     answers: ['kill', 'quit', 'die', 'escape']
     right_answer: 'die'
 
 -
-    id: 2
-    text: "Как распарсить csv в с#?"
-    answers: ['хз', 'хз', 'да', 'нет']
-    right_answer: 'нет'
+    type: normal
+    text: При помощи какого инструмента можно получить доступ к закрытым полям класса?
+    answers: ['инфлексия', 'рефлексия', 'наследование', 'исследование']
+    right_answer: 'рефлексия'
+
+-
+    type: evil
+    text: Могут ли анонимные классы в пхп имплементить интерфейсы?
+    answers: ['могут', 'не могут', 'только статические классы', 'в пхп нет интерфейсов']
+    right_answer: 'могут'
+
+-
+    type: evil
+    text: На чем написан Crossbar.io?
+    answers: ['php', 'nodeJs', 'python', 'c++']
+    right_answer: 'python'
+
+-
+    type: evil
+    text: Инструмент для гибкой работы с конвенциями
+    answers: ['рефлектор', 'инфлектор', 'конвектор', 'кондуктор']
+    right_answer: 'инфлектор'
+
+-
+    type: evil
+    text: Я еще 10 минут назад просила подойти, тебе так сложно чтоли?
+    answers: ['ДА', 'Нет, не сложно.', 'Есть другие студенты, которым я должен помочь.', '-Не отвечать-']
+    right_answer: 'Есть другие студенты, которым я должен помочь.'
+
+-
+    type: evil
+    text: Почему не запускается код?
+    answers: ['У тебя скобки не закрыты.', 'Загугли.', 'Проверь на null.', '-Не сильно пнуть студента.-']
+    right_answer: null
+
+-
+    type: evil
+    text: Какой инструмент позволяет читать док-коменты на пхп?
+    answers: ['Рефлектор', 'Парсер', 'Ридер', 'Никакой, зачем читать док-коменты программно?']
+    right_answer: 'Рефлектор'
+
+-
+    type: normal
+    text: Сколько Asofe нужно на крафт Dark Crystal Robe?
+    answers: ['15', '25', '35', '60']
+    right_answer: '35'
+
+-
+    type: normal
+    text: Какой фреймворк из списка является ORM-фреймворком?
+    answers: ['OpenTK', 'AForge', 'Duality', 'NHibernate']
+    right_answer: 'NHibernate'

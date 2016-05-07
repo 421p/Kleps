@@ -25,6 +25,7 @@ namespace GameEventSandbox
             var backend = new Backend(config);
 
             var game = backend.game;
+            game.spawner.YamlPath = "../../../Kleps/DataRepository/Events.yaml";
 
             Console.WriteLine(game.teacher.name);
             Console.WriteLine(game.teacher.health);
@@ -47,6 +48,9 @@ namespace GameEventSandbox
                     Console.Write($"{ev.owner.name} ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("needs your help!\n");
+                    Console.WriteLine("[{0}] Question: {1}", ev.type, ev.question);
+                ev.answers.ForEach(x => Console.WriteLine("-->" + x));
+                    Console.WriteLine("Right answer: " + ev.rightAnswer);
 
                 });
             }, null, 0, 900);

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEventSandbox", "GameEve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEventVIsualSandbox", "GameEventVIsualSandbox\GameEventVIsualSandbox.csproj", "{7AF01AEF-EBA5-462B-A4B2-15EA484F63A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventEditor", "EventEditor\EventEditor.csproj", "{291B8D6C-2D07-49A0-B135-3DC634B9E646}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{7AF01AEF-EBA5-462B-A4B2-15EA484F63A0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7AF01AEF-EBA5-462B-A4B2-15EA484F63A0}.Release|x86.ActiveCfg = Release|Any CPU
 		{7AF01AEF-EBA5-462B-A4B2-15EA484F63A0}.Release|x86.Build.0 = Release|Any CPU
+		{291B8D6C-2D07-49A0-B135-3DC634B9E646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{291B8D6C-2D07-49A0-B135-3DC634B9E646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291B8D6C-2D07-49A0-B135-3DC634B9E646}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{291B8D6C-2D07-49A0-B135-3DC634B9E646}.Debug|x86.Build.0 = Debug|Any CPU
+		{291B8D6C-2D07-49A0-B135-3DC634B9E646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{291B8D6C-2D07-49A0-B135-3DC634B9E646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{291B8D6C-2D07-49A0-B135-3DC634B9E646}.Release|x86.ActiveCfg = Release|Any CPU
+		{291B8D6C-2D07-49A0-B135-3DC634B9E646}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
