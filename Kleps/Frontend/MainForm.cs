@@ -44,6 +44,7 @@ namespace Kleps.Frontend
             ChromeBox.Size = new Size(ScreenWidth, ScreenHeight);
             ChromeBox.Location = new Point(0,0);
             ChromeBox.Browser.FrameLoadEnd += Browser_FrameLoadEnd;
+            FEH.Browser = ChromeBox.Browser;
 
         }
 
