@@ -10,11 +10,10 @@ namespace Kleps.Engine.Game.Entities
     public class Teacher : GameEntity
     {
 
-        public int _health;
+        private int _health;
 
         protected int MaxHealth;
 
-        [JsonIgnore]
         public int health {
             get { return _health; }
 
