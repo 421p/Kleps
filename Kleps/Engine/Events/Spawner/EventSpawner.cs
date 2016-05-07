@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
+using Kleps.Engine.Game;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 
 namespace Kleps.Engine.Events.Spawner
@@ -11,6 +15,7 @@ namespace Kleps.Engine.Events.Spawner
         private Timer _timer;
         private readonly int _interval;
         private readonly int _chance;
+        private readonly List<GameEventData> _eventDataset; 
 
         public EventHandler<SpawnEventArgs> OnSpawn { get; set; }
 
@@ -74,6 +79,21 @@ namespace Kleps.Engine.Events.Spawner
         /// </summary>
         public void SpawnOff() {
             this._timer.Dispose();
+        }
+
+        private List<GameEventData> getEventData()
+        {
+           
+            return new Deserializer(namingConvention: new CamelCaseNamingConvention())
+                .Deserialize<List<GameEventData>>(
+                new StreamReader(
+                    new FileStream(
+                        "DataRepository/Events.yaml", 
+                        FileMode.Open
+                    )
+                )
+            );
+
         }
 
     }
