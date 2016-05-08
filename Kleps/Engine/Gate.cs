@@ -62,7 +62,10 @@ namespace Kleps.Engine
             FEH.Music.StartClick();
         }
 
-        public void healthSound() {
+        public void healthSound(bool mute = false) {
+            if (mute)
+                FEH.Music.FaseHit.settings.mute = true;
+            else FEH.Music.FaseHit.settings.mute = false;
             FEH.Music.FaseHit.controls.stop();
             FEH.Music.FaseHit.controls.play();
         }

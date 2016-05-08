@@ -15,13 +15,14 @@
     Teacher.name.text(JSON.parse(backend.getTeacherJson()).name);
 
     var CurrHealth = Teacher.maxHealth;
-
+    backend.healthSound(true);
     setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());
         var health = JSON.parse(backend.getTeacherJson()).health;
-
+        
         if (health < CurrHealth) {
             backend.healthSound();
+            AnswerAnimation("red");
             CurrHealth = health;
         }
             
