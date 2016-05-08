@@ -12,6 +12,8 @@ namespace Kleps.Frontend.Controller {
         public WindowsMediaPlayer HistoryEng { get; private set; }
         public WindowsMediaPlayer HistoryRus { get; private set; }
 
+        public WindowsMediaPlayer FaseHit { get; private set; }
+
         private WindowsMediaPlayer FadeOut;
         private Timer Timer;
         private WindowsMediaPlayer FadeIn;
@@ -54,6 +56,12 @@ namespace Kleps.Frontend.Controller {
             Subtitle.settings.autoStart = false;
             Subtitle.URL = "DataRepository/Sound/StarWars.mp3";
             Subtitle.settings.volume = 100;
+
+            FaseHit = new WindowsMediaPlayer();
+            FaseHit.settings.playCount = 1;
+            FaseHit.settings.autoStart = false;
+            FaseHit.URL = "DataRepository/Sound/hit.mp3";
+            FaseHit.settings.volume = 100;
         }
         public void StartBackground() {
             Background.controls.play();
