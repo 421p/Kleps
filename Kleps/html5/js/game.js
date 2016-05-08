@@ -51,13 +51,25 @@
 
         Q.append("<p>" + data.question + "</p>");
 
-        for(var i = 0; i < data.answers.length; i++)
+        for (var i = 0; i < data.answers.length; i++)
             A.append("<p>" + (i + 1) + ") <span>" + data.answers[i] + "</span></p>");
 
         A.find("span").one("click", function () {
-            backend.getAnswer(id,$(this).text());
+            var a = backend.getAnswer(id, $(this).text());
+            if (a) AnswerAnimation("green");
+            else AnswerAnimation("red");
             backend.startEventCountingById(id)
         });
 
-    })
+    });
+
+    function AnswerAnimation(color) {
+        var tick = 150;
+        var timer = setInterval(function(){
+            $("html").css("box-shadow", "inset 0px 0px " + tick + "px 0 " + color);
+            tick--;
+            if (!tick) clearInterval(timer);
+        },1)
+        
+    }
 })

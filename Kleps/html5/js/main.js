@@ -10,7 +10,6 @@
         $(this).css({'background':'none'});
     });
     Menu.val(Menu.find("option:first").val());
-    
 
     var Music = {
         mute: backend.musicMute,
