@@ -2,3 +2,44 @@
     background: #000 url('../img/bg.png');
     background-size: cover;
 }
+
+.container-fluid{
+    display:flex;
+    flex-flow:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.game-field{
+    height:80vh;
+}
+
+#stats{
+    background: url('../img/stats.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 12em;
+    width: 38em;
+    float: left;
+}
+
+#logo{
+    background: url('../img/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 12em;
+    width: 38em;
+    float: right;
+}
+
+#hp-val{
+    display: inline-block;
+    margin-left: 13em;
+    margin-top: 2.9em;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.9em;
+}

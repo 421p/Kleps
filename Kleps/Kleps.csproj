@@ -155,7 +155,9 @@
     <None Include=".gitignore" />
     <None Include="DataRepository\Config.yaml" />
     <None Include="DataRepository\database.vova" />
-    <None Include="DataRepository\Events.yaml" />
+    <None Include="DataRepository\Events.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="html5\fonts\glyphicons-halflings-regular.eot" />
     <None Include="html5\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="html5\fonts\glyphicons-halflings-regular.woff" />
