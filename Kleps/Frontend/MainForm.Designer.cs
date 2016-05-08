@@ -69,7 +69,6 @@
             this.Name = "MainForm";
             this.Opacity = 0D;
             this.Text = "MainForm";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
             this.ResumeLayout(false);
 
