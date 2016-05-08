@@ -1,6 +1,7 @@
 ﻿body{
     background: #000 url('../img/bg.png');
     background-size: cover;
+    overflow: hidden;
 }
 
 .container-fluid{
@@ -13,6 +14,10 @@
 
 .game-field{
     height:80vh;
+}
+
+#head {
+    overflow: hidden;
 }
 
 #stats{
@@ -42,4 +47,27 @@
     color: #FFFFFF;
     font-weight: 600;
     font-size: 0.9em;
+}
+
+#hp-bar{
+    background: url('../img/hpbar.png');
+    width: 335px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 9px;
+    left: 172px;
+    background-size: cover;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+#events{
+        width: 20%;
+    height: 500px;
+}
+
+#io{
+        width: 70%;
+    height: 500px;
 }
