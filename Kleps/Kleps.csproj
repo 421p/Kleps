@@ -209,10 +209,12 @@
     <Content Include="html5\html\game.html" />
     <Content Include="html5\html\main.html" />
     <Content Include="html5\img\history.jpg" />
+    <Content Include="html5\img\hpbar.png" />
     <Content Include="html5\img\iobg.png" />
     <Content Include="html5\img\logo.png" />
     <Content Include="html5\img\namebg.jpg" />
     <Content Include="html5\img\bg.png" />
+    <Content Include="html5\img\stats.png" />
     <Content Include="html5\js\bootstrap.min.js" />
     <Content Include="html5\html\history.html" />
     <Content Include="html5\js\game.js" />
