@@ -127,7 +127,7 @@
 }
 .student{
     max-width: 280px;
-    height:70px;
+    height: 78px;
     padding: 0 15px;
     display:flex;
     flex-direction:column;

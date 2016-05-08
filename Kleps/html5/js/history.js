@@ -75,7 +75,7 @@
             }, 30000, function () {
                 $("#history").fadeOut(1000);
                 setTimeout(function () {
-                    gameInit();
+                    backend.gameInit();
                 }, 1000);
             });
         }, 500);
