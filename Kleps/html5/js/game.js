@@ -12,11 +12,12 @@
     setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());
 
-        Teacher.health.text(JSON.parse(backend.getTeacherJson()).health);
+        Teacher.health.text("HP:" + JSON.parse(backend.getTeacherJson()).health);
 
-        var html;
+        var html = '';
         for (var i in events)
-            html += '<div class="listItem"><div id="timer-' + i + '"></div></div>';
+                html += '<div class="listItem"><div id="timer-' + i + '"></div></div>';
+            
         
         output.html(html);
 

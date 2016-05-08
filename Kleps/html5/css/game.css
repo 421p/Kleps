@@ -43,8 +43,8 @@
 
 #hp-val{
     display: inline-block;
-    margin-left: 13em;
-    margin-top: 2.9em;
+    margin-left: 13.2em;
+    margin-top: 2.8em;
     color: #FFFFFF;
     font-weight: 600;
     font-size: 0.9em;
@@ -138,4 +138,15 @@
 .studentQuestion{
     font-size: 0.8em;
     color:lawngreen;
+}
+
+#teacher-name{
+    font-size: 2em;
+    color: #F7FFDE;
+    position: absolute;
+    left: 243px;
+    top: 37px;
+    border-radius: 2px 0px 7px 7px;
+    background: rgba(110, 116, 120, 0.5);
+    padding: 0 10px;
 }
