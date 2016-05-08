@@ -13,6 +13,7 @@ namespace Kleps.Frontend.Controller {
         public WindowsMediaPlayer HistoryRus { get; private set; }
 
         public WindowsMediaPlayer FaseHit { get; private set; }
+        public WindowsMediaPlayer GameBackground { get; private set; }
 
         private WindowsMediaPlayer FadeOut;
         private Timer Timer;
@@ -61,7 +62,13 @@ namespace Kleps.Frontend.Controller {
             FaseHit.settings.playCount = 1;
             FaseHit.settings.autoStart = false;
             FaseHit.URL = "DataRepository/Sound/hit.mp3";
-            FaseHit.settings.volume = 100;
+            FaseHit.settings.volume = 80;
+
+            GameBackground = new WindowsMediaPlayer();
+            GameBackground.settings.playCount = 10;
+            GameBackground.settings.autoStart = false;
+            GameBackground.URL = "DataRepository/Sound/moby.mp3";
+            GameBackground.settings.volume = 20;
         }
         public void StartBackground() {
             Background.controls.play();

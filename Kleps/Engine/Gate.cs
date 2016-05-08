@@ -45,11 +45,6 @@ namespace Kleps.Engine
             game.getEventById(id).CountStart();
         }
 
-        public void startGame(){
-            game.run();
-        }
-
-        #region Frontend
 
         #region Sound
         public void musicStart() {
@@ -71,18 +66,6 @@ namespace Kleps.Engine
             FEH.Music.FaseHit.controls.stop();
             FEH.Music.FaseHit.controls.play();
         }
-
-        #endregion Sound
-
-        #region Menu
-
-        public void menuAction(string val) {
-            FEH.Select(val);
-        }
-
-        #endregion Menu
-
-        #region Game
 
         public void startHistory() {
             FEH.Music.Fade(FEH.Music.Background, FEH.Music.Battle, 3000);
@@ -110,6 +93,23 @@ namespace Kleps.Engine
             FEH.Music.Subtitle.controls.stop();
         }
 
+        #endregion Sound
+
+        #region Menu
+
+        public void menuAction(string val) {
+            FEH.Select(val);
+        }
+
+        #endregion Menu
+
+        #region Game
+
+        public void startGame() {
+            game.run();
+            FEH.Music.GameBackground.controls.play();
+        }
+
         public void gameInit() {
             FEH.Music.MuteAll();
             FEH.LoadGame();
@@ -130,9 +130,6 @@ namespace Kleps.Engine
 
 
         #endregion Game
-
-
-        #endregion Frontend
 
 
     }
