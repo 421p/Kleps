@@ -115,6 +115,10 @@ namespace Kleps.Engine
             this.getGame().teacher.name = name;
         }
 
+        public string getEventDataById(string id) {
+            return JsonConvert.SerializeObject(game.events.Find(x => x.id == id));
+        }
+
 
         #endregion Game
 

@@ -8,6 +8,8 @@
         maxHealth: JSON.parse(backend.getTeacherJson()).health
     }
     var output = $("#events");
+    var Q = $("#question");
+    var A = $("#answer");
 
 
     Teacher.name.text(JSON.parse(backend.getTeacherJson()).name);
@@ -36,5 +38,23 @@
                 unit: 's'
             });
 
-    }, 1000 / 60);
+    }, 500);
+
+    output.delegate(".listItem", "click", function () {
+        A.html("");
+        Q.html("");
+        var id = $(this).attr("data-id");
+        var data = JSON.parse(backend.getEventDataById(id));
+        if (Object.keys(data).length < 1) return;
+
+        Q.append("<p>" + data.question + "</p>");
+
+        for(var i = 0; i < data.answers.length; i++)
+            A.append("<p>" + (i + 1) + ") <span>" + data.answers[i] + "</span></p>");
+
+        A.find("span").one("click", function () {
+            alert($(this).text());
+        });
+
+    })
 })
