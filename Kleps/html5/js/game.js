@@ -15,7 +15,10 @@
     Teacher.name.text(JSON.parse(backend.getTeacherJson()).name);
 
     var CurrHealth = Teacher.maxHealth;
+
+    //Kostil bug fixer inc®
     backend.healthSound(true);
+
     setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());
         var health = JSON.parse(backend.getTeacherJson()).health;
