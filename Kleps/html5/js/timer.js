@@ -4,38 +4,27 @@
   $.fn.timer = function (options) {
 
     var settings = $.extend({
-
-      duration: 60,
-      unit: 's'
+        studentName: "Jhon Doe",
+        question: "What is the day today?",
+        duration: 30,
+        unit: 's'
     }, options);
-
-    var updateEverySecond = 1000;
-    var updateEveryMinute = 60 * 1000;
 
     return this.each(function () {
 
-      var duration = settings.duration;
-      var unit = settings.unit;
-
-      var updateInterval;
-
-      if (unit === 'm') {
-        updateInterval = updateEveryMinute;
-      } else if (unit === 's') {
-        updateInterval = updateEverySecond;
-      } else if (unit === 'h') {
-        unit = 'm';
-        duration = duration * 60;
-        updateInterval = updateEveryMinute;
-      } else {
-        throw 'The provided unit "' + unit + '" is unsupported! Supported units are "s", "m" and "h".';
-      }
+        var studentName = settings.studentName,
+            question = settings.question,
+            duration = settings.duration,
+            unit = settings.unit;
 
       var $$ = $(this);
 
       $$.html('<div class="timer-bg"><span class="duration"></span><small class="unit"></small></div>' +
         '<div class="timer-half-container right"><div class="timer-half right"></div></div>' +
-        '<div class="timer-half-container left"><div class="timer-half left"></div></div>');
+        '<div class="timer-half-container left"><div class="timer-half left"></div></div>')
+          .parent().append('<div class="student"><span class="studentName">'+studentName+'</span>' +
+                    '<span class="studentQuestion">' + question + '</span>' +
+                '</div>');
 
       $$.addClass('timer');
       $$.find('.unit').html(unit);
