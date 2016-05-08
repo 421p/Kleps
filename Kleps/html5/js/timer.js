@@ -5,6 +5,7 @@
 
     var settings = $.extend({
         studentName: "Jhon Doe",
+        studentId : "qwe1234sadasd",
         question: "What is the day today?",
         duration: 30,
         unit: 's'
@@ -13,6 +14,7 @@
     return this.each(function () {
 
         var studentName = settings.studentName,
+            studentId = settings.studentId,
             question = settings.question,
             duration = settings.duration,
             unit = settings.unit;
@@ -30,9 +32,7 @@
       $$.find('.unit').html(unit);
 
 
-
-
-      $$.attr('data-duration', duration);
+      $$.parent().attr('data-id', studentId);
       $$.find('.duration').html(duration);
 
     });

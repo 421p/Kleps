@@ -9,6 +9,7 @@
     }
     var output = $("#events");
 
+
     Teacher.name.text(JSON.parse(backend.getTeacherJson()).name);
 
     setInterval(function () {
@@ -21,7 +22,7 @@
 
         var html = '';
         for (var i in events)
-                html += '<div class="listItem"><div id="timer-' + i + '"></div></div>';
+            html += '<div class="listItem"><div id="timer-' + i + '"></div></div>';
             
         
         output.html(html);
@@ -29,6 +30,7 @@
         for (var i in events)
             $('#timer-' + i).timer({
                 studentName: events[i].owner.name,
+                studentId: events[i].id,
                 question: events[i].question,
                 duration: events[i].lifeTime,
                 unit: 's'
