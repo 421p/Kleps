@@ -136,6 +136,7 @@
       <DependentUpon>CloseButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Frontend\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -153,6 +154,7 @@
     </EmbeddedResource>
     <None Include=".gitignore" />
     <None Include="DataRepository\Config.yaml" />
+    <None Include="DataRepository\database.vova" />
     <None Include="DataRepository\Events.yaml" />
     <None Include="html5\fonts\glyphicons-halflings-regular.eot" />
     <None Include="html5\fonts\glyphicons-halflings-regular.ttf" />

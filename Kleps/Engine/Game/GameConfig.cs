@@ -11,6 +11,9 @@ namespace Kleps.Engine.Game
         [YamlAlias("teacher")]
         public string Teacher { get; set; }
 
+        [YamlAlias("evil-student")]
+        public string EvilStudent { get; set; }
+
         [YamlAlias("students")]
         public List<string> Students { get; set; }
     }

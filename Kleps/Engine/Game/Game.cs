@@ -33,6 +33,9 @@ namespace Kleps.Engine.Game
             return events.FirstOrDefault(e => e.id == id);
         }
 
+        /// <summary>
+        /// Starts game.
+        /// </summary>
         public void run() {
             this.spawner.OnSpawn += (s, e) => {
                 this.events.Add(e.Event);
@@ -40,6 +43,9 @@ namespace Kleps.Engine.Game
             this.spawner.SpawnOn();
         }
 
+        /// <summary>
+        /// Ends game.
+        /// </summary>
         public void Over() {
             this.spawner.SpawnOff();
             this.events.ToArray().ToList().ForEach(e => e.timer.Dispose());
