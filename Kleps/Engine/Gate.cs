@@ -111,6 +111,11 @@ namespace Kleps.Engine
 
         }
 
+        public void setName(string name) {
+            this.getGame().teacher.name = name;
+        }
+
+
         #endregion Game
 
 
