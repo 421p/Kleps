@@ -14,9 +14,17 @@
 
     Teacher.name.text(JSON.parse(backend.getTeacherJson()).name);
 
+    var CurrHealth = Teacher.maxHealth;
+
     setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());
         var health = JSON.parse(backend.getTeacherJson()).health;
+
+        if (health < CurrHealth) {
+            backend.healthSound();
+            CurrHealth = health;
+        }
+            
 
         Teacher.health.text("HP:" + health);
         Teacher.healthBar.width((Teacher.healthBarWidth / 100) * ((health * 100) / Teacher.maxHealth));

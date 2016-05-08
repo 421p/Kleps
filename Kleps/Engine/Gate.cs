@@ -67,10 +67,15 @@ namespace Kleps.Engine
             FEH.Music.StartClick();
         }
 
+        public void healthSound() {
+            FEH.Music.FaseHit.controls.stop();
+            FEH.Music.FaseHit.controls.play();
+        }
+
         #endregion Sound
 
         #region Menu
-        
+
         public void menuAction(string val) {
             FEH.Select(val);
         }
