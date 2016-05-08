@@ -3,7 +3,9 @@
     var Teacher = {
         name: $("#teacher-name"),
         health: $("#hp-val"),
-        healthBar: $("#hp-bar")
+        healthBar: $("#hp-bar"),
+        healthBarWidth: $("#hp-bar").width(),
+        maxHealth: JSON.parse(backend.getTeacherJson()).health
     }
     var output = $("#events");
 
@@ -11,8 +13,11 @@
 
     setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());
+        var health = JSON.parse(backend.getTeacherJson()).health;
 
-        Teacher.health.text("HP:" + JSON.parse(backend.getTeacherJson()).health);
+        Teacher.health.text("HP:" + health);
+        Teacher.healthBar.width((Teacher.healthBarWidth / 100) * ((health * 100) / Teacher.maxHealth));
+
 
         var html = '';
         for (var i in events)
