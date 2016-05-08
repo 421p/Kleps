@@ -196,6 +196,9 @@
     <Content Include="DataRepository\Sound\eng.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DataRepository\Sound\hit.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DataRepository\Sound\rus.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -66,9 +66,18 @@
     margin-top: -130px;
 }
 #events{
-    display:inline-block;
-    width: 25%;
-    height: 500px;
+    display: inline-block;
+    width: 28%;
+    height: 445px;
+    position: relative;
+    top: 143px;
+    left: 29px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid black;
+    border-radius: 15px 0 51px 15px;
+    color: yellow;
+    float:left;
 }
 
 #io{
@@ -83,7 +92,7 @@
 #question, #answer{
     color:white;
     font-size:1.5em;
-    left: 33%;
+    left: 35%;
     width: 55%;
 }
 #question{
@@ -100,4 +109,33 @@
 
 #answer p:hover, #answer p:focus{
     background:red;
+}
+
+.timer{
+    width: 80px;
+    display: inline-block;
+}
+.listItem{
+    margin-top: 18px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+}
+.listItem:hover{
+    border-radius: 5px;
+    background: rgba(0, 255, 169, 0.12);
+}
+.student{
+    max-width: 280px;
+    height:70px;
+    padding: 0 15px;
+    display:flex;
+    flex-direction:column;
+    font-size:1.5em;
+    overflow:hidden;
+}
+
+.studentQuestion{
+    font-size: 0.8em;
+    color:lawngreen;
 }
