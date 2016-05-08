@@ -119,6 +119,10 @@ namespace Kleps.Engine
             return JsonConvert.SerializeObject(game.events.Find(x => x.id == id));
         }
 
+        public bool getAnswer(string id, string val) {
+            return this.game.getEventById(id).Resolve(val);
+        }
+
 
         #endregion Game
 

@@ -47,13 +47,16 @@
         var data = JSON.parse(backend.getEventDataById(id));
         if (Object.keys(data).length < 1) return;
 
+        backend.stopEventCountingById(id);
+
         Q.append("<p>" + data.question + "</p>");
 
         for(var i = 0; i < data.answers.length; i++)
             A.append("<p>" + (i + 1) + ") <span>" + data.answers[i] + "</span></p>");
 
         A.find("span").one("click", function () {
-            alert($(this).text());
+            backend.getAnswer(id,$(this).text());
+            backend.startEventCountingById(id)
         });
 
     })
