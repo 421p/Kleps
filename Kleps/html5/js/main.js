@@ -95,10 +95,19 @@
     function Credits(){
         Menu.hide();
         var Credit = false;
-        $("#credits").show();
+        var Credits = $("#credits");
+        Credits.show();
+        var translate = Credits.height();
+        backend.startSubtitleMusic();
+        var animate = setInterval(function () {
+            Credits.css("transform", "perspective(50px) rotateX(3deg) translate3d(0px, " + (translate--) + "px, 10px)");
+        }, 1000 / 30);
         $(document).on("keydown click", function () {
-            if(Credit){
-                $("#credits").hide();
+            if (Credit) {
+                Credits.hide();
+                backend.stopSubtitleMusic();
+                clearInterval(animate);
+                Credits.css("transform", "perspective(50px) rotateX(5deg) translate3d(0px, 0px, 10px)");
                 Menu.show();
                 $(document).off("keypress click");
                 Menu.focus();

@@ -195,6 +195,7 @@
     <Content Include="DataRepository\Sound\rus.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DataRepository\Sound\StarWars.mp3" />
     <Content Include="html5\css\bootstrap.min.css" />
     <Content Include="html5\css\history.css" />
     <Content Include="html5\css\main.css" />

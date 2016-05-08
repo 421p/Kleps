@@ -49,11 +49,11 @@ namespace Kleps.Frontend.Controller {
             Click.URL = "DataRepository/Sound/Click.mp3";
             Click.settings.volume = 100;
 
-            Click = new WindowsMediaPlayer();
-            Click.settings.playCount = 1;
-            Click.settings.autoStart = false;
-            Click.URL = "DataRepository/Sound/StarWars.mp3";
-            Click.settings.volume = 100;
+            Subtitle = new WindowsMediaPlayer();
+            Subtitle.settings.playCount = 1;
+            Subtitle.settings.autoStart = false;
+            Subtitle.URL = "DataRepository/Sound/StarWars.mp3";
+            Subtitle.settings.volume = 100;
         }
         public void StartBackground() {
             Background.controls.play();

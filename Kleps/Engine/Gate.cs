@@ -96,6 +96,15 @@ namespace Kleps.Engine
             return FEH.Music.HistoryRus.settings.mute;
         }
 
+        public void startSubtitleMusic() {
+            FEH.Music.Background.settings.mute = true;
+            FEH.Music.Subtitle.controls.play();
+        }
+        public void stopSubtitleMusic() {
+            FEH.Music.Background.settings.mute = false;
+            FEH.Music.Subtitle.controls.stop();
+        }
+
         public void gameInit() {
             FEH.Music.MuteAll();
             FEH.LoadGame();
