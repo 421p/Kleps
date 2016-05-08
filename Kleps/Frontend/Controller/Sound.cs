@@ -6,6 +6,7 @@ namespace Kleps.Frontend.Controller {
     public class Sound {
         public WindowsMediaPlayer Background { get; private set; }
         public WindowsMediaPlayer Click { get; private set; }
+        public WindowsMediaPlayer Subtitle { get; private set; }
 
         public WindowsMediaPlayer Battle { get; private set; }
         public WindowsMediaPlayer HistoryEng { get; private set; }
@@ -46,6 +47,12 @@ namespace Kleps.Frontend.Controller {
             Click.settings.playCount = 1;            
             Click.settings.autoStart = false;
             Click.URL = "DataRepository/Sound/Click.mp3";
+            Click.settings.volume = 100;
+
+            Click = new WindowsMediaPlayer();
+            Click.settings.playCount = 1;
+            Click.settings.autoStart = false;
+            Click.URL = "DataRepository/Sound/StarWars.mp3";
             Click.settings.volume = 100;
         }
         public void StartBackground() {
