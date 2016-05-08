@@ -40,7 +40,6 @@ namespace EventEditor
                 var item = EventsListBox.SelectedItem as GameEventData;
                 EventTextBox.Text = item.text;
                 AnswersListBox.DataSource = new BindingSource {DataSource = item.answers};
-                item.answers.ListChanged += (ss,ee) => MessageBox.Show("List changed!");
                 RightAnswerBox.Text = item.rightAnswer;
             };
 
@@ -55,7 +54,7 @@ namespace EventEditor
                 _eventsList.Add(new GameEventData {
                     text = "new",
                     rightAnswer = "",
-                    answers = new BindingList<string>()
+                    answers = new List<string>()
                 });
             };
 

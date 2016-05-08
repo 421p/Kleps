@@ -57,3 +57,9 @@
     text: Какой фреймворк из списка является ORM-фреймворком?
     answers: ['OpenTK', 'AForge', 'Duality', 'NHibernate']
     right_answer: 'NHibernate'
+
+-
+    type: normal
+    text: Могут ли структуры имплементить интерфейсы?
+    answers: ['Могут', 'Не могут', 'Только структурные интерфейсы']
+    right_answer: 'Могут'
