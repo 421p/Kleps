@@ -14,6 +14,7 @@
                     $("#name").css("border", "1px solid red").focus();
                 else {
                     $(document).off("keydown click");
+                    backend.setName($("#name").val());
                     startGame();
                 }
                 break;
