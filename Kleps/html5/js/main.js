@@ -101,6 +101,8 @@
         backend.startSubtitleMusic();
         var animate = setInterval(function () {
             Credits.css("transform", "perspective(50px) rotateX(3deg) translate3d(0px, " + (translate--) + "px, 10px)");
+            if (translate < -(Credits.height() * 2))
+                $(document).click();
         }, 1000 / 30);
         $(document).on("keydown click", function () {
             if (Credit) {
