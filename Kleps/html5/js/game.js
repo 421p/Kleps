@@ -58,7 +58,13 @@
     output.delegate(".listItem", "click", function () {
         A.html("");
         Q.html("");
-        var id = $(this).attr("data-id");
+
+        var id = localStorage.getItem("id");
+        if(id != null)
+            backend.startEventCountingById(id);
+
+        id = $(this).attr("data-id");
+        localStorage.setItem("id", id);
         var data = JSON.parse(backend.getEventDataById(id));
         if (Object.keys(data).length < 1) return;
 

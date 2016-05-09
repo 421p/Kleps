@@ -119,6 +119,8 @@ body > a:hover{
 
 #answer p:hover, #answer p:focus{
     background:red;
+    cursor:pointer;
+    -webkit-user-select: none;   
 }
 
 .timer{
@@ -130,6 +132,7 @@ body > a:hover{
     cursor:pointer;
     display:flex;
     align-items:center;
+    -webkit-user-select: none; 
 }
 .listItem:hover{
     border-radius: 5px;
