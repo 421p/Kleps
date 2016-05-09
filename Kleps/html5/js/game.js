@@ -79,6 +79,8 @@
             var a = backend.getAnswer(id, $(this).text());
             if (a) AnswerAnimation("green");
             else AnswerAnimation("red");
+
+            localStorage.removeItem("id");
             A.html("");
             Q.html("");
         });
