@@ -23,7 +23,7 @@ namespace Kleps.Engine.Events.Spawner
 
         public EventSpawner(Game.Game game) {
             _game = game;
-            _interval = 2000;
+            _interval = 4000;
             _chance = 40;
             YamlPath = "DataRepository/Events.yaml";
         }
@@ -51,7 +51,7 @@ namespace Kleps.Engine.Events.Spawner
 
             var ev = new GameEvent {
                 owner = student,
-                lifeTime = isEvil ? 3 : 10,
+                lifeTime = isEvil ? 4 : 30,
                 type = "question",
                 rightAnswer = eventData.rightAnswer,
                 question = eventData.text,
@@ -60,23 +60,26 @@ namespace Kleps.Engine.Events.Spawner
 
             ev.OnTimerEnds += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(isEvil ? 200 : 20);
+                _game.teacher.DecreaseHealth(isEvil ? 200 : 50);
             };
 
             ev.OnRejected += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(isEvil ? 200 : 20);
+                _game.teacher.DecreaseHealth(isEvil ? 200 : 50);
             };
 
             ev.OnAccepted += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.IncreaseHealth(20);
+                _game.teacher.IncreaseHealth(35);
             };
 
             return ev;
         }
 
-        protected void SpawnCallback(object state) {
+        protected void SpawnCallback(object state)
+        {
+            if (this._game.events.Count >= 4) return;
+
             if (new Random().Next(0, 100) < _chance) {
                 this.OnSpawn(this, new SpawnEventArgs(GenerateEvent()));
             }
