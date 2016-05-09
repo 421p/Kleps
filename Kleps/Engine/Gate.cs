@@ -90,7 +90,6 @@ namespace Kleps.Engine
             FEH.Music.HistoryRus.controls.play();
         }
         public bool historyRusSoundMute() {
-            
             return FEH.Music.HistoryRus.settings.mute = !FEH.Music.HistoryRus.settings.mute;
         }
 

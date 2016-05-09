@@ -22,20 +22,6 @@ div select{
     margin: 0 auto;
     outline: none;
 }
-#audio{
-    position: absolute;
-    color: #EC7D1C;
-    font-weight: 600;
-    font-size: 1.3em;
-    cursor: pointer;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    display: inline-block;
-    text-align: center;
-    background: rgba(100, 1, 1, 0.78);
-}
 
 #credits{
     display: none;

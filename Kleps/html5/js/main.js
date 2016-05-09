@@ -40,7 +40,8 @@
                     case "music":
                         if(Music.flag) m.text("Music: OFF");
                         else m.text("Music: ON");
-                        MusicChange();
+                        Music.mute();
+                        Music.flag = !Music.flag;
                         break;
                     case "volume":
                         switch(m.text()){
@@ -82,15 +83,6 @@
             default: return;
         }
     });
-
-    $("#audio").click(MusicChange);
-
-    function MusicChange(){
-        Music.mute();
-        if(Music.flag) $("#audio").text("Music: OFF");
-        else $("#audio").text("Music: ON");
-        Music.flag = !Music.flag;
-    }
     function MainMenu(){
         Menu.html('<option value="start">Start Game</option>' +
         '<option value="options">Options</option>' +
