@@ -104,6 +104,11 @@ namespace Kleps.Frontend.Controller {
             Battle.settings.mute = true;
             HistoryEng.settings.mute = true;
             HistoryRus.settings.mute = true;
+            Subtitle.settings.mute = true;
+            GameBackground.settings.mute = true;
+            GameOver.settings.mute = true;
+            Toasty.settings.mute = true;
+            FaseHit.settings.mute = true;
         }
 
         public void Volume(int value) {

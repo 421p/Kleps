@@ -68,6 +68,7 @@ body{
     font-size: 1.5em;
     color:red;
     -webkit-user-select: none; 
+    cursor:pointer;
 }
 
 #translate a {

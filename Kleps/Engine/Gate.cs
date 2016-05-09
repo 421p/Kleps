@@ -73,6 +73,7 @@ namespace Kleps.Engine
         }
 
         public void gameOverSound() {
+            FEH.Music.GameOver.settings.mute = false;
             FEH.Music.Fade(FEH.Music.GameBackground, FEH.Music.GameOver, 1000);
 
         }
@@ -103,6 +104,7 @@ namespace Kleps.Engine
         }
 
         public void toastySound() {
+            FEH.Music.Toasty.settings.mute = false;
             FEH.Music.Toasty.controls.stop();
             FEH.Music.Toasty.controls.play();
         }
@@ -125,6 +127,7 @@ namespace Kleps.Engine
 
         public void startGame() {
             game.run();
+            FEH.Music.GameBackground.settings.mute = false;
             FEH.Music.GameBackground.controls.play();
         }
 
