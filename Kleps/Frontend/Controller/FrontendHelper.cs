@@ -46,5 +46,11 @@ namespace Kleps.Frontend.Controller {
                 ) + @"\html5\html\game.html").Replace('\\', '/'));
         }
 
+        public void LoadStart() {
+            Browser.Load(("file:///" + System.IO.Path.GetDirectoryName(
+                System.Reflection.Assembly.GetExecutingAssembly().Location
+                ) + @"\html5\html\main.html").Replace('\\', '/'));
+        }
+
     }
 }

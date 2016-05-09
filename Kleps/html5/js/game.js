@@ -19,7 +19,7 @@
     //Kostil bug fixer inc®
     backend.healthSound(true);
 
-    setInterval(function () {
+    var game = setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());
         var health = JSON.parse(backend.getTeacherJson()).health;
         
@@ -27,6 +27,9 @@
             backend.healthSound();
             AnswerAnimation("red");
             CurrHealth = health;
+        } else if (health < 1) {
+            clearInterval(game);
+            GameOver();
         }
             
 
@@ -91,12 +94,50 @@
         $("html").css("background-color", "#000");
         body.html("");
         body.css({
-            background: "url('../img/gameover.png')",
+            background: "url('../img/gameover.jpg')",
             backgroundSize: "cover",
             overflow: "hidden",
-            opacity: 0
+            opacity: 0,
+            height: "100vh",
+            width: "100vw"
         })
         backend.gameOverSound();
+
+        function bodyTick(i) {
+            body.css("transform", "scale(1." + i + ")");
+            body.animate({ opacity: 1 }, 50, function () {
+                body.animate({ opacity: 0 }, 400)
+            });
+        }
+        setTimeout(function () {
+            bodyTick(6);
+            setTimeout(function () {
+                bodyTick(4);
+                setTimeout(function () {
+                    bodyTick(2);
+                    setTimeout(function () {
+                        bodyTick(0);
+                        setTimeout(function () {
+                            body.animate({ opacity: 1 }, 50, function () {
+                                body.animate({ opacity: 0 }, 7000, function () {
+                                    body.css({
+                                        background: "none",
+                                        opacity: 1,
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    });
+                                    body.append("<a href='#'>Game Over</a>");
+                                    body.find("a").one("click", function () {
+                                        backend.loadStart();
+                                    });
+                                });
+                            });
+                        }, 800)
+                    }, 800);
+                }, 800);
+            }, 800);
+        }, 300);
 
     }
 })

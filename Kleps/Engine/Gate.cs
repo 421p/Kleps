@@ -71,7 +71,8 @@ namespace Kleps.Engine
         }
 
         public void gameOverSound() {
-            FEH.Music.GameOver.controls.play();
+            FEH.Music.Fade(FEH.Music.GameBackground, FEH.Music.GameOver, 1000);
+
         }
 
         public void startHistory() {
@@ -114,6 +115,7 @@ namespace Kleps.Engine
 
         public void startGame() {
             game.run();
+            game.teacher.health = 10;
             FEH.Music.GameBackground.controls.play();
         }
 
@@ -133,6 +135,10 @@ namespace Kleps.Engine
 
         public bool getAnswer(string id, string val) {
             return this.game.getEventById(id).Resolve(val);
+        }
+
+        public void loadStart() {
+            FEH.LoadStart();
         }
 
 

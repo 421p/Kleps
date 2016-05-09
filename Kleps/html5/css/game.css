@@ -4,6 +4,16 @@
     overflow: hidden;
 }
 
+body > a{
+    color:white;
+    font-size:2em;
+
+}
+
+body > a:hover{
+    text-decoration:none;
+}
+
 .container-fluid{
     display:flex;
     flex-flow:column;
