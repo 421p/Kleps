@@ -76,7 +76,7 @@ namespace Kleps.Frontend.Controller {
                         this.Window.Height = 768;
                         this.Browser.Parent.Width = 1366;
                         this.Browser.Parent.Height = 768;
-                        else this.Window.SetDesktopLocation((this.ScreenWidth - this.Window.Width) / 2, (this.ScreenHeight - this.Window.Height) / 2);
+                        this.Window.SetDesktopLocation((this.ScreenWidth - this.Window.Width) / 2, (this.ScreenHeight - this.Window.Height) / 2);
                         this.Window.btnClose.Hide();
                     }));
                    
