@@ -10,17 +10,17 @@ namespace Kleps.Frontend
     {
         SplashScreen Loader;
         FrontendHelper FEH;
-        public int ScreenWidth = SystemInformation.VirtualScreen.Width;
-        public int ScreenHeight = SystemInformation.VirtualScreen.Height;
 
         public MainForm() {
-            this.Size = new Size(ScreenWidth, ScreenHeight);
-            this.WindowState = FormWindowState.Maximized;
-            InitializeComponent();
-
-
             FEH = FrontendHelper.Instance;
             FEH.Window = this;
+            FEH.ScreenWidth = SystemInformation.VirtualScreen.Width;
+            FEH.ScreenHeight = SystemInformation.VirtualScreen.Height;
+
+            this.Size = new Size(FEH.ScreenWidth, FEH.ScreenHeight);
+            this.WindowState = FormWindowState.Maximized;
+            InitializeComponent();
+            
             Loader = new SplashScreen();
             Loader.Show();
             
@@ -41,7 +41,7 @@ namespace Kleps.Frontend
 
         private void OnLoadChromeBox(object sender, EventArgs e) {
             ChromeBox.InitBrowser();
-            ChromeBox.Size = new Size(ScreenWidth, ScreenHeight);
+            ChromeBox.Size = new Size(FEH.ScreenWidth, FEH.ScreenHeight);
             ChromeBox.Location = new Point(0,0);
             ChromeBox.Browser.FrameLoadEnd += Browser_FrameLoadEnd;
             FEH.Browser = ChromeBox.Browser;

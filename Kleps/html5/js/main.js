@@ -58,6 +58,18 @@
                                 break;
                         }
                         break;
+                    case "screen":
+                        switch (m.text()) {
+                            case "Screen: FULL":
+                                backend.changeScreenSize(false);
+                                m.text("Screen: WINDOW");
+                                break;
+                            case "Screen: WINDOW":
+                                backend.changeScreenSize(true);
+                                m.text("Screen: FULL");
+                                break;
+                        }
+                        break;
                     case "credits":
                         Credits();
 
@@ -88,6 +100,7 @@
     function OptionsMenu() {
             Menu.html('<option value="music">' + (Music.flag ? "Music: ON" : "Music: OFF") + '</option>' +
         '<option value="volume">Volume: MEDIUM</option>' +
+        '<option value="screen">Screen: FULL</option>' +
         '<option value="back">Back</option>');
         }
 

@@ -113,6 +113,10 @@ namespace Kleps.Engine
 
         #region Game
 
+        public void changeScreenSize(bool state) {
+            FEH.ChangeWindowMode(state);
+        }
+
         public void startGame() {
             game.run();
             FEH.Music.GameBackground.controls.play();

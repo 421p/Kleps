@@ -68,7 +68,7 @@
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Opacity = 0D;
-            this.Text = "MainForm";
+            this.Text = "Teacher VS Zombies";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
             this.ResumeLayout(false);
 
@@ -77,7 +77,7 @@
         #endregion
 
         private ChromeBox ChromeBox;
-        private UserControls.CloseButton btnClose;
+        public UserControls.CloseButton btnClose;
     }
 }
 
