@@ -52,14 +52,7 @@ namespace Kleps.Engine.Events.Spawner
             _game.students.Remove(student);
 
             var eventData = _eventDataset.OrderBy(x => Guid.NewGuid())
-                .FirstOrDefault(x => {
-                    if (evilEvent) {
-                        return x.type == "evil";
-                    }
-                    else {
-                        return x.type == "normal";
-                    }
-                });
+                .First(x => x.type == (evilEvent ? "evil" : "normal"));
 
             var ev = new GameEvent {
                 owner = student,
