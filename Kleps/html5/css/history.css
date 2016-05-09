@@ -67,11 +67,13 @@ body{
     text-align: center;
     font-size: 1.5em;
     color:red;
+    -webkit-user-select: none; 
 }
 
 #translate a {
     cursor:pointer;
     color: red;
     text-decoration: none;
+    -webkit-user-select: none; 
 }
 
