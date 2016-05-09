@@ -70,6 +70,10 @@ namespace Kleps.Engine
             FEH.Music.FaseHit.controls.play();
         }
 
+        public void gameOverSound() {
+            FEH.Music.GameOver.controls.play();
+        }
+
         public void startHistory() {
             FEH.Music.Fade(FEH.Music.Background, FEH.Music.Battle, 3000);
         }

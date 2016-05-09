@@ -85,4 +85,18 @@
         },1)
         
     }
+
+    function GameOver() {
+        var body = $("body");
+        $("html").css("background-color", "#000");
+        body.html("");
+        body.css({
+            background: "url('../img/gameover.png')",
+            backgroundSize: "cover",
+            overflow: "hidden",
+            opacity: 0
+        })
+        backend.gameOverSound();
+
+    }
 })
