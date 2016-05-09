@@ -23,7 +23,7 @@ namespace Kleps.Engine.Events.Spawner
 
         public EventSpawner(Game.Game game) {
             _game = game;
-            _interval = 4000;
+            _interval = 1488;
             _chance = 40;
             YamlPath = "DataRepository/Events.yaml";
         }
@@ -51,7 +51,7 @@ namespace Kleps.Engine.Events.Spawner
 
             var ev = new GameEvent {
                 owner = student,
-                lifeTime = isEvil ? 4 : 30,
+                lifeTime = isEvil ? 7 : 30,
                 type = "question",
                 rightAnswer = eventData.rightAnswer,
                 question = eventData.text,
