@@ -10,6 +10,7 @@
     var output = $("#events");
     var Q = $("#question");
     var A = $("#answer");
+    var evil = $("#evil");
 
 
     Teacher.name.text(JSON.parse(backend.getTeacherJson()).name);
@@ -18,7 +19,7 @@
 
     //Kostil bug fixer inc®
     backend.healthSound(true);
-
+    var tos = '';
     var game = setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());
         var health = JSON.parse(backend.getTeacherJson()).health;
@@ -38,13 +39,15 @@
 
 
         var html = '';
-        for (var i in events)
-            html += '<div class="listItem"><div id="timer-' + i + '"></div></div>';
+        for (var i in events) {
+            html += '<div class="listItem"><div id="timer-' + i + '"></div></div>'; 
+        }
+            
             
         
         output.html(html);
 
-        for (var i in events)
+        for (var i in events) {
             $('#timer-' + i).timer({
                 studentName: events[i].owner.name,
                 studentId: events[i].id,
@@ -52,6 +55,12 @@
                 duration: events[i].lifeTime,
                 unit: 's'
             });
+            if (backend.isEvil(events[i].id) && tos != events[i].id) {
+                tos = events[i].id;
+                Toasty('#timer-' + i);
+            }
+        }
+            
 
     }, 500);
 
@@ -95,6 +104,16 @@
             if (!tick) clearInterval(timer);
         },1)
         
+    }
+
+    function Toasty(id) {
+        backend.toastySound();
+        evil.css("top", $(id).offset().top);
+        evil.animate({ left: 0 }, 500, function () {
+            setTimeout(function () {
+                evil.animate({ left: -100 }, 500)
+            }, 500);
+        });
     }
 
     function GameOver() {

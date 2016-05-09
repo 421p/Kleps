@@ -47,6 +47,8 @@ namespace Kleps.Engine
 
 
         #region Sound
+
+
         public void musicStart() {
             FEH.MusicStart();
             FEH.Music.Volume(10);
@@ -101,6 +103,11 @@ namespace Kleps.Engine
             FEH.Music.Subtitle.controls.stop();
         }
 
+        public void toastySound() {
+            FEH.Music.Toasty.controls.stop();
+            FEH.Music.Toasty.controls.play();
+        }
+
         #endregion Sound
 
         #region Menu
@@ -142,6 +149,10 @@ namespace Kleps.Engine
 
         public void loadStart() {
             FEH.LoadStart();
+        }
+
+        public bool isEvil(string id) {
+            return game.getEventById(id).owner.name == game.Config.Names.EvilStudent;
         }
 
 

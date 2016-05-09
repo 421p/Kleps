@@ -14,6 +14,7 @@ namespace Kleps.Frontend.Controller {
 
         public WindowsMediaPlayer FaseHit { get; private set; }
         public WindowsMediaPlayer GameBackground { get; private set; }
+        public WindowsMediaPlayer Toasty { get; private set; }
 
         public WindowsMediaPlayer GameOver { get; private set; }
 
@@ -77,6 +78,12 @@ namespace Kleps.Frontend.Controller {
             GameOver.settings.autoStart = false;
             GameOver.URL = "DataRepository/Sound/heartstop.mp3";
             GameOver.settings.volume = 80;
+
+            Toasty = new WindowsMediaPlayer();
+            Toasty.settings.playCount = 1;
+            Toasty.settings.autoStart = false;
+            Toasty.URL = "DataRepository/Sound/toasty.mp3";
+            Toasty.settings.volume = 90;
         }
         public void StartBackground() {
             Background.controls.play();
