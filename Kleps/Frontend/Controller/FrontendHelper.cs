@@ -59,25 +59,23 @@ namespace Kleps.Frontend.Controller {
             switch (state) {
                 case true:
                     this.Window.BeginInvoke(new Action(() => {
+                        this.Window.FormBorderStyle = FormBorderStyle.None;
+                        this.Window.WindowState = FormWindowState.Maximized;
                         this.Window.Width = ScreenWidth;
                         this.Window.Height = ScreenHeight;
                         this.Browser.Parent.Width = this.Window.Width;
                         this.Browser.Parent.Height = this.Window.Height;
-                        this.Window.FormBorderStyle = FormBorderStyle.None;
-                        this.Window.WindowState = FormWindowState.Maximized;
                         this.Window.btnClose.Show();
                     }));
                     break;
                 case false:
                     this.Window.BeginInvoke(new Action(() => {
+                        this.Window.FormBorderStyle = FormBorderStyle.FixedSingle;
+                        this.Window.WindowState = FormWindowState.Normal;
                         this.Window.Width = 1366;
                         this.Window.Height = 768;
                         this.Browser.Parent.Width = 1366;
                         this.Browser.Parent.Height = 768;
-                        this.Window.FormBorderStyle = FormBorderStyle.FixedSingle;
-                        this.Window.WindowState = FormWindowState.Normal;
-                        if(ScreenWidth <= 1366)
-                            this.Window.SetDesktopLocation(0, 0);
                         else this.Window.SetDesktopLocation((this.ScreenWidth - this.Window.Width) / 2, (this.ScreenHeight - this.Window.Height) / 2);
                         this.Window.btnClose.Hide();
                     }));
