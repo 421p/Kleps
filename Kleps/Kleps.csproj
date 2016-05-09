@@ -196,6 +196,7 @@
     <Content Include="DataRepository\Sound\eng.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DataRepository\Sound\heartstop.mp3" />
     <Content Include="DataRepository\Sound\hit.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -214,6 +215,7 @@
     <Content Include="html5\css\game.css" />
     <Content Include="html5\html\game.html" />
     <Content Include="html5\html\main.html" />
+    <Content Include="html5\img\gameover.jpg" />
     <Content Include="html5\img\history.jpg" />
     <Content Include="html5\img\hpbar.png" />
     <Content Include="html5\img\iobg.png" />
