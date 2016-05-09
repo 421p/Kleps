@@ -70,7 +70,8 @@
             var a = backend.getAnswer(id, $(this).text());
             if (a) AnswerAnimation("green");
             else AnswerAnimation("red");
-            backend.startEventCountingById(id)
+            A.html("");
+            Q.html("");
         });
 
     });

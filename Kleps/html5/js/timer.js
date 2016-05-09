@@ -31,7 +31,7 @@
       $$.addClass('timer');
       $$.find('.unit').html(unit);
 
-
+      $$.attr('data-duration', duration);
       $$.parent().attr('data-id', studentId);
       $$.find('.duration').html(duration);
 
