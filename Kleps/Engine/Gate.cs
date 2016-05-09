@@ -45,13 +45,10 @@ namespace Kleps.Engine
             game.getEventById(id).CountStart();
         }
 
-        public void startGame(){
-            game.run();
-        }
-
-        #region Frontend
 
         #region Sound
+
+
         public void musicStart() {
             FEH.MusicStart();
             FEH.Music.Volume(10);
@@ -67,17 +64,18 @@ namespace Kleps.Engine
             FEH.Music.StartClick();
         }
 
-        #endregion Sound
-
-        #region Menu
-        
-        public void menuAction(string val) {
-            FEH.Select(val);
+        public void healthSound(bool mute = false) {
+            if (mute)
+                FEH.Music.FaseHit.settings.mute = true;
+            else FEH.Music.FaseHit.settings.mute = false;
+            FEH.Music.FaseHit.controls.stop();
+            FEH.Music.FaseHit.controls.play();
         }
 
-        #endregion Menu
+        public void gameOverSound() {
+            FEH.Music.Fade(FEH.Music.GameBackground, FEH.Music.GameOver, 1000);
 
-        #region Game
+        }
 
         public void startHistory() {
             FEH.Music.Fade(FEH.Music.Background, FEH.Music.Battle, 3000);
@@ -96,10 +94,69 @@ namespace Kleps.Engine
             return FEH.Music.HistoryRus.settings.mute;
         }
 
+        public void startSubtitleMusic() {
+            FEH.Music.Background.settings.mute = true;
+            FEH.Music.Subtitle.controls.play();
+        }
+        public void stopSubtitleMusic() {
+            FEH.Music.Background.settings.mute = false;
+            FEH.Music.Subtitle.controls.stop();
+        }
+
+        public void toastySound() {
+            FEH.Music.Toasty.controls.stop();
+            FEH.Music.Toasty.controls.play();
+        }
+
+        #endregion Sound
+
+        #region Menu
+
+        public void menuAction(string val) {
+            FEH.Select(val);
+        }
+
+        #endregion Menu
+
+        #region Game
+
+        public void changeScreenSize(bool state) {
+            FEH.ChangeWindowMode(state);
+        }
+
+        public void startGame() {
+            game.run();
+            FEH.Music.GameBackground.controls.play();
+        }
+
+        public void gameInit() {
+            FEH.Music.MuteAll();
+            FEH.LoadGame();
+
+        }
+
+        public void setName(string name) {
+            this.getGame().teacher.name = name;
+        }
+
+        public string getEventDataById(string id) {
+            return JsonConvert.SerializeObject(game.events.Find(x => x.id == id));
+        }
+
+        public bool getAnswer(string id, string val) {
+            return this.game.getEventById(id).Resolve(val);
+        }
+
+        public void loadStart() {
+            FEH.LoadStart();
+        }
+
+        public bool isEvil(string id) {
+            return game.getEventById(id).owner.name == game.Config.Names.EvilStudent;
+        }
+
+
         #endregion Game
-
-
-        #endregion Frontend
 
 
     }

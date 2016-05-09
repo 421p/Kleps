@@ -24,14 +24,14 @@ hello world <br/><br/>
                 var events = JSON.parse(backend.getGameEventsJson());
                 var teacher = JSON.parse(backend.getTeacherJson());
 
-                var html = teacher.name + "'s hp: " + teacher._health + "<br>";
+                var html = teacher.name + "'s hp: " + teacher.health + "<br>";
                 for (var i in events) {
                     html += '[' + events[i].lifeTime + '] ' + events[i].owner.name + "<br>" +
                         events[i].question + "<br>";
                 }
 
                 $("output").html(html);
-            }, 100);
+            }, 1000/60);
         });
     });
 </script>

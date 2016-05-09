@@ -10,7 +10,6 @@
         $(this).css({'background':'none'});
     });
     Menu.val(Menu.find("option:first").val());
-    
 
     var Music = {
         mute: backend.musicMute,
@@ -59,6 +58,18 @@
                                 break;
                         }
                         break;
+                    case "screen":
+                        switch (m.text()) {
+                            case "Screen: FULL":
+                                backend.changeScreenSize(false);
+                                m.text("Screen: WINDOW");
+                                break;
+                            case "Screen: WINDOW":
+                                backend.changeScreenSize(true);
+                                m.text("Screen: FULL");
+                                break;
+                        }
+                        break;
                     case "credits":
                         Credits();
 
@@ -89,16 +100,28 @@
     function OptionsMenu() {
             Menu.html('<option value="music">' + (Music.flag ? "Music: ON" : "Music: OFF") + '</option>' +
         '<option value="volume">Volume: MEDIUM</option>' +
+        '<option value="screen">Screen: FULL</option>' +
         '<option value="back">Back</option>');
         }
 
     function Credits(){
         Menu.hide();
         var Credit = false;
-        $("#credits").show();
+        var Credits = $("#credits");
+        Credits.show();
+        var translate = Credits.height();
+        backend.startSubtitleMusic();
+        var animate = setInterval(function () {
+            Credits.css("transform", "perspective(50px) rotateX(3deg) translate3d(0px, " + (translate--) + "px, 10px)");
+            if (translate < -(Credits.height() * 2))
+                $(document).click();
+        }, 1000 / 30);
         $(document).on("keydown click", function () {
-            if(Credit){
-                $("#credits").hide();
+            if (Credit) {
+                Credits.hide();
+                backend.stopSubtitleMusic();
+                clearInterval(animate);
+                Credits.css("transform", "perspective(50px) rotateX(5deg) translate3d(0px, 0px, 10px)");
                 Menu.show();
                 $(document).off("keypress click");
                 Menu.focus();

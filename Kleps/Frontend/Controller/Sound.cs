@@ -6,10 +6,17 @@ namespace Kleps.Frontend.Controller {
     public class Sound {
         public WindowsMediaPlayer Background { get; private set; }
         public WindowsMediaPlayer Click { get; private set; }
+        public WindowsMediaPlayer Subtitle { get; private set; }
 
         public WindowsMediaPlayer Battle { get; private set; }
         public WindowsMediaPlayer HistoryEng { get; private set; }
         public WindowsMediaPlayer HistoryRus { get; private set; }
+
+        public WindowsMediaPlayer FaseHit { get; private set; }
+        public WindowsMediaPlayer GameBackground { get; private set; }
+        public WindowsMediaPlayer Toasty { get; private set; }
+
+        public WindowsMediaPlayer GameOver { get; private set; }
 
         private WindowsMediaPlayer FadeOut;
         private Timer Timer;
@@ -47,6 +54,36 @@ namespace Kleps.Frontend.Controller {
             Click.settings.autoStart = false;
             Click.URL = "DataRepository/Sound/Click.mp3";
             Click.settings.volume = 100;
+
+            Subtitle = new WindowsMediaPlayer();
+            Subtitle.settings.playCount = 1;
+            Subtitle.settings.autoStart = false;
+            Subtitle.URL = "DataRepository/Sound/StarWars.mp3";
+            Subtitle.settings.volume = 100;
+
+            FaseHit = new WindowsMediaPlayer();
+            FaseHit.settings.playCount = 1;
+            FaseHit.settings.autoStart = false;
+            FaseHit.URL = "DataRepository/Sound/hit.mp3";
+            FaseHit.settings.volume = 80;
+
+            GameBackground = new WindowsMediaPlayer();
+            GameBackground.settings.playCount = 10;
+            GameBackground.settings.autoStart = false;
+            GameBackground.URL = "DataRepository/Sound/moby.mp3";
+            GameBackground.settings.volume = 20;
+
+            GameOver = new WindowsMediaPlayer();
+            GameOver.settings.playCount = 1;
+            GameOver.settings.autoStart = false;
+            GameOver.URL = "DataRepository/Sound/heartstop.mp3";
+            GameOver.settings.volume = 80;
+
+            Toasty = new WindowsMediaPlayer();
+            Toasty.settings.playCount = 1;
+            Toasty.settings.autoStart = false;
+            Toasty.URL = "DataRepository/Sound/toasty.mp3";
+            Toasty.settings.volume = 90;
         }
         public void StartBackground() {
             Background.controls.play();

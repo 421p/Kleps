@@ -155,7 +155,9 @@
     <None Include=".gitignore" />
     <None Include="DataRepository\Config.yaml" />
     <None Include="DataRepository\database.vova" />
-    <None Include="DataRepository\Events.yaml" />
+    <None Include="DataRepository\Events.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="html5\fonts\glyphicons-halflings-regular.eot" />
     <None Include="html5\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="html5\fonts\glyphicons-halflings-regular.woff" />
@@ -194,22 +196,42 @@
     <Content Include="DataRepository\Sound\eng.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DataRepository\Sound\heartstop.mp3" />
+    <Content Include="DataRepository\Sound\hit.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataRepository\Sound\moby.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DataRepository\Sound\rus.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DataRepository\Sound\StarWars.mp3" />
+    <Content Include="DataRepository\Sound\toasty.mp3" />
     <Content Include="html5\css\bootstrap.min.css" />
-    <Content Include="html5\css\game.css" />
+    <Content Include="html5\css\history.css" />
     <Content Include="html5\css\main.css" />
+    <Content Include="html5\css\timer.css" />
     <Content Include="html5\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="html5\css\game.css" />
+    <Content Include="html5\html\game.html" />
     <Content Include="html5\html\main.html" />
+    <Content Include="html5\img\gameover.jpg" />
     <Content Include="html5\img\history.jpg" />
+    <Content Include="html5\img\hpbar.png" />
+    <Content Include="html5\img\iobg.png" />
+    <Content Include="html5\img\logo.png" />
     <Content Include="html5\img\namebg.jpg" />
     <Content Include="html5\img\bg.png" />
+    <Content Include="html5\img\stats.png" />
+    <Content Include="html5\img\toasty.png" />
     <Content Include="html5\js\bootstrap.min.js" />
-    <Content Include="html5\html\game.html" />
+    <Content Include="html5\html\history.html" />
     <Content Include="html5\js\game.js" />
+    <Content Include="html5\js\history.js" />
     <Content Include="html5\js\jquery.min.js" />
     <Content Include="html5\js\main.js" />
+    <Content Include="html5\js\timer.js" />
     <None Include="Resources\close-hover.png" />
     <None Include="Resources\close-down.png" />
     <None Include="Resources\close.png" />

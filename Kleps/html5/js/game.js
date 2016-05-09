@@ -1,79 +1,170 @@
 ﻿$(function () {
-    //start Enter Name
-    $("#name").focus();
-    $(document).on("keydown click", function (e) {
-        switch (e.which) {
-            case 38:
-                $("#name").focus();
-                break;
-            case 40:
-                $("#accept a").focus();
-                break;
-            case 13:
-                if ($("#name").val().length < 1)
-                    $("#name").css("border", "1px solid red").focus();
-                else {
-                    $(document).off("keydown click");
-                    startGame();
-                }
-                break;
-            default:
-                $("#name").css("border", "none");
-                break;
+    backend.startGame();
+    var Teacher = {
+        name: $("#teacher-name"),
+        health: $("#hp-val"),
+        healthBar: $("#hp-bar"),
+        healthBarWidth: $("#hp-bar").width(),
+        maxHealth: JSON.parse(backend.getTeacherJson()).health
+    }
+    var output = $("#events");
+    var Q = $("#question");
+    var A = $("#answer");
+    var evil = $("#evil");
+
+
+    Teacher.name.text(JSON.parse(backend.getTeacherJson()).name);
+
+    var CurrHealth = Teacher.maxHealth;
+
+    //Kostil bug fixer inc®
+    backend.healthSound(true);
+    var tos = '';
+    var game = setInterval(function () {
+        var events = JSON.parse(backend.getGameEventsJson());
+        var health = JSON.parse(backend.getTeacherJson()).health;
+        
+        if (health < CurrHealth) {
+            backend.healthSound();
+            AnswerAnimation("red");
+            CurrHealth = health;
+        } else if (health < 1) {
+            clearInterval(game);
+            GameOver();
         }
-        if ($("#accept a").is(":focus")) {
-            switch (e.which) {
-                case 1:
-                case 13:
-                case 32:
-                    if ($("#name").val().length < 1)
-                        $("#name").css("border","1px solid red").focus();
-                    else {
-                        $(document).off("keydown click");
-                        startGame();
-                    }
-                    break;
+            
+
+        Teacher.health.text("HP:" + health);
+        Teacher.healthBar.width((Teacher.healthBarWidth / 100) * ((health * 100) / Teacher.maxHealth));
+
+
+        var html = '';
+        for (var i in events) {
+            html += '<div class="listItem"><div id="timer-' + i + '"></div></div>'; 
+        }
+            
+            
+        
+        output.html(html);
+
+        for (var i in events) {
+            $('#timer-' + i).timer({
+                studentName: events[i].owner.name,
+                studentId: events[i].id,
+                question: events[i].question,
+                duration: events[i].lifeTime,
+                unit: 's'
+            });
+            if (backend.isEvil(events[i].id) && tos != events[i].id) {
+                tos = events[i].id;
+                Toasty('#timer-' + i);
             }
         }
-    });
-    //end Enter Name
+            
 
-    //start Game
-    $("body").delegate("#translate", "click", function () {
-        var state = backend.historyRusSoundMute();
-        if(!state)
-            $(this).text("Russian: ON");
-        else $(this).text("Russian: OFF");
+    }, 500);
+
+    output.delegate(".listItem", "click", function () {
+        A.html("");
+        Q.html("");
+
+        var id = localStorage.getItem("id");
+        if(id != null)
+            backend.startEventCountingById(id);
+
+        id = $(this).attr("data-id");
+        localStorage.setItem("id", id);
+        var data = JSON.parse(backend.getEventDataById(id));
+        if (Object.keys(data).length < 1) return;
+
+        backend.stopEventCountingById(id);
+
+        Q.append("<p>" + data.question + "</p>");
+
+        for (var i = 0; i < data.answers.length; i++)
+            A.append("<p>" + (i + 1) + ") <span>" + data.answers[i] + "</span></p>");
+
+        A.find("span").one("click", function () {
+            var a = backend.getAnswer(id, $(this).text());
+            if (a) AnswerAnimation("green");
+            else AnswerAnimation("red");
+
+            localStorage.removeItem("id");
+            A.html("");
+            Q.html("");
+        });
+
     });
-    function startGame() {
-        $(".container").html('<div class="col-md-12 game-container"><output id="subtitle"></output><output id="translate"><a href="#">Russian: OFF</a></output></div>');
-        $("body").css("background", "#000");
-        $("#history").fadeIn(1000);
-        setTimeout(function () {
-            setTimeout(function () {
-                backend.startHistory();
-                setTimeout(function () {
-                    backend.historyRusSound();
-                    backend.historyEngSound();
-                    setTimeout(function () {
-                        $("#subtitle").html("Once upon a time, all students became a zombies...");
-                        setTimeout(function () {
-                            $("#subtitle").html("But not that type of zombies what you thinking about.");
-                            setTimeout(function () {
-                                $("#subtitle").html("They should get an answers on their questions....or you will die.");
-                            }, 4000);
-                        }, 4000);
-                    }, 500);
-                }, 2000);
-                
-            }, 1500);
-            $("#history").animate({
-                marginLeft: '-=650px'
-            }, 32000, function () {
-                $("#history").fadeOut(1000);
-            });
-        }, 500);
+
+    function AnswerAnimation(color) {
+        var tick = 150;
+        var timer = setInterval(function(){
+            $("html").css("box-shadow", "inset 0px 0px " + tick + "px 0 " + color);
+            tick--;
+            if (!tick) clearInterval(timer);
+        },1)
+        
     }
 
-    //end Game
+    function Toasty(id) {
+        backend.toastySound();
+        evil.css("top", $(id).offset().top);
+        evil.animate({ left: 0 }, 500, function () {
+            setTimeout(function () {
+                evil.animate({ left: -100 }, 500)
+            }, 500);
+        });
+    }
+
+    function GameOver() {
+        var body = $("body");
+        $("html").css("background-color", "#000");
+        body.html("");
+        body.css({
+            background: "url('../img/gameover.jpg')",
+            backgroundSize: "cover",
+            overflow: "hidden",
+            opacity: 0,
+            height: "100vh",
+            width: "100vw"
+        })
+        backend.gameOverSound();
+
+        function bodyTick(i) {
+            body.css("transform", "scale(1." + i + ")");
+            body.animate({ opacity: 1 }, 50, function () {
+                body.animate({ opacity: 0 }, 400)
+            });
+        }
+        setTimeout(function () {
+            bodyTick(6);
+            setTimeout(function () {
+                bodyTick(4);
+                setTimeout(function () {
+                    bodyTick(2);
+                    setTimeout(function () {
+                        bodyTick(0);
+                        setTimeout(function () {
+                            body.animate({ opacity: 1 }, 50, function () {
+                                body.animate({ opacity: 0 }, 7000, function () {
+                                    body.css({
+                                        background: "none",
+                                        opacity: 1,
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    });
+                                    body.append("<a href='#'>Game Over</a>");
+                                    body.find("a").one("click", function () {
+                                        backend.loadStart();
+                                    });
+                                });
+                            });
+                        }, 800)
+                    }, 800);
+                }, 800);
+            }, 800);
+        }, 300);
+
+    }
 })
