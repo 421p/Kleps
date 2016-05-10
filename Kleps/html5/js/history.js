@@ -41,11 +41,13 @@
     //end Enter Name
 
     //start History
+    var state = false;
     $("body").delegate("#translate", "click", function () {
-        var state = backend.historyRusSoundMute();
+        backend.historyRusSoundMute();
         if(!state)
             $(this).text("Russian: ON");
         else $(this).text("Russian: OFF");
+        state = !state;
     });
     function startGame() {
         $(document).one("keydown", function () {

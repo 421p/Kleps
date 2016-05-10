@@ -88,8 +88,8 @@ namespace Kleps.Engine
             this.historyRusSoundMute();
             FEH.Music.HistoryRus.controls.play();
         }
-        public bool historyRusSoundMute() {
-            return FEH.Music.HistoryRus.settings.mute = !FEH.Music.HistoryRus.settings.mute;
+        public void historyRusSoundMute() {
+            FEH.Music.HistoryRus.settings.mute = !FEH.Music.HistoryRus.settings.mute;
         }
 
         public void startSubtitleMusic() {
