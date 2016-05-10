@@ -1,6 +1,4 @@
-﻿$(function () {
-    var ROOT = window.location.href;
-    
+﻿$(function () {    
     var Menu = $('#menu');
     MainMenu();
     Menu.on('mouseenter', 'option', function(e) {
@@ -10,6 +8,7 @@
         $(this).css({'background':'none'});
     });
     Menu.val(Menu.find("option:first").val());
+    Menu.focus();
 
     var Music = {
         mute: backend.musicMute,
@@ -40,7 +39,8 @@
                     case "music":
                         if(Music.flag) m.text("Music: OFF");
                         else m.text("Music: ON");
-                        MusicChange();
+                        Music.mute();
+                        Music.flag = !Music.flag;
                         break;
                     case "volume":
                         switch(m.text()){
@@ -82,17 +82,8 @@
             default: return;
         }
     });
-
-    $("#audio").click(MusicChange);
-
-    function MusicChange(){
-        Music.mute();
-        if(Music.flag) $("#audio").text("Music: OFF");
-        else $("#audio").text("Music: ON");
-        Music.flag = !Music.flag;
-    }
     function MainMenu(){
-        Menu.html('<option value="start">Start Game</option>' +
+        Menu.html('<option value="start" >Start Game</option>' +
         '<option value="options">Options</option>' +
         '<option value="credits">Credits</option>' +
         '<option value="exit">Exit</option>');

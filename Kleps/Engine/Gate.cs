@@ -61,18 +61,17 @@ namespace Kleps.Engine
         }
 
         public void musicClick() {
-            FEH.Music.StartClick();
+            FEH.Music.Click.controls.stop();
+            FEH.Music.Click.controls.play();
         }
 
-        public void healthSound(bool mute = false) {
-            if (mute)
-                FEH.Music.FaseHit.settings.mute = true;
-            else FEH.Music.FaseHit.settings.mute = false;
+        public void healthSound() {
             FEH.Music.FaseHit.controls.stop();
-            FEH.Music.FaseHit.controls.play();
+            FEH.Music.FaseHit.controls.play();     
         }
 
         public void gameOverSound() {
+            FEH.Music.GameOver.settings.mute = false;
             FEH.Music.Fade(FEH.Music.GameBackground, FEH.Music.GameOver, 1000);
 
         }
@@ -89,9 +88,8 @@ namespace Kleps.Engine
             this.historyRusSoundMute();
             FEH.Music.HistoryRus.controls.play();
         }
-        public bool historyRusSoundMute() {
+        public void historyRusSoundMute() {
             FEH.Music.HistoryRus.settings.mute = !FEH.Music.HistoryRus.settings.mute;
-            return FEH.Music.HistoryRus.settings.mute;
         }
 
         public void startSubtitleMusic() {
@@ -110,15 +108,12 @@ namespace Kleps.Engine
 
         #endregion Sound
 
-        #region Menu
+
+        #region Game
 
         public void menuAction(string val) {
             FEH.Select(val);
         }
-
-        #endregion Menu
-
-        #region Game
 
         public void changeScreenSize(bool state) {
             FEH.ChangeWindowMode(state);
@@ -126,21 +121,22 @@ namespace Kleps.Engine
 
         public void startGame() {
             game.run();
+            FEH.Music.GameBackground.settings.mute = false;
+            FEH.Music.FaseHit.settings.mute = false;
             FEH.Music.GameBackground.controls.play();
         }
 
         public void gameInit() {
-            FEH.Music.MuteAll();
+            FEH.Music.StopPreGameSound();
             FEH.LoadGame();
-
         }
 
         public void setName(string name) {
-            this.getGame().teacher.name = name;
+            this.getGame().teacher.name = name.Substring(0, name.Length > 16 ? 16 : name.Length).Trim();
         }
 
         public string getEventDataById(string id) {
-            return JsonConvert.SerializeObject(game.events.Find(x => x.id == id));
+            return JsonConvert.SerializeObject(game.getEventById(id));
         }
 
         public bool getAnswer(string id, string val) {
