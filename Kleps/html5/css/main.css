@@ -43,6 +43,7 @@ div select{
 }
 
 #credits span {
+    font-size: 0.8em;
     text-transform:uppercase;
     color: #6999F1;
 }
