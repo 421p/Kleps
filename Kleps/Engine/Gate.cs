@@ -135,7 +135,7 @@ namespace Kleps.Engine
         }
 
         public void setName(string name) {
-            this.getGame().teacher.name = name;
+            this.getGame().teacher.name = name.Substring(0, 16).Trim();
         }
 
         public string getEventDataById(string id) {
