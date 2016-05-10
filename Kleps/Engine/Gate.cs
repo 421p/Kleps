@@ -151,7 +151,6 @@ namespace Kleps.Engine
             return game.getEventById(id).owner.name == game.Config.Names.EvilStudent;
         }
 
-
         #endregion Game
 
 

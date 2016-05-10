@@ -99,8 +99,10 @@
         Menu.hide();
         var Credit = false;
         var Credits = $("#credits");
+        $("#overlay").css("display", "block").animate({ opacity: 1 }, 10000);
+        $("body").css("cursor", "none");
         Credits.show();
-        var translate = $(window).height() + 500;
+        var translate = $(window).height() + 300;
         backend.startSubtitleMusic();
         var animate = setInterval(function () {
             Credits.css("transform", "perspective(50px) rotateX(3deg) translate3d(0px, " + (translate--) + "px, 10px)");
@@ -115,6 +117,11 @@
                 Credits.css("transform", "perspective(50px) rotateX(5deg) translate3d(0px, 0px, 10px)");
                 Menu.show();
                 $(document).off("keypress click");
+                $("#overlay").css({
+                    display: "none",
+                    opacity: 0
+                });
+                $("body").css("cursor", "auto");
                 Menu.focus();
             }
             Credit = true;
