@@ -65,12 +65,9 @@ namespace Kleps.Engine
             FEH.Music.Click.controls.play();
         }
 
-        public void healthSound(bool mute = false) {
-            if (mute)
-                FEH.Music.FaseHit.settings.mute = true;
-            else FEH.Music.FaseHit.settings.mute = false;
+        public void healthSound() {
             FEH.Music.FaseHit.controls.stop();
-            FEH.Music.FaseHit.controls.play();
+            FEH.Music.FaseHit.controls.play();     
         }
 
         public void gameOverSound() {
@@ -105,7 +102,6 @@ namespace Kleps.Engine
         }
 
         public void toastySound() {
-            FEH.Music.Toasty.settings.mute = false;
             FEH.Music.Toasty.controls.stop();
             FEH.Music.Toasty.controls.play();
         }
@@ -126,11 +122,12 @@ namespace Kleps.Engine
         public void startGame() {
             game.run();
             FEH.Music.GameBackground.settings.mute = false;
+            FEH.Music.FaseHit.settings.mute = false;
             FEH.Music.GameBackground.controls.play();
         }
 
         public void gameInit() {
-            FEH.Music.MuteAll();
+            FEH.Music.StopPreGameSound();
             FEH.LoadGame();
         }
 

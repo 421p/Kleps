@@ -17,8 +17,6 @@
 
     var CurrHealth = Teacher.maxHealth;
 
-    //Kostil bug fixer inc®
-    backend.healthSound(true);
     var tos = '';
     var game = setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());

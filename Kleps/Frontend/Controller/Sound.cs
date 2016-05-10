@@ -65,6 +65,8 @@ namespace Kleps.Frontend.Controller {
             FaseHit.settings.playCount = 1;
             FaseHit.settings.autoStart = false;
             FaseHit.URL = "DataRepository/Sound/hit.mp3";
+            FaseHit.settings.mute = true;
+            FaseHit.controls.play();
             FaseHit.settings.volume = 80;
 
             GameBackground = new WindowsMediaPlayer();
@@ -89,6 +91,15 @@ namespace Kleps.Frontend.Controller {
         public void Mute() {
             Click.settings.mute = !Click.settings.mute;
             Background.settings.mute = !Background.settings.mute;
+        }
+
+        public void StopPreGameSound() {
+            Background.controls.stop();
+            Click.controls.stop();
+            Battle.controls.stop();
+            HistoryEng.controls.stop();
+            HistoryRus.controls.stop();
+            Subtitle.controls.stop();
         }
 
         public void MuteAll() {
