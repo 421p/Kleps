@@ -27,7 +27,7 @@ namespace Kleps.Frontend.Controller {
 
         public void MusicStart() {
             Music = new Sound();
-            Music.StartBackground();
+            Music.Background.controls.play();
         }
 
         public void Select(string val) {

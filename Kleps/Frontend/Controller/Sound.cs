@@ -19,8 +19,8 @@ namespace Kleps.Frontend.Controller {
         public WindowsMediaPlayer GameOver { get; private set; }
 
         private WindowsMediaPlayer FadeOut;
-        private Timer Timer;
         private WindowsMediaPlayer FadeIn;
+        private Timer Timer;
         private int Duration;
         private int Ticks;
 
@@ -85,14 +85,7 @@ namespace Kleps.Frontend.Controller {
             Toasty.URL = "DataRepository/Sound/toasty.mp3";
             Toasty.settings.volume = 90;
         }
-        public void StartBackground() {
-            Background.controls.play();
-        }
 
-        public void StartClick() {
-            Click.controls.stop();
-            Click.controls.play();
-        }
         public void Mute() {
             Click.settings.mute = !Click.settings.mute;
             Background.settings.mute = !Background.settings.mute;

@@ -61,7 +61,8 @@ namespace Kleps.Engine
         }
 
         public void musicClick() {
-            FEH.Music.StartClick();
+            FEH.Music.Click.controls.stop();
+            FEH.Music.Click.controls.play();
         }
 
         public void healthSound(bool mute = false) {
@@ -111,15 +112,12 @@ namespace Kleps.Engine
 
         #endregion Sound
 
-        #region Menu
+
+        #region Game
 
         public void menuAction(string val) {
             FEH.Select(val);
         }
-
-        #endregion Menu
-
-        #region Game
 
         public void changeScreenSize(bool state) {
             FEH.ChangeWindowMode(state);
@@ -134,7 +132,6 @@ namespace Kleps.Engine
         public void gameInit() {
             FEH.Music.MuteAll();
             FEH.LoadGame();
-
         }
 
         public void setName(string name) {
@@ -142,7 +139,7 @@ namespace Kleps.Engine
         }
 
         public string getEventDataById(string id) {
-            return JsonConvert.SerializeObject(game.events.Find(x => x.id == id));
+            return JsonConvert.SerializeObject(game.getEventById(id));
         }
 
         public bool getAnswer(string id, string val) {

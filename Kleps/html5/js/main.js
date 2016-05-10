@@ -84,7 +84,7 @@
         }
     });
     function MainMenu(){
-        Menu.html('<option value="start">Start Game</option>' +
+        Menu.html('<option value="start" >Start Game</option>' +
         '<option value="options">Options</option>' +
         '<option value="credits">Credits</option>' +
         '<option value="exit">Exit</option>');
