@@ -1,6 +1,4 @@
-﻿$(function () {
-    var ROOT = window.location.href;
-    
+﻿$(function () {    
     var Menu = $('#menu');
     MainMenu();
     Menu.on('mouseenter', 'option', function(e) {
