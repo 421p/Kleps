@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using Kleps.Engine.Game;
+using Kleps.Engine.Game.Entities;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -23,7 +24,7 @@ namespace Kleps.Engine.Events.Spawner
 
         public EventSpawner(Game.Game game) {
             _game = game;
-            _interval = 4000;
+            _interval = 1488;
             _chance = 40;
             YamlPath = "DataRepository/Events.yaml";
         }
@@ -33,25 +34,29 @@ namespace Kleps.Engine.Events.Spawner
             if (_eventDataset == null) {
                 _eventDataset = getEventData();
             }
-            
-            var student = _game.students[new Random().Next(0, _game.students.Count - 1)];
+
+            Student evilStudent;
+
+            bool evilEvent = false;
+
+            if ((
+                evilStudent = 
+                _game.students.FirstOrDefault(st => st.name == _game.Config.Names.EvilStudent)) != null
+                ) {
+                    if (new Random().Next(0, 100) < 20) {
+                        evilEvent = true;
+                }
+            }
+
+            var student = evilEvent ? evilStudent : _game.students[new Random().Next(0, _game.students.Count - 1)];
             _game.students.Remove(student);
 
-            bool isEvil = student.name == _game.Config.Names.EvilStudent;
-
             var eventData = _eventDataset.OrderBy(x => Guid.NewGuid())
-                .FirstOrDefault(x => {
-                    if (isEvil) {
-                        return x.type == "evil";
-                    }
-                    else {
-                        return x.type == "normal";
-                    }
-                });
+                .First(x => x.type == (evilEvent ? "evil" : "normal"));
 
             var ev = new GameEvent {
                 owner = student,
-                lifeTime = isEvil ? 4 : 30,
+                lifeTime = evilEvent ? 7 : 30,
                 type = "question",
                 rightAnswer = eventData.rightAnswer,
                 question = eventData.text,
@@ -60,12 +65,12 @@ namespace Kleps.Engine.Events.Spawner
 
             ev.OnTimerEnds += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(isEvil ? 200 : 50);
+                _game.teacher.DecreaseHealth(evilEvent ? 200 : 50);
             };
 
             ev.OnRejected += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(isEvil ? 200 : 50);
+                _game.teacher.DecreaseHealth(evilEvent ? 150 : 50);
             };
 
             ev.OnAccepted += (s, e) => {
