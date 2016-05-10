@@ -100,11 +100,11 @@
         var Credit = false;
         var Credits = $("#credits");
         Credits.show();
-        var translate = Credits.height();
+        var translate = $(window).height() + 500;
         backend.startSubtitleMusic();
         var animate = setInterval(function () {
             Credits.css("transform", "perspective(50px) rotateX(3deg) translate3d(0px, " + (translate--) + "px, 10px)");
-            if (translate < -(Credits.height() * 2))
+            if (translate < -(Credits.height() - 100))
                 $(document).click();
         }, 1000 / 30);
         $(document).on("keydown click", function () {

@@ -33,6 +33,16 @@ div select{
     transform: perspective(50px) rotateX(3deg) translate3d(0px, -2000px, 10px);
     word-wrap: break-word;
     word-break: break-word;
-    text-align: justify;
+    text-align: center;
 
+}
+
+#credits p {
+    text-transform:uppercase;
+    color: #50B926;
+}
+
+#credits span {
+    text-transform:uppercase;
+    color: #6999F1;
 }
