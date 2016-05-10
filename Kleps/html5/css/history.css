@@ -32,6 +32,11 @@ body{
     background: rgba(164, 164, 164, 0.34);
 }
 
+#name::-webkit-input-placeholder { 
+    font-size: 0.5em; 
+    line-height: 2.5em;
+}
+
 #accept a{
     display: block;
     color: #fff;

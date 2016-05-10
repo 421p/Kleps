@@ -10,7 +10,7 @@
                 $("#accept a").focus();
                 break;
             case 13:
-                if ($("#name").val().length < 1)
+                if ($("#name").val().length < 3 || $("#name").val().length > 16)
                     $("#name").css("border", "1px solid red").focus();
                 else {
                     $(document).off("keydown click");
@@ -27,7 +27,7 @@
                 case 1:
                 case 13:
                 case 32:
-                    if ($("#name").val().length < 1)
+                    if ($("#name").val().length < 3 || $("#name").val().length > 16)
                         $("#name").css("border","1px solid red").focus();
                     else {
                         $(document).off("keydown click");
