@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading;
+using System.Windows.Forms;
 using Kleps.Engine.Game;
 using Kleps.Engine.Game.Entities;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using Timer = System.Threading.Timer;
 
 
 namespace Kleps.Engine.Events.Spawner
@@ -24,8 +25,8 @@ namespace Kleps.Engine.Events.Spawner
 
         public EventSpawner(Game.Game game) {
             _game = game;
-            _interval = 1488;
-            _chance = 40;
+            _interval = _game.Config.Params["spawner-interval"];
+            _chance = _game.Config.Params["event-spawn-chance"];
             YamlPath = "DataRepository/Events.yaml";
         }
 
@@ -43,20 +44,38 @@ namespace Kleps.Engine.Events.Spawner
                 evilStudent = 
                 _game.students.FirstOrDefault(st => st.name == _game.Config.Names.EvilStudent)) != null
                 ) {
-                    if (new Random().Next(0, 100) < 20) {
+                    if (new Random().Next(0, 100) < _game.Config.Params["evil-student-spawn-chance"]) {
                         evilEvent = true;
                 }
             }
 
-            var student = evilEvent ? evilStudent : _game.students[new Random().Next(0, _game.students.Count - 1)];
+            var student = evilEvent ? evilStudent : _game.students[new Random().Next(0, _game.students.Count)];
             _game.students.Remove(student);
 
             var eventData = _eventDataset.OrderBy(x => Guid.NewGuid())
-                .First(x => x.type == (evilEvent ? "evil" : "normal"));
+                .FirstOrDefault(x => x.type == (evilEvent ? "evil" : "normal"));
+
+            if (eventData == null) {
+
+                if ((_eventDataset.Count(x => x.type == "normal") == 0) && (_game.events.Count == 0)) {
+                    _game.Over(true);
+                    return null;
+                }
+
+                if (evilEvent) {
+                    eventData = _eventDataset.OrderBy(x => Guid.NewGuid())
+                        .FirstOrDefault(x => x.type == "normal");
+                }
+                else {
+                    return null;
+                }
+            }
+
+            _eventDataset.Remove(eventData);
 
             var ev = new GameEvent {
                 owner = student,
-                lifeTime = evilEvent ? 7 : 30,
+                lifeTime = evilEvent ? _game.Config.Params["evil-time"] : _game.Config.Params["normal-time"],
                 type = "question",
                 rightAnswer = eventData.rightAnswer,
                 question = eventData.text,
@@ -65,17 +84,23 @@ namespace Kleps.Engine.Events.Spawner
 
             ev.OnTimerEnds += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(evilEvent ? 200 : 50);
+                _game.teacher.DecreaseHealth(
+                    evilEvent ? _game.Config.Params["evil-dps-timeout"] : _game.Config.Params["normal-dps-timeout"]
+                );
             };
 
             ev.OnRejected += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(evilEvent ? 150 : 50);
+                _game.teacher.DecreaseHealth(
+                    evilEvent ? _game.Config.Params["evil-dps-reject"] : _game.Config.Params["normal-dps-reject"]
+                );
             };
 
             ev.OnAccepted += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.IncreaseHealth(35);
+                _game.teacher.IncreaseHealth(
+                evilEvent ? _game.Config.Params["evil-heal"] : _game.Config.Params["normal-heal"]
+                );
             };
 
             return ev;
@@ -86,7 +111,10 @@ namespace Kleps.Engine.Events.Spawner
             if (this._game.events.Count >= 4) return;
 
             if (new Random().Next(0, 100) < _chance) {
-                this.OnSpawn(this, new SpawnEventArgs(GenerateEvent()));
+                var ev = GenerateEvent();
+                if (ev != null) {
+                    this.OnSpawn(this, new SpawnEventArgs(ev));
+                }
             }
         }
 

@@ -115,6 +115,11 @@ namespace Kleps.Engine
             FEH.Select(val);
         }
 
+        public string getState()
+        {
+            return game.State;
+        }
+
         public void changeScreenSize(bool state) {
             FEH.ChangeWindowMode(state);
         }

@@ -8,19 +8,22 @@ using YamlDotNet.Serialization;
 namespace Kleps.Engine.Game
 {
     public class Names {
-        [YamlAlias("teacher")]
+        [YamlMember(Alias = "teacher")]
         public string Teacher { get; set; }
 
-        [YamlAlias("evil-student")]
+        [YamlMember(Alias = "evil-student")]
         public string EvilStudent { get; set; }
 
-        [YamlAlias("students")]
+        [YamlMember(Alias = "students")]
         public List<string> Students { get; set; }
     }
 
     public class GameConfig
     {
-        [YamlAlias("names")]
+        [YamlMember(Alias = "names")]
         public Names Names { get; set; }
+
+        [YamlMember(Alias = "params")]
+        public Dictionary<string, int> Params { get; set; } 
     }
 }
