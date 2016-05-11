@@ -1,57 +1,113 @@
 ﻿-
     type: evil
-    text: Я хочу чтобы строка собиралась.
+    text: '[C#] Я хочу чтобы строка собиралась.'
     answers: ['Используй StringBuilder', 'Используй string.Format()', 'Используй интерполяцию', 'Куда собиралась?']
     right_answer: 'Используй StringBuilder'
 
 -
     type: normal
-    text: При помощи какого инструмента можно получить доступ к закрытым полям класса?
+    text: '[C#] При помощи какого инструмента можно получить доступ к закрытым полям класса?'
     answers: ['инфлексия', 'рефлексия', 'наследование', 'исследование']
     right_answer: 'рефлексия'
 
 -
     type: evil
-    text: Могут ли анонимные классы в пхп имплементить интерфейсы?
+    text: '[PHP] Могут ли анонимные классы в пхп имплементить интерфейсы?'
     answers: ['могут', 'не могут', 'только статические классы', 'в пхп нет интерфейсов']
     right_answer: 'могут'
 -
     type: evil
-    text: Инструмент для гибкой работы с naming conventions?
+    text: '[PHP] Инструмент для гибкой работы с naming conventions?'
     answers: ['рефлектор', 'инфлектор', 'конвектор', 'кондуктор']
     right_answer: 'инфлектор'
 
 -
     type: evil
-    text: Я еще 10 минут назад просил(а) подойти, тебе так сложно чтоли?
+    text: '[RealLife] Я еще 10 минут назад просил(а) подойти, тебе так сложно чтоли?'
     answers: ['ДА', 'Нет, не сложно.', 'Есть другие студенты, которым я должен помочь.', '-Не отвечать-']
     right_answer: 'Есть другие студенты, которым я должен помочь.'
 
 -
     type: evil
-    text: Почему не запускается код?
+    text: '[C#] Почему не запускается код?'
     answers: ['У тебя скобки не закрыты.', 'Загугли.', 'Проверь на null.', '-Не отвечать-']
     right_answer: '-Не отвечать-'
 
 -
     type: evil
-    text: Какой инструмент позволяет читать док-коменты на пхп?
+    text: '[PHP] Какой инструмент позволяет читать док-коменты на пхп?'
     answers: ['Рефлектор', 'Парсер', 'Ридер', 'Никакой, зачем читать док-коменты программно?']
     right_answer: 'Рефлектор'
 -
+
     type: normal
-    text: Какой фреймворк из списка является ORM-фреймворком?
+    text: '[C#] Какой фреймворк из списка является ORM-фреймворком?'
     answers: ['OpenTK', 'AForge', 'Duality', 'NHibernate']
     right_answer: 'NHibernate'
-
+-
 
     type: normal
-    text: 'Чего вот такая строчка говорит о циклической ссылке?<br>var json = new JavaScriptSerializer().Serialize(Lib);'
+    text: '[C#] Чего вот такая строчка говорит о циклической ссылке?<br>var json = new JavaScriptSerializer().Serialize(Lib);'
     answers: ['Ничего', 'Возможно в обьекте Lib есть рекурсивная ссылка', 'Используй XML']
     right_answer: 'Возможно в обьекте Lib есть рекурсивная ссылка'
 
 -
     type: normal
-    text: Могут ли структуры имплементить интерфейсы?
+    text: '[C#] Могут ли структуры имплементить интерфейсы?'
     answers: ['Могут', 'Не могут', 'Только структурные интерфейсы']
     right_answer: 'Могут'
+
+-
+    type: normal
+    text: '[C++] Какие виды исключений может бросить функция void Foo()throw();?'
+    answers: ['Только скалярные типы в виде исключений', 'Любые', 'Никаких', 'в с++ нет исключений']
+    right_answer: 'Никаких'
+
+-
+    type: normal
+    text: '[ANSI C] Какая из указанных функций является системным вызовом, связанным с распределением памяти?'
+    answers: ['malloc', 'memset', 'sbrk', 'realize']
+    right_answer: 'sbrk'
+
+-
+    type: normal
+    text: '[ANSI C] Разрешено ли в си множественное наследование?'
+    answers: ['Разрешено', 'Запрещено', 'Только множественная имплементация интерфейсов', 'В си нет классов.']
+    right_answer: 'В си нет классов.'
+
+-
+    type: normal
+    text: '[C++] Что мы получим при вызове функции: <br>[[deprecated]]<br>void foo() {}?'
+    answers: ['Warning', 'Exception', 'Syntax Error', 'Ничего.']
+    right_answer: 'Warning'
+
+-
+    type: normal
+    text: '[.NET] Какой из языков не поддерживается на платформе .NET?'
+    answers: ['C++', 'VB', 'Ruby', 'Kotlin']
+    right_answer: 'Kotlin'
+
+-
+    type: normal
+    text: '[C#] Какое ключевое слово не используется в контексте класса?'
+    answers: ['sealed', 'internal', 'public', 'final']
+    right_answer: 'final'
+
+-
+    type: normal
+    text: '[C#] Что возвращает yield-итератор?'
+    answers: ['IEnumerable', 'IQUeryable', 'IList']
+    right_answer: 'IEnumerable'
+
+-
+    type: normal
+    text: '[C#] Как добиться выполнения следующего кода:<br>WriteLine("hello weird");'
+    answers: ['using System.Console.Shortcuts', 'using static System.Console', 'using System.IO.Stdout', 'using static System.IO']
+    right_answer: 'using static System.Console'
+
+-
+    type: normal
+    text: '[C++] Какая из библиотек презназначена для сетевого программирования?'
+    answers: ['boost::ASIO', 'boost::Fusion', 'boost::Phoenix', 'boost::VMD']
+    right_answer: 'boost::ASIO'
+

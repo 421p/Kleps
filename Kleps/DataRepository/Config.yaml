@@ -18,14 +18,14 @@
         - "Омелян Косовороткін"
     evil-student: "Діана Підгорна"
 params:
-    normal-dps-reject: 100
-    normal-dps-timeout: 150
+    normal-dps-reject: 150
+    normal-dps-timeout: 200
     evil-dps-reject: 200
     evil-dps-timeout: 300
-    evil-heal: 80
-    normal-heal: 50
+    evil-heal: 50
+    normal-heal: 25
     normal-time: 30
     evil-time: 7
-    evil-student-spawn-chance: 20
+    evil-student-spawn-chance: 15
     spawner-interval : 2000
     event-spawn-chance : 40
