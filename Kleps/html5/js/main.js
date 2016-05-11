@@ -1,6 +1,4 @@
-﻿$(function () {
-    var ROOT = window.location.href;
-    
+﻿$(function () {    
     var Menu = $('#menu');
     MainMenu();
     Menu.on('mouseenter', 'option', function(e) {
@@ -10,6 +8,7 @@
         $(this).css({'background':'none'});
     });
     Menu.val(Menu.find("option:first").val());
+    Menu.focus();
 
     var Music = {
         mute: backend.musicMute,
@@ -40,7 +39,8 @@
                     case "music":
                         if(Music.flag) m.text("Music: OFF");
                         else m.text("Music: ON");
-                        MusicChange();
+                        Music.mute();
+                        Music.flag = !Music.flag;
                         break;
                     case "volume":
                         switch(m.text()){
@@ -82,17 +82,8 @@
             default: return;
         }
     });
-
-    $("#audio").click(MusicChange);
-
-    function MusicChange(){
-        Music.mute();
-        if(Music.flag) $("#audio").text("Music: OFF");
-        else $("#audio").text("Music: ON");
-        Music.flag = !Music.flag;
-    }
     function MainMenu(){
-        Menu.html('<option value="start">Start Game</option>' +
+        Menu.html('<option value="start" >Start Game</option>' +
         '<option value="options">Options</option>' +
         '<option value="credits">Credits</option>' +
         '<option value="exit">Exit</option>');
@@ -108,12 +99,14 @@
         Menu.hide();
         var Credit = false;
         var Credits = $("#credits");
+        $("#overlay").css("display", "block").animate({ opacity: 1 }, 10000);
+        $("body").css("cursor", "none");
         Credits.show();
-        var translate = Credits.height();
+        var translate = $(window).height() + 300;
         backend.startSubtitleMusic();
         var animate = setInterval(function () {
             Credits.css("transform", "perspective(50px) rotateX(3deg) translate3d(0px, " + (translate--) + "px, 10px)");
-            if (translate < -(Credits.height() * 2))
+            if (translate < -(Credits.height() - 100))
                 $(document).click();
         }, 1000 / 30);
         $(document).on("keydown click", function () {
@@ -124,6 +117,11 @@
                 Credits.css("transform", "perspective(50px) rotateX(5deg) translate3d(0px, 0px, 10px)");
                 Menu.show();
                 $(document).off("keypress click");
+                $("#overlay").css({
+                    display: "none",
+                    opacity: 0
+                });
+                $("body").css("cursor", "auto");
                 Menu.focus();
             }
             Credit = true;

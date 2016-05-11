@@ -19,8 +19,8 @@ namespace Kleps.Frontend.Controller {
         public WindowsMediaPlayer GameOver { get; private set; }
 
         private WindowsMediaPlayer FadeOut;
-        private Timer Timer;
         private WindowsMediaPlayer FadeIn;
+        private Timer Timer;
         private int Duration;
         private int Ticks;
 
@@ -65,6 +65,8 @@ namespace Kleps.Frontend.Controller {
             FaseHit.settings.playCount = 1;
             FaseHit.settings.autoStart = false;
             FaseHit.URL = "DataRepository/Sound/hit.mp3";
+            FaseHit.settings.mute = true;
+            FaseHit.controls.play();
             FaseHit.settings.volume = 80;
 
             GameBackground = new WindowsMediaPlayer();
@@ -85,17 +87,19 @@ namespace Kleps.Frontend.Controller {
             Toasty.URL = "DataRepository/Sound/toasty.mp3";
             Toasty.settings.volume = 90;
         }
-        public void StartBackground() {
-            Background.controls.play();
-        }
 
-        public void StartClick() {
-            Click.controls.stop();
-            Click.controls.play();
-        }
         public void Mute() {
             Click.settings.mute = !Click.settings.mute;
             Background.settings.mute = !Background.settings.mute;
+        }
+
+        public void StopPreGameSound() {
+            Background.controls.stop();
+            Click.controls.stop();
+            Battle.controls.stop();
+            HistoryEng.controls.stop();
+            HistoryRus.controls.stop();
+            Subtitle.controls.stop();
         }
 
         public void MuteAll() {
@@ -104,6 +108,11 @@ namespace Kleps.Frontend.Controller {
             Battle.settings.mute = true;
             HistoryEng.settings.mute = true;
             HistoryRus.settings.mute = true;
+            Subtitle.settings.mute = true;
+            GameBackground.settings.mute = true;
+            GameOver.settings.mute = true;
+            Toasty.settings.mute = true;
+            FaseHit.settings.mute = true;
         }
 
         public void Volume(int value) {

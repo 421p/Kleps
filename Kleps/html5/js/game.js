@@ -17,8 +17,6 @@
 
     var CurrHealth = Teacher.maxHealth;
 
-    //Kostil bug fixer inc®
-    backend.healthSound(true);
     var tos = '';
     var game = setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());
@@ -84,17 +82,18 @@
         for (var i = 0; i < data.answers.length; i++)
             A.append("<p>" + (i + 1) + ") <span>" + data.answers[i] + "</span></p>");
 
-        A.find("span").one("click", function () {
-            var a = backend.getAnswer(id, $(this).text());
-            if (a) AnswerAnimation("green");
-            else AnswerAnimation("red");
-
-            localStorage.removeItem("id");
-            A.html("");
-            Q.html("");
-        });
-
     });
+
+    $("#answer").delegate("p", "click", function () {
+        var a = backend.getAnswer(localStorage.getItem("id"), $(this).find("span").text());
+        if (a) AnswerAnimation("green");
+        else AnswerAnimation("red");
+
+        localStorage.removeItem("id");
+        A.html("");
+        Q.html("");
+    });
+
 
     function AnswerAnimation(color) {
         var tick = 150;
