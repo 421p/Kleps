@@ -171,3 +171,8 @@ body > a:hover{
     position: fixed;
     left: -100px;
 }
+
+#wingame{
+    -webkit-transition: all 10s ease;
+    transition: all 10s ease;
+}

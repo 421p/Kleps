@@ -31,12 +31,12 @@
 
         if (gameState === 'winned') {
             clearInterval(game);
-            GameOver();
+            GameWin();
         }
 
         if (gameState === 'losed') {
             clearInterval(game);
-            GameOver();
+            GameLost();
         }
             
 
@@ -123,7 +123,7 @@
         });
     }
 
-    function GameOver() {
+    function GameLost() {
         var body = $("body");
         $("html").css("background-color", "#000");
         body.html("");
@@ -136,6 +136,7 @@
             width: "100vw"
         })
         backend.gameOverSound();
+        
 
         function bodyTick(i) {
             body.css("transform", "scale(1." + i + ")");
@@ -172,6 +173,71 @@
                 }, 800);
             }, 800);
         }, 300);
+
+    }
+
+    function GameWin() {
+        var body = $("body");
+        $("html").css("background-color", "#000");
+        body.html("<div id='wingame'></div><p style='color:red;font-size:3em;font-weight:600; width: 100vw; position:fixed; text-align:center; top:20px; cursor:pointer;'>Russian: OFF</p>");
+
+        var div = body.find("#wingame");
+
+        div.css({
+            background: "url('../img/win.jpg')",
+            backgroundSize: "cover",
+            overflow: "hidden",
+            opacity: 1,
+            height: "100vh",
+            width: "100vw"
+        });
+
+        var state = false;
+        var p = body.find("p");
+        p.click(function () {
+            backend.gameWinVoiceRusMute();
+            if (!state)
+                p.text("Russian: ON");
+            else p.text("Russian: OFF");
+            state = !state;
+
+        });
+        backend.gameWinVoice();
+
+        setTimeout(function () {
+            backend.gameWinVoiceRus();
+        }, 500);
+
+        setTimeout(function () {
+            backend.gameWinSound();
+        }, 10000);
+
+
+        
+        var i = 1.0;
+        var iter = setInterval(function () {
+            div.css("transform", "scale("+ i +")");
+            i += 0.001;
+            if (i > 2)
+                clearInterval(iter);
+        }, 10);
+
+        setTimeout(function () {
+            body.css({
+                background: "none",
+                opacity: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
+                width: "100vw"
+            });
+            body.html("<a href='#'>You Won!</a>");
+            body.find("a").one("click", function () {
+                backend.loadStart();
+            });
+        }, 10000);
+
 
     }
 })

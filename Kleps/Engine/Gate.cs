@@ -48,6 +48,28 @@ namespace Kleps.Engine
 
         #region Sound
 
+        public void gameWinVoice() {
+            FEH.Music.Fade(FEH.Music.GameBackground, FEH.Music.WinVoice, 1000);
+        }
+
+        public void gameWinVoiceRus() {
+            FEH.Music.WinVoiceRus.controls.play();
+        }
+
+        public void gameWinVoiceRusMute() {
+            FEH.Music.WinVoiceRus.settings.mute = !FEH.Music.WinVoiceRus.settings.mute;
+            if (!FEH.Music.WinVoiceRus.settings.mute) {
+                FEH.Music.WinVoiceRus.settings.volume = 50;
+                FEH.Music.WinVoice.settings.volume = 20;
+            } else {
+                FEH.Music.WinVoice.settings.volume = 80;
+            }
+
+        }
+
+        public void gameWinSound() {
+            FEH.Music.Win.controls.play();
+        }
 
         public void musicStart() {
             FEH.MusicStart();
@@ -133,7 +155,7 @@ namespace Kleps.Engine
 
         public void gameInit() {
             FEH.Music.StopPreGameSound();
-            FEH.LoadGame();
+            FEH.Load("game");
         }
 
         public void setName(string name) {
@@ -149,7 +171,9 @@ namespace Kleps.Engine
         }
 
         public void loadStart() {
-            FEH.LoadStart();
+            FEH.Load("main");
+            FEH.Music.GameOver.controls.stop();
+            FEH.Music.Win.controls.stop();
         }
 
         public bool isEvil(string id) {

@@ -30,29 +30,25 @@ namespace Kleps.Frontend.Controller {
             Music.Background.controls.play();
         }
 
+        public void Load(string page) {
+            var path = String.Format(
+                @"file:///{0}\html5\html\{1}.html", 
+                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), 
+                page
+                ).Replace('\\', '/');
+            Browser.Load(path);
+         }
+
         public void Select(string val) {
             switch (val) {
                 case "start":
-                    Browser.Load(("file:///" + System.IO.Path.GetDirectoryName(
-                System.Reflection.Assembly.GetExecutingAssembly().Location
-                ) + @"\html5\html\history.html").Replace('\\', '/'));
+                    this.Load("history");
                     break;
                 case "exit":
                     this.Window.BeginInvoke(new Action(() => this.Window.Close()));
                     this.Music.MuteAll();
                     break;
             }
-        }
-        public void LoadGame() {
-            Browser.Load(("file:///" + System.IO.Path.GetDirectoryName(
-                System.Reflection.Assembly.GetExecutingAssembly().Location
-                ) + @"\html5\html\game.html").Replace('\\', '/'));
-        }
-
-        public void LoadStart() {
-            Browser.Load(("file:///" + System.IO.Path.GetDirectoryName(
-                System.Reflection.Assembly.GetExecutingAssembly().Location
-                ) + @"\html5\html\main.html").Replace('\\', '/'));
         }
 
         public void ChangeWindowMode(bool state) {
