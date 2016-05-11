@@ -128,7 +128,7 @@ namespace Kleps.Engine
 
         public void gameInit() {
             FEH.Music.StopPreGameSound();
-            FEH.LoadGame();
+            FEH.Load("game");
         }
 
         public void setName(string name) {
@@ -144,7 +144,7 @@ namespace Kleps.Engine
         }
 
         public void loadStart() {
-            FEH.LoadStart();
+            FEH.Load("main");
         }
 
         public bool isEvil(string id) {
