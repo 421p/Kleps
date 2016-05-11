@@ -15,6 +15,9 @@ namespace Kleps.Frontend.Controller {
         public WindowsMediaPlayer GameBackground { get; private set; }
         public WindowsMediaPlayer Toasty { get; private set; }
         public WindowsMediaPlayer GameOver { get; private set; }
+        public WindowsMediaPlayer Win { get; private set; }
+        public WindowsMediaPlayer WinVoice { get; private set; }
+        
 
         private WindowsMediaPlayer FadeOut;
         private WindowsMediaPlayer FadeIn;
@@ -74,6 +77,15 @@ namespace Kleps.Frontend.Controller {
             this.Toasty = this.Init(new Dictionary<string, object>() {
                 { "volume", 90 },
                 { "filename", "toasty.mp3" }
+            });
+
+            this.Win = this.Init(new Dictionary<string, object>() {
+                { "volume", 80 },
+                { "filename", "SmokeWeed.mp3" }
+            });
+            this.WinVoice = this.Init(new Dictionary<string, object>() {
+                { "volume", 90 },
+                { "filename", "winervoice.mp3" }
             });
 
         }

@@ -205,6 +205,7 @@
     <Content Include="DataRepository\Sound\rus.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DataRepository\Sound\SmokeWeed.mp3" />
     <Content Include="DataRepository\Sound\StarWars.mp3" />
     <Content Include="DataRepository\Sound\toasty.mp3" />
     <Content Include="html5\css\bootstrap.min.css" />
@@ -224,6 +225,7 @@
     <Content Include="html5\img\bg.png" />
     <Content Include="html5\img\stats.png" />
     <Content Include="html5\img\toasty.png" />
+    <Content Include="html5\img\win.jpg" />
     <Content Include="html5\js\bootstrap.min.js" />
     <Content Include="html5\html\history.html" />
     <Content Include="html5\js\game.js" />

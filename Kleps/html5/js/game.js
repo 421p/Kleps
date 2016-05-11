@@ -31,12 +31,12 @@
 
         if (gameState === 'winned') {
             clearInterval(game);
-            GameOver();
+            //GameWin();
         }
 
         if (gameState === 'losed') {
             clearInterval(game);
-            GameOver();
+            GameWin();
         }
             
 
@@ -162,6 +162,58 @@
                                         alignItems: "center",
                                     });
                                     body.append("<a href='#'>Game Over</a>");
+                                    body.find("a").one("click", function () {
+                                        backend.loadStart();
+                                    });
+                                });
+                            });
+                        }, 800)
+                    }, 800);
+                }, 800);
+            }, 800);
+        }, 300);
+
+    }
+
+    function GameWin() {
+        var body = $("body");
+        $("html").css("background-color", "#000");
+        body.html("");
+        body.css({
+            background: "url('../img/win.jpg')",
+            backgroundSize: "cover",
+            overflow: "hidden",
+            opacity: 0,
+            height: "100vh",
+            width: "100vw"
+        })
+        backend.gameWinSound();
+
+        function bodyTick(i) {
+            body.css("transform", "scale(1." + i + ")");
+            body.animate({ opacity: 1 }, 50, function () {
+                body.animate({ opacity: 0 }, 400)
+            });
+        }
+        setTimeout(function () {
+            bodyTick(6);
+            setTimeout(function () {
+                bodyTick(4);
+                setTimeout(function () {
+                    bodyTick(2);
+                    setTimeout(function () {
+                        bodyTick(0);
+                        setTimeout(function () {
+                            body.animate({ opacity: 1 }, 50, function () {
+                                body.animate({ opacity: 0 }, 7000, function () {
+                                    body.css({
+                                        background: "none",
+                                        opacity: 1,
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    });
+                                    body.append("<a href='#'>You Won!</a>");
                                     body.find("a").one("click", function () {
                                         backend.loadStart();
                                     });

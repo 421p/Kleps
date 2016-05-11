@@ -48,7 +48,9 @@ namespace Kleps.Engine
 
         #region Sound
 
-
+        public void gameWinSound() {
+            FEH.Music.Win.controls.play();
+        }
         public void musicStart() {
             FEH.MusicStart();
             FEH.Music.Volume(10);
@@ -126,6 +128,7 @@ namespace Kleps.Engine
 
         public void startGame() {
             game.run();
+            game.teacher.health = 10;
             FEH.Music.GameBackground.settings.mute = false;
             FEH.Music.FaseHit.settings.mute = false;
             FEH.Music.GameBackground.controls.play();
