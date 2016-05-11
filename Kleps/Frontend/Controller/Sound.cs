@@ -17,7 +17,8 @@ namespace Kleps.Frontend.Controller {
         public WindowsMediaPlayer GameOver { get; private set; }
         public WindowsMediaPlayer Win { get; private set; }
         public WindowsMediaPlayer WinVoice { get; private set; }
-        
+        public WindowsMediaPlayer WinVoiceRus { get; private set; }
+
 
         private WindowsMediaPlayer FadeOut;
         private WindowsMediaPlayer FadeIn;
@@ -86,6 +87,11 @@ namespace Kleps.Frontend.Controller {
             this.WinVoice = this.Init(new Dictionary<string, object>() {
                 { "volume", 90 },
                 { "filename", "winervoice.mp3" }
+            });
+            this.WinVoiceRus = this.Init(new Dictionary<string, object>() {
+                { "mute", true },
+                { "volume", 70 },
+                { "filename", "winervoicerus.mp3" }
             });
 
         }

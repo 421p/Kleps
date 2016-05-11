@@ -209,6 +209,7 @@
     <Content Include="DataRepository\Sound\StarWars.mp3" />
     <Content Include="DataRepository\Sound\toasty.mp3" />
     <Content Include="DataRepository\Sound\winervoice.mp3" />
+    <Content Include="DataRepository\Sound\winervoicerus.mp3" />
     <Content Include="html5\css\bootstrap.min.css" />
     <Content Include="html5\css\history.css" />
     <Content Include="html5\css\main.css" />

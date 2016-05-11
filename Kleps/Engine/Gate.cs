@@ -52,6 +52,21 @@ namespace Kleps.Engine
             FEH.Music.Fade(FEH.Music.GameBackground, FEH.Music.WinVoice, 1000);
         }
 
+        public void gameWinVoiceRus() {
+            FEH.Music.WinVoiceRus.controls.play();
+        }
+
+        public void gameWinVoiceRusMute() {
+            FEH.Music.WinVoiceRus.settings.mute = !FEH.Music.WinVoiceRus.settings.mute;
+            if (!FEH.Music.WinVoiceRus.settings.mute) {
+                FEH.Music.WinVoiceRus.settings.volume = 50;
+                FEH.Music.WinVoice.settings.volume = 20;
+            } else {
+                FEH.Music.WinVoice.settings.volume = 80;
+            }
+
+        }
+
         public void gameWinSound() {
             FEH.Music.Win.controls.play();
         }
