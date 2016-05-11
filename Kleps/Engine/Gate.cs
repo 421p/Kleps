@@ -157,6 +157,8 @@ namespace Kleps.Engine
 
         public void loadStart() {
             FEH.Load("main");
+            FEH.Music.GameOver.controls.stop();
+            FEH.Music.Win.controls.stop();
         }
 
         public bool isEvil(string id) {
