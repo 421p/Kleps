@@ -1,8 +1,8 @@
 ﻿-
     type: evil
-    text: Alias for exit in php
-    answers: ['kill', 'quit', 'die', 'escape']
-    right_answer: 'die'
+    text: Я хочу чтобы строка собиралась.
+    answers: ['Используй StringBuilder', 'Используй string.Format()', 'Используй интерполяцию', 'Куда собиралась?']
+    right_answer: 'Используй StringBuilder'
 
 -
     type: normal
@@ -15,48 +15,40 @@
     text: Могут ли анонимные классы в пхп имплементить интерфейсы?
     answers: ['могут', 'не могут', 'только статические классы', 'в пхп нет интерфейсов']
     right_answer: 'могут'
-
 -
     type: evil
-    text: На чем написан Crossbar.io?
-    answers: ['php', 'nodeJs', 'python', 'c++']
-    right_answer: 'python'
-
--
-    type: evil
-    text: Инструмент для гибкой работы с конвенциями
+    text: Инструмент для гибкой работы с naming conventions?
     answers: ['рефлектор', 'инфлектор', 'конвектор', 'кондуктор']
     right_answer: 'инфлектор'
 
 -
     type: evil
-    text: Я еще 10 минут назад просила подойти, тебе так сложно чтоли?
+    text: Я еще 10 минут назад просил(а) подойти, тебе так сложно чтоли?
     answers: ['ДА', 'Нет, не сложно.', 'Есть другие студенты, которым я должен помочь.', '-Не отвечать-']
     right_answer: 'Есть другие студенты, которым я должен помочь.'
 
 -
     type: evil
     text: Почему не запускается код?
-    answers: ['У тебя скобки не закрыты.', 'Загугли.', 'Проверь на null.', '-Не сильно пнуть студента.-']
-    right_answer: null
+    answers: ['У тебя скобки не закрыты.', 'Загугли.', 'Проверь на null.', '-Не отвечать-']
+    right_answer: '-Не отвечать-'
 
 -
     type: evil
     text: Какой инструмент позволяет читать док-коменты на пхп?
     answers: ['Рефлектор', 'Парсер', 'Ридер', 'Никакой, зачем читать док-коменты программно?']
     right_answer: 'Рефлектор'
-
--
-    type: normal
-    text: Сколько Asofe нужно на крафт Dark Crystal Robe?
-    answers: ['15', '25', '35', '60']
-    right_answer: '35'
-
 -
     type: normal
     text: Какой фреймворк из списка является ORM-фреймворком?
     answers: ['OpenTK', 'AForge', 'Duality', 'NHibernate']
     right_answer: 'NHibernate'
+
+
+    type: normal
+    text: 'Чего вот такая строчка говорит о циклической ссылке?<br>var json = new JavaScriptSerializer().Serialize(Lib);'
+    answers: ['Ничего', 'Возможно в обьекте Lib есть рекурсивная ссылка', 'Используй XML']
+    right_answer: 'Возможно в обьекте Lib есть рекурсивная ссылка'
 
 -
     type: normal
