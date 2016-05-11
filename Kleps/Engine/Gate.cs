@@ -49,7 +49,7 @@ namespace Kleps.Engine
         #region Sound
 
         public void gameWinSound() {
-            FEH.Music.Win.controls.play();
+            FEH.Music.WinVoice.controls.play();
         }
         public void musicStart() {
             FEH.MusicStart();
