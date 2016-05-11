@@ -26,3 +26,6 @@ params:
     normal-heal: 50
     normal-time: 30
     evil-time: 7
+    evil-student-spawn-chance: 20
+    spawner-interval : 2000
+    event-spawn-chance : 40

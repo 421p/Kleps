@@ -25,8 +25,8 @@ namespace Kleps.Engine.Events.Spawner
 
         public EventSpawner(Game.Game game) {
             _game = game;
-            _interval = 1488;
-            _chance = 40;
+            _interval = _game.Config.Params["spawner-interval"];
+            _chance = _game.Config.Params["event-spawn-chance"];
             YamlPath = "DataRepository/Events.yaml";
         }
 
@@ -44,7 +44,7 @@ namespace Kleps.Engine.Events.Spawner
                 evilStudent = 
                 _game.students.FirstOrDefault(st => st.name == _game.Config.Names.EvilStudent)) != null
                 ) {
-                    if (new Random().Next(0, 100) < 20) {
+                    if (new Random().Next(0, 100) < _game.Config.Params["evil-student-spawn-chance"]) {
                         evilEvent = true;
                 }
             }
