@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Timers;
 using WMPLib;
 
@@ -7,15 +8,12 @@ namespace Kleps.Frontend.Controller {
         public WindowsMediaPlayer Background { get; private set; }
         public WindowsMediaPlayer Click { get; private set; }
         public WindowsMediaPlayer Subtitle { get; private set; }
-
         public WindowsMediaPlayer Battle { get; private set; }
         public WindowsMediaPlayer HistoryEng { get; private set; }
         public WindowsMediaPlayer HistoryRus { get; private set; }
-
         public WindowsMediaPlayer FaseHit { get; private set; }
         public WindowsMediaPlayer GameBackground { get; private set; }
         public WindowsMediaPlayer Toasty { get; private set; }
-
         public WindowsMediaPlayer GameOver { get; private set; }
 
         private WindowsMediaPlayer FadeOut;
@@ -25,67 +23,71 @@ namespace Kleps.Frontend.Controller {
         private int Ticks;
 
         public Sound() {
-            Background = new WindowsMediaPlayer();
-            Background.settings.playCount = 10;
-            Background.settings.autoStart = false;
-            Background.URL = "DataRepository/Sound/DevilsDance.mp3";
+            this.Background = this.Init(new Dictionary<string, object>() {
+                { "playCount", 10 },
+                { "filename", "DevilsDance.mp3" }
+            });
 
-            Battle = new WindowsMediaPlayer();
-            Battle.settings.playCount = 1;
-            Battle.settings.autoStart = false;
-            Battle.URL = "DataRepository/Sound/bgmusic.mp3";
-            Battle.settings.volume = 50;
+            this.Battle = this.Init(new Dictionary<string, object>() {
+                { "volume", 50 },
+                { "filename", "bgmusic.mp3" }
+            });
 
-            HistoryEng = new WindowsMediaPlayer();
-            HistoryEng.settings.playCount = 1;
-            HistoryEng.settings.autoStart = false;
-            HistoryEng.URL = "DataRepository/Sound/eng.mp3";
-            HistoryEng.settings.volume = 100;
+            this.HistoryEng = this.Init(new Dictionary<string, object>() {
+                { "filename", "eng.mp3" }
+            });
 
-            HistoryRus = new WindowsMediaPlayer();
-            HistoryRus.settings.playCount = 1;
-            HistoryRus.settings.autoStart = false;
-            HistoryRus.URL = "DataRepository/Sound/rus.mp3";
-            HistoryRus.settings.volume = 90;
+            this.HistoryRus = this.Init(new Dictionary<string, object>() {
+                { "volume", 90 },
+                { "filename", "rus.mp3" }
+            });
 
+            this.Click = this.Init(new Dictionary<string, object>() {
+                { "filename", "Click.mp3" }
+            });
 
-            Click = new WindowsMediaPlayer();
-            Click.settings.playCount = 1;            
-            Click.settings.autoStart = false;
-            Click.URL = "DataRepository/Sound/Click.mp3";
-            Click.settings.volume = 100;
+            this.Subtitle = this.Init(new Dictionary<string, object>() {
+                { "playCount", 10 },
+                { "mute", false },
+                { "volume", 100 },
+                { "filename", "StarWars.mp3" }
+            });
 
-            Subtitle = new WindowsMediaPlayer();
-            Subtitle.settings.playCount = 1;
-            Subtitle.settings.autoStart = false;
-            Subtitle.URL = "DataRepository/Sound/StarWars.mp3";
-            Subtitle.settings.volume = 100;
+            this.FaseHit = this.Init(new Dictionary<string, object>() {
+                { "mute", true },
+                { "playOnce", true },
+                { "volume", 80 },
+                { "filename", "hit.mp3" }
+            });
 
-            FaseHit = new WindowsMediaPlayer();
-            FaseHit.settings.playCount = 1;
-            FaseHit.settings.autoStart = false;
-            FaseHit.URL = "DataRepository/Sound/hit.mp3";
-            FaseHit.settings.mute = true;
-            FaseHit.controls.play();
-            FaseHit.settings.volume = 80;
+            this.GameBackground = this.Init(new Dictionary<string, object>() {
+                { "playCount", 10 },
+                { "volume", 20 },
+                { "filename", "moby.mp3" }
+            });
 
-            GameBackground = new WindowsMediaPlayer();
-            GameBackground.settings.playCount = 10;
-            GameBackground.settings.autoStart = false;
-            GameBackground.URL = "DataRepository/Sound/moby.mp3";
-            GameBackground.settings.volume = 20;
+            this.GameOver = this.Init(new Dictionary<string, object>() {
+                { "volume", 80 },
+                { "filename", "heartstop.mp3" }
+            });
 
-            GameOver = new WindowsMediaPlayer();
-            GameOver.settings.playCount = 1;
-            GameOver.settings.autoStart = false;
-            GameOver.URL = "DataRepository/Sound/heartstop.mp3";
-            GameOver.settings.volume = 80;
+            this.Toasty = this.Init(new Dictionary<string, object>() {
+                { "volume", 90 },
+                { "filename", "toasty.mp3" }
+            });
 
-            Toasty = new WindowsMediaPlayer();
-            Toasty.settings.playCount = 1;
-            Toasty.settings.autoStart = false;
-            Toasty.URL = "DataRepository/Sound/toasty.mp3";
-            Toasty.settings.volume = 90;
+        }
+
+        private WindowsMediaPlayer Init(Dictionary<string, object> options) {
+            var sound = new WindowsMediaPlayer();
+            sound.settings.autoStart = false;
+            sound.settings.playCount = (int)(options.ContainsKey("playCount") ? options["playCount"] : 1);
+            sound.settings.mute = (bool)(options.ContainsKey("mute") ? options["mute"] : false);
+            sound.URL = String.Format("DataRepository/Sound/{0}", (string)options["filename"]);
+            if((bool)(options.ContainsKey("playOnce") ? options["playOnce"] : false))
+                sound.controls.play();
+            sound.settings.volume = (int)(options.ContainsKey("volume") ? options["volume"] : 100);
+            return sound;
         }
 
         public void Mute() {
