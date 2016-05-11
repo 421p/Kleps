@@ -149,12 +149,40 @@ namespace Kleps.Frontend.Controller {
             this.Timer.Start();
         }
 
+        public void FadeInEffect(WindowsMediaPlayer sound, int duration) {
+            this.FadeIn = sound;
+            this.Duration = duration;
+            this.FadeIn.settings.volume = 0;
+            this.FadeIn.controls.play();
+            this.Timer = new Timer();
+            this.Ticks = 0;
+
+            this.Timer.Interval = this.Duration / 100;
+            this.Timer.Elapsed += FadeInEffectTick;
+            this.Timer.Enabled = true;
+
+            this.Timer.Start();
+        }
+
+        private void FadeInEffectTick(object sender, ElapsedEventArgs e) {
+            try {
+                FadeIn.settings.volume += 100 / (this.Duration / 100);
+            } catch (Exception x) {
+                Console.WriteLine(x.Message);
+            }
+
+            this.Ticks += this.Duration / 100;
+            if (this.Ticks >= this.Duration)
+                this.Timer.Stop();
+
+        }
+
         private void FadeTick(object sender, ElapsedEventArgs e) {
             try {
                 FadeIn.settings.volume += 100 / (this.Duration / 100);
                 FadeOut.settings.volume -= 100 / (this.Duration / 100);
             }catch(Exception x) {
-                Console.WriteLine("OOPS");
+                Console.WriteLine(x.Message);
             }
             
             this.Ticks += this.Duration / 100;
