@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading;
+using System.Windows.Forms;
 using Kleps.Engine.Game;
 using Kleps.Engine.Game.Entities;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using Timer = System.Threading.Timer;
 
 
 namespace Kleps.Engine.Events.Spawner
@@ -48,11 +49,29 @@ namespace Kleps.Engine.Events.Spawner
                 }
             }
 
-            var student = evilEvent ? evilStudent : _game.students[new Random().Next(0, _game.students.Count - 1)];
+            var student = evilEvent ? evilStudent : _game.students[new Random().Next(0, _game.students.Count)];
             _game.students.Remove(student);
 
             var eventData = _eventDataset.OrderBy(x => Guid.NewGuid())
-                .First(x => x.type == (evilEvent ? "evil" : "normal"));
+                .FirstOrDefault(x => x.type == (evilEvent ? "evil" : "normal"));
+
+            if (eventData == null) {
+
+                if ((_eventDataset.Count(x => x.type == "normal") == 0) && (_game.events.Count == 0)) {
+                    _game.Over(true);
+                    return null;
+                }
+
+                if (evilEvent) {
+                    eventData = _eventDataset.OrderBy(x => Guid.NewGuid())
+                        .FirstOrDefault(x => x.type == "normal");
+                }
+                else {
+                    return null;
+                }
+            }
+
+            _eventDataset.Remove(eventData);
 
             var ev = new GameEvent {
                 owner = student,
@@ -92,7 +111,10 @@ namespace Kleps.Engine.Events.Spawner
             if (this._game.events.Count >= 4) return;
 
             if (new Random().Next(0, 100) < _chance) {
-                this.OnSpawn(this, new SpawnEventArgs(GenerateEvent()));
+                var ev = GenerateEvent();
+                if (ev != null) {
+                    this.OnSpawn(this, new SpawnEventArgs(ev));
+                }
             }
         }
 

@@ -19,6 +19,8 @@ namespace Kleps.Engine.Game
         public EventHandler OnGameOver { get; set; }
         public GameConfig Config { get; set; }
 
+        public string State { get; private set; }
+
         public Game(GameConfig cfg):this(cfg, null, null){}
 
         public Game(GameConfig cfg, Teacher teacher, List<Student> students ) {
@@ -27,6 +29,7 @@ namespace Kleps.Engine.Game
             this.students = students;
             this.events = new List<GameEvent>();
             spawner = new EventSpawner(this);
+            State = "not started";
         }
 
         public GameEvent getEventById(string id) {
@@ -36,7 +39,9 @@ namespace Kleps.Engine.Game
         /// <summary>
         /// Starts game.
         /// </summary>
-        public void run() {
+        public void run()
+        {
+            State = "runnig";
             this.spawner.OnSpawn += (s, e) => {
                 this.events.Add(e.Event);
             };
@@ -46,7 +51,10 @@ namespace Kleps.Engine.Game
         /// <summary>
         /// Ends game.
         /// </summary>
-        public void Over() {
+        public void Over(bool isWinned)
+        {
+            State = isWinned ? "winned" : "losed";
+
             this.spawner.SpawnOff();
             this.events.ToArray().ToList().ForEach(e => e.timer.Dispose());
             this.events.Clear();
