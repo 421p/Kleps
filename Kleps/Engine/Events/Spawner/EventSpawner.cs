@@ -56,7 +56,7 @@ namespace Kleps.Engine.Events.Spawner
 
             var ev = new GameEvent {
                 owner = student,
-                lifeTime = evilEvent ? 7 : 30,
+                lifeTime = evilEvent ? _game.Config.Params["evil-time"] : _game.Config.Params["normal-time"],
                 type = "question",
                 rightAnswer = eventData.rightAnswer,
                 question = eventData.text,
@@ -65,17 +65,23 @@ namespace Kleps.Engine.Events.Spawner
 
             ev.OnTimerEnds += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(evilEvent ? 200 : 50);
+                _game.teacher.DecreaseHealth(
+                    evilEvent ? _game.Config.Params["evil-dps-timeout"] : _game.Config.Params["normal-dps-timeout"]
+                );
             };
 
             ev.OnRejected += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.DecreaseHealth(evilEvent ? 150 : 50);
+                _game.teacher.DecreaseHealth(
+                    evilEvent ? _game.Config.Params["evil-dps-reject"] : _game.Config.Params["normal-dps-reject"]
+                );
             };
 
             ev.OnAccepted += (s, e) => {
                 ev.Exterminate();
-                _game.teacher.IncreaseHealth(35);
+                _game.teacher.IncreaseHealth(
+                evilEvent ? _game.Config.Params["evil-heal"] : _game.Config.Params["normal-heal"]
+                );
             };
 
             return ev;

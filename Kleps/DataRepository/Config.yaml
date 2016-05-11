@@ -17,3 +17,12 @@
         - "Степан Ломака"
         - "Омелян Косовороткін"
     evil-student: "Діана Підгорна"
+params:
+    normal-dps-reject: 100
+    normal-dps-timeout: 150
+    evil-dps-reject: 200
+    evil-dps-timeout: 300
+    evil-heal: 80
+    normal-heal: 50
+    normal-time: 30
+    evil-time: 7
