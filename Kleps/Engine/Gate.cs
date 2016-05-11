@@ -133,7 +133,6 @@ namespace Kleps.Engine
 
         public void startGame() {
             game.run();
-            game.teacher.health = 10;
             FEH.Music.GameBackground.settings.mute = false;
             FEH.Music.FaseHit.settings.mute = false;
             FEH.Music.GameBackground.controls.play();
