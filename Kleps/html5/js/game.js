@@ -21,12 +21,20 @@
     var game = setInterval(function () {
         var events = JSON.parse(backend.getGameEventsJson());
         var health = JSON.parse(backend.getTeacherJson()).health;
+        var gameState = backend.getState();
         
         if (health < CurrHealth) {
             backend.healthSound();
             AnswerAnimation("red");
             CurrHealth = health;
-        } else if (health < 1) {
+        }
+
+        if (gameState === 'winned') {
+            clearInterval(game);
+            GameOver();
+        }
+
+        if (gameState === 'losed') {
             clearInterval(game);
             GameOver();
         }

@@ -25,7 +25,7 @@ namespace Kleps.Engine.Game
                 name = game.Config.Names.Teacher,
                 game = game,
                 OnDeath = (s, e) => {
-                    game.Over();
+                    game.Over(false);
                 }
             };
         }

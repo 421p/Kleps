@@ -108,7 +108,6 @@
     <Compile Include="Engine\Game\GameConfig.cs" />
     <Compile Include="Engine\Game\GameFactory.cs" />
     <Compile Include="Engine\Gate.cs" />
-    <Compile Include="Engine\HelloWoldSayer\HelloWorldSayer.cs" />
     <Compile Include="Frontend\ChromeBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
