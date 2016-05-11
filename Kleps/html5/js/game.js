@@ -31,12 +31,12 @@
 
         if (gameState === 'winned') {
             clearInterval(game);
-            //GameWin();
+            GameWin();
         }
 
         if (gameState === 'losed') {
             clearInterval(game);
-            GameWin();
+            GameLost();
         }
             
 
@@ -123,7 +123,7 @@
         });
     }
 
-    function GameOver() {
+    function GameLost() {
         var body = $("body");
         $("html").css("background-color", "#000");
         body.html("");
@@ -136,6 +136,7 @@
             width: "100vw"
         })
         backend.gameOverSound();
+        
 
         function bodyTick(i) {
             body.css("transform", "scale(1." + i + ")");
@@ -183,47 +184,37 @@
             background: "url('../img/win.jpg')",
             backgroundSize: "cover",
             overflow: "hidden",
-            opacity: 0,
+            opacity: 1,
             height: "100vh",
             width: "100vw"
         })
-        backend.gameWinSound();
-
-        function bodyTick(i) {
-            body.css("transform", "scale(1." + i + ")");
-            body.animate({ opacity: 1 }, 50, function () {
-                body.animate({ opacity: 0 }, 400)
-            });
-        }
+        backend.gameWinVoice();
         setTimeout(function () {
-            bodyTick(6);
-            setTimeout(function () {
-                bodyTick(4);
-                setTimeout(function () {
-                    bodyTick(2);
-                    setTimeout(function () {
-                        bodyTick(0);
-                        setTimeout(function () {
-                            body.animate({ opacity: 1 }, 50, function () {
-                                body.animate({ opacity: 0 }, 7000, function () {
-                                    body.css({
-                                        background: "none",
-                                        opacity: 1,
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    });
-                                    body.append("<a href='#'>You Won!</a>");
-                                    body.find("a").one("click", function () {
-                                        backend.loadStart();
-                                    });
-                                });
-                            });
-                        }, 800)
-                    }, 800);
-                }, 800);
-            }, 800);
-        }, 300);
+            backend.gameWinSound();
+        }, 10000);
+
+        var i = 1.0;
+        var iter = setInterval(function () {
+            body.css("transform", "scale(" + i + ")");
+            i += 0.001;
+            if (i > 2)
+                clearInterval(iter);
+        }, 10);
+
+        setTimeout(function () {
+            body.css({
+                background: "none",
+                opacity: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            });
+            body.append("<a href='#'>You Won!</a>");
+            body.find("a").one("click", function () {
+                backend.loadStart();
+            });
+        }, 10000);
+
 
     }
 })

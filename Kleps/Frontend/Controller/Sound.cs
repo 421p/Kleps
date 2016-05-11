@@ -80,7 +80,7 @@ namespace Kleps.Frontend.Controller {
             });
 
             this.Win = this.Init(new Dictionary<string, object>() {
-                { "volume", 0 },
+                { "volume", 80 },
                 { "filename", "SmokeWeed.mp3" }
             });
             this.WinVoice = this.Init(new Dictionary<string, object>() {
@@ -127,6 +127,8 @@ namespace Kleps.Frontend.Controller {
             GameOver.settings.mute = true;
             Toasty.settings.mute = true;
             FaseHit.settings.mute = true;
+            WinVoice.settings.mute = true;
+            Win.settings.mute = true;
         }
 
         public void Volume(int value) {

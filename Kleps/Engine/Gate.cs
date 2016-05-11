@@ -48,9 +48,14 @@ namespace Kleps.Engine
 
         #region Sound
 
-        public void gameWinSound() {
-            FEH.Music.WinVoice.controls.play();
+        public void gameWinVoice() {
+            FEH.Music.Fade(FEH.Music.GameBackground, FEH.Music.WinVoice, 1000);
         }
+
+        public void gameWinSound() {
+            FEH.Music.Win.controls.play();
+        }
+
         public void musicStart() {
             FEH.MusicStart();
             FEH.Music.Volume(10);
