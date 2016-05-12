@@ -9,7 +9,6 @@ using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using Timer = System.Threading.Timer;
 
-
 namespace Kleps.Engine.Events.Spawner
 {
     public class EventSpawner {
@@ -23,7 +22,8 @@ namespace Kleps.Engine.Events.Spawner
 
         public EventHandler<SpawnEventArgs> OnSpawn { get; set; }
 
-        public EventSpawner(Game.Game game) {
+        public EventSpawner(Game.Game game)
+        {
             _game = game;
             _interval = _game.Config.Params["spawner-interval"];
             _chance = _game.Config.Params["event-spawn-chance"];
