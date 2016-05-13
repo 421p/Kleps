@@ -24,7 +24,7 @@ params:
     evil-dps-timeout: 300
     evil-heal: 50
     normal-heal: 25
-    normal-time: 30
+    normal-time: 60
     evil-time: 7
     evil-student-spawn-chance: 15
     spawner-interval : 2000

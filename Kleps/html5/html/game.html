@@ -29,7 +29,7 @@
            </div>
             <div id="game">
                 <div id="events">
-
+						<div id="timer-e"></div>
                 </div>
                 <div id="io">
                     <div id="question">
@@ -48,6 +48,12 @@
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/timer.js"></script>
-    <script src="../js/game.js"></script>
+    <!--<script src="../js/game.js"></script>-->
+	<script>
+		$('#timer-e').timer({
+					duration: 30,
+					unit: 's'
+				});
+	</script>
 </body>
 </html>
